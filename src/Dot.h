@@ -8,20 +8,24 @@
 #ifndef DOT_H_
 #define DOT_H_
 
-class Dot
-{
+namespace FlipDot {
+class Dot{
 public:
-	Dot(int, int, bool);
+	Dot(int row, int column, bool state) {
+			this->row=row;
+			this->column=column;
+			this->state=state;
+	}
 
 	void setState(bool);
 	bool getState();
-	int getRow(int);
+	int getRow();
 	int getColumn();
 
 private:
-	const int row, column;
+	int row, column;
 	bool state;
-
 };
+}
 
 #endif /* DOT_H_ */

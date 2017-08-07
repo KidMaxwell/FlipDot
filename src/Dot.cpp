@@ -5,10 +5,9 @@
  *      Author: paul
  */
 
-class Dot
-{
-	const int row, column;
-	bool state;
+namespace FlipDot{
+	int Dot::row, Dot::column;
+	bool Dot::state;
 
 	Dot::Dot(int row, int column, bool state) {
 		this->row=row;
@@ -32,4 +31,4 @@ class Dot
 		return column;
 	}
 
-};
+}
