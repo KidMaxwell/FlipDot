@@ -41,7 +41,7 @@ using namespace std;
 	void ShiftRegister::loadnWrite(bool inputArray[]) {
 		for(int i=31; i>-1; i--) {
 			digitalWrite(serP, inputArray[i]);
-			delay(1);
+//			delay(1);
 			shifter(1);
 		}
 		shifter(1);
@@ -49,19 +49,19 @@ using namespace std;
 
 	void ShiftRegister::enableSR() {
 		digitalWrite(sEnableP, 0);
-		delay(1);
+//		delay(1);
 	}
 
 	void ShiftRegister::disableSR() {
 		digitalWrite(sEnableP, 1);
-		delay(1);
+//		delay(1);
 	}
 
 	void ShiftRegister::shifter(int amount) {
 		for(int i=0; i<amount; i++) {
 			digitalWrite(clkP, HIGH);
-			delay(1);
+//			delay(1);
 			digitalWrite(clkP, LOW);
-			delay(1);
+//			delay(1);
 		}
 	}

@@ -256,23 +256,23 @@ using namespace std;
 		default:
 			break;
 		}
-		cout << "###" << endl;
-		for(int i=0; i<32; i++) {
-			cout << (int)inputArray[i];
-		}
-		cout << endl;
-		cout << "###" << endl;
-		cout << (int)!newState << endl;
-		cout << "###" << endl;
+//		cout << "###" << endl;
+//		for(int i=0; i<32; i++) {
+//			cout << (int)inputArray[i];
+//		}
+//		cout << endl;
+//		cout << "###" << endl;
+//		cout << (int)!newState << endl;
+//		cout << "###" << endl;
 		SR.loadnWrite(inputArray);
 	}
 
 	void FlipDot::enable() {
 		SR.enableSR();
 		digitalWrite(dDP, !newState);
-		delay(10);
+		delay(1);
 		digitalWrite(dEnableP, 1);
-		delay(20);
+		delay(10);
 		digitalWrite(dEnableP, 0);
 		SR.disableSR();
 	}
