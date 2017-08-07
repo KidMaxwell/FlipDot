@@ -4,5 +4,5 @@
 
 USER_OBJS :=
 
-LIBS := -lwiringPi -lFlipDot -lDot -lShiftRegister
+LIBS := -lwiringPi
 

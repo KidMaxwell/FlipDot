@@ -11,15 +11,25 @@
  */
 
 #include <wiringPi.h>
+#include "ShiftRegister.h"
+#include <iostream>
 
-namespace FlipDot{
-	const int ShiftRegister::clkP, ShiftRegister::serP, ShiftRegister::sEnableP;
+using namespace std;
+
+//	const int clkP, serP, sEnableP;
 
 
-	ShiftRegister::ShiftRegister(int clkP, int serP, int enableP) {
+	ShiftRegister::ShiftRegister() {
+		this->clkP=0;
+		this->serP=0;
+		this->sEnableP=0;
+	}
+
+	void ShiftRegister::Init(int clkP, int serP, int enableP) {
 		this->clkP=clkP;
 		this->serP=serP;
 		this->sEnableP=enableP;
+
 		pinMode(clkP, OUTPUT);
 		pinMode(serP, OUTPUT);
 		pinMode(enableP, OUTPUT);
@@ -29,9 +39,9 @@ namespace FlipDot{
 	}
 
 	void ShiftRegister::loadnWrite(bool inputArray[]) {
-		for(int i=0; i<sizeof(inputArray);i++) {
+		for(int i=31; i>-1; i--) {
 			digitalWrite(serP, inputArray[i]);
-			delay(10);
+			delay(1);
 			shifter(1);
 		}
 		shifter(1);
@@ -39,22 +49,19 @@ namespace FlipDot{
 
 	void ShiftRegister::enableSR() {
 		digitalWrite(sEnableP, 0);
-		delay(10);
+		delay(1);
 	}
 
 	void ShiftRegister::disableSR() {
 		digitalWrite(sEnableP, 1);
-		delay(10);
+		delay(1);
 	}
 
 	void ShiftRegister::shifter(int amount) {
 		for(int i=0; i<amount; i++) {
 			digitalWrite(clkP, HIGH);
-			delay(10);
+			delay(1);
 			digitalWrite(clkP, LOW);
-			delay(10);
+			delay(1);
 		}
 	}
-
-
-}

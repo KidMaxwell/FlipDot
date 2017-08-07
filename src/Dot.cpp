@@ -5,14 +5,15 @@
  *      Author: paul
  */
 
-namespace FlipDot{
-	int Dot::row, Dot::column;
-	bool Dot::state;
+#include "Dot.h"
 
-	Dot::Dot(int row, int column, bool state) {
-		this->row=row;
-		this->column=column;
-		this->state=state;
+//	int row, column;
+//	bool state;
+
+	Dot::Dot() {
+		row=0;
+		column=0;
+		state=false;
 	}
 
 	void Dot::setState(bool state) {
@@ -23,6 +24,12 @@ namespace FlipDot{
 		return state;
 	}
 
+	void Dot::set(int row, int column, bool state) {
+		this->row=row;
+		this->column=column;
+		this->state=state;
+	}
+
 	int Dot::getRow() {
 		return row;
 	}
@@ -31,4 +38,3 @@ namespace FlipDot{
 		return column;
 	}
 
-}

@@ -8,22 +8,17 @@
 #ifndef SHIFTREGISTER_H_
 #define SHIFTREGISTER_H_
 
-namespace FlipDot{
-class ShiftRegister
-{
+class ShiftRegister{
 public:
-	void ShiftRegister(int, int, int);
-
-	void loadnWrite(bool);
+	ShiftRegister();
+	void Init(int, int, int);
+	void loadnWrite(bool []);
 	void enableSR(void);
 	void disableSR(void);
-
 private:
-	const int clkP, serP, sEnableP;
+	int clkP, serP, sEnableP;
 	void shifter(int);
 
 };
-}
-
 
 #endif /* SHIFTREGISTER_H_ */
