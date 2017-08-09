@@ -1,6 +1,6 @@
 src/ShiftRegister.o: ../src/ShiftRegister.cpp \
- /home/paul/eclipse/wiringPi/wiringPi/wiringPi.h ../src/ShiftRegister.h
+ /home/alexander/rpi/wiringPi/wiringPi/wiringPi.h ../src/ShiftRegister.h
 
-/home/paul/eclipse/wiringPi/wiringPi/wiringPi.h:
+/home/alexander/rpi/wiringPi/wiringPi/wiringPi.h:
 
 ../src/ShiftRegister.h:
