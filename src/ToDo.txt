@@ -12,3 +12,5 @@ ShiftRegister.cpp
 	fertig shreiben!
 
 Header Dateien erstellen
+
+changeAll(): Fehler beheben!

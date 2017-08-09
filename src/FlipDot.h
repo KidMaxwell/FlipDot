@@ -14,6 +14,10 @@ public:
 
 	FlipDot();
 	void start();
+	void consoleMenu();
+	void modeChange();
+	void modeChangeAll();
+	void showScreen();
 	void changeIfDifferent(Dot, bool);
 	void changeAll(bool);
 	void change(int, int, bool);
