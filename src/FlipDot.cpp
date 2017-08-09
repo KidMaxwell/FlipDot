@@ -115,9 +115,9 @@ void FlipDot::consoleMenu() {
  * Rücksprung ins Hauptmenü durch Abbruch
  */
 void FlipDot::modeChange() {
+	showScreen();
 	char abort = 'n';
 	while (1) {
-		showScreen();
 		cout << endl << "Abbruch? y/n: ";
 		cin >> abort;
 		if (abort == 'y')
@@ -128,9 +128,10 @@ void FlipDot::modeChange() {
 		cin >> column;
 		cout << "NewState: ";
 		cin >> newStateI;
-		cout << "----------------------------" << endl << endl;
+		cout << endl << endl;
 		newState = (bool) newStateI;
 		change(row, column, newState);
+		showScreen();
 	}
 }
 
@@ -146,6 +147,7 @@ void FlipDot::modeChangeAll() {
 	cin >> value;
 	cout << endl;
 	changeAll((bool) value);
+	showScreen();
 }
 
 /*
@@ -177,13 +179,23 @@ void FlipDot::changeIfDifferent(Dot d, bool newState) {
 	}
 }
 
+void FlipDot::changeRow(int r, bool newState){
+	for (int c = 0; c < 28; c++) {
+				change(r, c, newState);
+			}
+}
+
+void FlipDot::changeCollum(int c, bool newState){
+	for (int r = 0; r < 16; r++) {
+		change(r, c, newState);
+	}
+}
 void FlipDot::changeAll(bool newState) {
 	for (int r = 0; r < 16; r++) {
 		for (int c = 0; c < 28; c++) {
 			change(r, c, newState);
 		}
 	}
-	showScreen();
 }
 
 void FlipDot::loadSR(int row, int column, bool newState) {

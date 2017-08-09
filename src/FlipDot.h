@@ -18,9 +18,11 @@ public:
 	void modeChange();
 	void modeChangeAll();
 	void showScreen();
-	void changeIfDifferent(Dot, bool);
-	void changeAll(bool);
 	void change(int, int, bool);
+	void changeIfDifferent(Dot, bool);
+	void changeRow(int, bool);
+	void changeCollum(int, bool);
+	void changeAll(bool);
 	void loadSR(int, int, bool);
 	void enable();
 private:
