@@ -2,7 +2,7 @@
  * FlipDot.h
  *
  *  Created on: 06.08.2017
- *      Author: paul
+ *      Author: paul, alex
  */
 
 #ifndef FLIPDOT_H_

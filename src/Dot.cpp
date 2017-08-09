@@ -2,7 +2,7 @@
  * Dot.cpp
  *
  *  Created on: 16.06.2017
- *      Author: paul
+ *      Author: paul, alex
  */
 
 #include "Dot.h"

@@ -6,16 +6,19 @@
 CPP_SRCS += \
 ../src/Dot.cpp \
 ../src/FlipDot.cpp \
+../src/Segment.cpp \
 ../src/ShiftRegister.cpp 
 
 OBJS += \
 ./src/Dot.o \
 ./src/FlipDot.o \
+./src/Segment.o \
 ./src/ShiftRegister.o 
 
 CPP_DEPS += \
 ./src/Dot.d \
 ./src/FlipDot.d \
+./src/Segment.d \
 ./src/ShiftRegister.d 
 
 

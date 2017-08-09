@@ -2,7 +2,7 @@
  * ShiftRegister.cpp
  *
  *  Created on: 16.06.2017
- *      Author: paul
+ *      Author: paul, alex
  *
  *  implementiert eine Kette von Schieberegistern mit variabel vielen Schieberegistern.
  *  SRCLK RCLK sind zusammengefasst. Das hießt, dass der Inhalt des Schieberegisters immer einen Takt vor dem

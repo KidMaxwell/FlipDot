@@ -2,7 +2,7 @@
  * Dot.h
  *
  *  Created on: 16.06.2017
- *      Author: paul
+ *      Author: paul, alex
  */
 
 #ifndef DOT_H_

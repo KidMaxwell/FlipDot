@@ -2,7 +2,7 @@
  * ShiftRegister.h
  *
  *  Created on: 06.08.2017
- *      Author: paul
+ *      Author: paul, alex
  */
 
 #ifndef SHIFTREGISTER_H_
