@@ -21,14 +21,7 @@ using namespace std;
 #define clkP 2
 #define serP 3
 #define sEnableP 4
-/*
- */
 
-//2D Array mit allen Dots
-//	Dot dots[16][28];
-//	ShiftRegister SR;
-//	int row, column, newStateI;
-//	bool newState;
 /* Konstruktor der Klasse FlipDot
  * initialisiert wiringPi und das 2D Array
  * setzt den pinMode von enableP auf OUTPUT
@@ -60,7 +53,7 @@ FlipDot::FlipDot() {
  * über Modus? können Informationen zu dem Modus angezeigt werden
  */
 void FlipDot::consoleMenu() {
-	char input = '0';
+	string input = "0";
 	cout << "Hallo und Herzlich Willkommen in der Welt der flippenden Dots"
 			<< endl << "Es gibt folgende Modi:" << endl << endl;
 	while (1) {
@@ -92,19 +85,19 @@ void FlipDot::consoleMenu() {
 		 } else {
 		 */
 		//	switch (input[0]) {
-		switch (input) {
-		case '1':
+		if(input=="1") {
 			modeChange();
-			break;
-		case '2':
-			modeChangeAll();
-			break;
-		case '3':
-			DigitalWatch watch;
-			break;
 		}
-		cout << endl << endl << "Bitte erneute Auswahl:" << endl << endl;
-		continue;
+		else if(input=="2") {
+			modeChangeAll();
+		}
+		else if(input=="3") {
+			DigitalWatch watch;
+		}
+		else {
+			cout << endl << endl << "Bitte erneute Auswahl:" << endl << endl;
+			continue;
+		}
 		//}
 	}
 }
@@ -165,12 +158,20 @@ void FlipDot::showScreen() {
 	cout << "------------------------------" << endl;
 }
 
+/*
+ * Ändert den Zustand eines Dots, 1=gelb, 0=schwarz
+ */
+
 void FlipDot::change(int row, int column, bool newState) {
 	this->newState = newState;
 	dots[row][column].setState(newState);
 	loadSR(row, column, newState);
 	enable();
 }
+
+/*
+ * Aendert den Zustand eines Dots unter der Bedingung dass sich der Soll Status vom Ist Status unterscheidet
+ */
 
 void FlipDot::changeIfDifferent(Dot d, bool newState) {
 	bool oldState = d.getState();
@@ -179,17 +180,30 @@ void FlipDot::changeIfDifferent(Dot d, bool newState) {
 	}
 }
 
+/*
+ * Aendert den Zustand einer ganzen Zeile
+ */
+
 void FlipDot::changeRow(int r, bool newState){
 	for (int c = 0; c < 28; c++) {
 				change(r, c, newState);
 			}
 }
 
+/*
+ * Aendert den Zustand einer ganzen Spalte
+ */
+
 void FlipDot::changeCollum(int c, bool newState){
 	for (int r = 0; r < 16; r++) {
 		change(r, c, newState);
 	}
 }
+
+/*
+ * Aendert den Zustand aller Dots auf einen neuen Zustand
+ */
+
 void FlipDot::changeAll(bool newState) {
 	for (int r = 0; r < 16; r++) {
 		for (int c = 0; c < 28; c++) {
@@ -197,6 +211,14 @@ void FlipDot::changeAll(bool newState) {
 		}
 	}
 }
+
+/*
+ * Methode zum Berechnen des Bit Arrays welches in die Schieberegister geschoben wird
+ * Bit 0-7: Kodierung der Spalte
+ * Bit 8-15: Enable der Zeilen Treiberstufe
+ * Bit 16-31: Pegel der Zeilentreiber
+ * Schreibt das Bit Array in die Schieberegister mit Hilfe der ShiftRegister.cpp
+ */
 
 void FlipDot::loadSR(int row, int column, bool newState) {
 	bool inputArray[32];
@@ -350,16 +372,13 @@ void FlipDot::loadSR(int row, int column, bool newState) {
 	default:
 		break;
 	}
-//		cout << "###" << endl;
-//		for(int i=0; i<32; i++) {
-//			cout << (int)inputArray[i];
-//		}
-//		cout << endl;
-//		cout << "###" << endl;
-//		cout << (int)!newState << endl;
-//		cout << "###" << endl;
+
 	SR.loadnWrite(inputArray);
 }
+
+/*
+ * Ist fuer das eigentliche Flippen Verantwortlich, Aktiviert alle noetigen enables und den Daten Pin des Decoders
+ */
 
 void FlipDot::enable() {
 	SR.enableSR();
@@ -370,6 +389,10 @@ void FlipDot::enable() {
 	digitalWrite(dEnableP, 0);
 	SR.disableSR();
 }
+
+/*
+ * main Methode, erzeugt ein FlipDot objekt
+ */
 
 int main() {
 	FlipDot f;
