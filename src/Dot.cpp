@@ -7,9 +7,6 @@
 
 #include "Dot.h"
 
-//	int row, column;
-//	bool state;
-
 	Dot::Dot() {
 		row=0;
 		column=0;

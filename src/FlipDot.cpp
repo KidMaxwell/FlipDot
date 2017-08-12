@@ -21,14 +21,7 @@ using namespace std;
 #define clkP 2
 #define serP 3
 #define sEnableP 4
-/*
- */
 
-//2D Array mit allen Dots
-//	Dot dots[16][28];
-//	ShiftRegister SR;
-//	int row, column, newStateI;
-//	bool newState;
 /* Konstruktor der Klasse FlipDot
  * initialisiert wiringPi und das 2D Array
  * setzt den pinMode von enableP auf OUTPUT
@@ -40,16 +33,18 @@ FlipDot::FlipDot() {
 	digitalWrite(dEnableP, 0);
 	pinMode(dDP, OUTPUT);
 	digitalWrite(dDP, 0);
-	//alle Dots erstellen und in dots Array speichern
-	for (int r = 0; r < 16; r++) {
-		for (int c = 0; c < 28; c++) {
+	// Es wird ein Array des gesamten Displays geführt, das dann immer mit den Segementen gefüllt wird
+	for (int r = 0; r < 28; r++) {
+		for (int c = 0; c < 16; c++) {
 			dots[r][c].set(r, c, false);
 		}
 	}
-	newStateI = 0;
-	row = 0;
-	column = 0;
-	newState = false;
+	//TODO Liste von Segmenten hier implementieren (Initialisierung)
+	//
+	//
+	//
+	seg_complete.init(*this, 0, 0, 28, 16);
+	//seg_complete.add ...
 	SR.Init(clkP, serP, sEnableP);
 }
 
@@ -115,6 +110,10 @@ void FlipDot::consoleMenu() {
  * Rücksprung ins Hauptmenü durch Abbruch
  */
 void FlipDot::modeChange() {
+	int row = 0;
+	int column = 0;
+	int newStateI = 0;
+	bool newState = false;
 	showScreen();
 	char abort = 'n';
 	while (1) {
@@ -122,7 +121,7 @@ void FlipDot::modeChange() {
 		cin >> abort;
 		if (abort == 'y')
 			break;
-		cout  << endl << "Row: ";
+		cout << endl << "Row: ";
 		cin >> row;
 		cout << "Column: ";
 		cin >> column;
@@ -130,7 +129,8 @@ void FlipDot::modeChange() {
 		cin >> newStateI;
 		cout << endl << endl;
 		newState = (bool) newStateI;
-		change(row, column, newState);
+		seg_complete.change(row, column, newState);
+		updateScreen();
 		showScreen();
 	}
 }
@@ -141,13 +141,25 @@ void FlipDot::modeChange() {
  * TODO Dauert lange -- Zeitverzögerung?
  */
 void FlipDot::modeChangeAll() {
-	int value;
-	value = 0;
+	int value = 0;
 	cout << "NewState: ";
 	cin >> value;
 	cout << endl;
-	changeAll((bool) value);
+	seg_complete.changeAll((bool) value);
+	updateScreen();
 	showScreen();
+}
+
+/*
+ * Aktualisiert das Dot-Array des gesamten Displays
+ */
+void FlipDot::updateScreen() {
+	/*
+	 * Algorithmus:
+	 * 	1. Gleiche seg_compelte mit screen array ab
+	 * 	2. Gehe Liste durch
+	 * 	3. aus jeder Startpos und der Weite/Höhe werden die Dots kopiert (Call by Value)
+	 */
 }
 
 /*
@@ -158,44 +170,11 @@ void FlipDot::showScreen() {
 	for (int r = 0; r < 16; r++) {
 		cout << "|";
 		for (int c = 0; c < 28; c++) {
-			cout << dots[r][c].getState();
+			cout << screen[r][c].getState();
 		}
 		cout << "|" << endl;
 	}
 	cout << "------------------------------" << endl;
-}
-
-void FlipDot::change(int row, int column, bool newState) {
-	this->newState = newState;
-	dots[row][column].setState(newState);
-	loadSR(row, column, newState);
-	enable();
-}
-
-void FlipDot::changeIfDifferent(Dot d, bool newState) {
-	bool oldState = d.getState();
-	if (oldState != newState) {
-		change(d.getRow(), d.getColumn(), newState);
-	}
-}
-
-void FlipDot::changeRow(int r, bool newState){
-	for (int c = 0; c < 28; c++) {
-				change(r, c, newState);
-			}
-}
-
-void FlipDot::changeCollum(int c, bool newState){
-	for (int r = 0; r < 16; r++) {
-		change(r, c, newState);
-	}
-}
-void FlipDot::changeAll(bool newState) {
-	for (int r = 0; r < 16; r++) {
-		for (int c = 0; c < 28; c++) {
-			change(r, c, newState);
-		}
-	}
 }
 
 void FlipDot::loadSR(int row, int column, bool newState) {
@@ -361,7 +340,7 @@ void FlipDot::loadSR(int row, int column, bool newState) {
 	SR.loadnWrite(inputArray);
 }
 
-void FlipDot::enable() {
+void FlipDot::enable(bool newState) {
 	SR.enableSR();
 	digitalWrite(dDP, !newState);
 	delay(1);

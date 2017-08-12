@@ -8,29 +8,22 @@
 #ifndef FLIPDOT_H_
 #define FLIPDOT_H_
 
-
 class FlipDot {
 public:
-
 	FlipDot();
-	void start();
 	void consoleMenu();
 	void modeChange();
 	void modeChangeAll();
+	void updateScreen();
 	void showScreen();
-	void change(int, int, bool);
-	void changeIfDifferent(Dot, bool);
-	void changeRow(int, bool);
-	void changeCollum(int, bool);
-	void changeAll(bool);
 	void loadSR(int, int, bool);
-	void enable();
+	void enable(bool);
 private:
-	Dot dots[16][28];
+	// TODO Fuer allg. Nutzung als Liste! Hier nur POC
+//	Segment segments;
+	Segment seg_complete;
 	ShiftRegister SR;
-	int row, column, newStateI;
-	bool newState;
-
+	Dot screen[28][16];
 };
 
 

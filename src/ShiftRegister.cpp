@@ -16,9 +16,6 @@
 
 using namespace std;
 
-//	const int clkP, serP, sEnableP;
-
-
 	ShiftRegister::ShiftRegister() {
 		this->clkP=0;
 		this->serP=0;
