@@ -17,15 +17,14 @@ DigitalWatch::DigitalWatch() {
 	this->min1 = 0;
 	this->min2 = 0;
 }
-
-void DigitalWatch::init(FlipDot *f){
-	this->f = *f;
-	seg_hour1.init(f, 0, 0, 1, 1);
-//	Segmente dem Array in FlipDot hinzufügen
 //	f->addtoSegments(seg_hour1());
-	seg_hour2.init(f, 0, 0, 1, 1);
-	seg_min1.init(f, 0, 0, 1, 1);
-	seg_min2.init(f, 0, 0, 1, 1);
+void DigitalWatch::init(){
+	seg_hour1.init(0, 0, 1, 1);
+//	Segmente dem Array in FlipDot hinzufügen
+//	--> Liste als Pointer übergeben (Call by Reference)
+	seg_hour2.init(0, 0, 1, 1);
+	seg_min1.init(0, 0, 1, 1);
+	seg_min2.init(0, 0, 1, 1);
 
 }
 

@@ -7,6 +7,10 @@
 
 #ifndef FLIPDOT_H_
 #define FLIPDOT_H_
+#include "Segment.h"
+#include "Dot.h"
+#include "DigitalWatch.h"
+#include "Screen.h"
 
 class FlipDot {
 public:
@@ -20,12 +24,9 @@ public:
 	void enable(bool);
 private:
 	// TODO Fuer allg. Nutzung als Liste! Hier nur POC
-//	Segment segments;
 	Segment seg_complete;
-	ShiftRegister SR;
-	Dot screen[28][16];
+	Screen screen;
+	Screen* screen_p;
 };
-
-
 
 #endif /* FLIPDOT_H_ */

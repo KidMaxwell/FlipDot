@@ -1,15 +1,19 @@
-src/FlipDot.o: ../src/FlipDot.cpp ../src/Dot.h ../src/ShiftRegister.h \
- ../src/Segment.h ../src/DigitalWatch.h ../src/FlipDot.h \
- /home/alexander/rpi/wiringPi/wiringPi/wiringPi.h
-
-../src/Dot.h:
-
-../src/ShiftRegister.h:
-
-../src/Segment.h:
-
-../src/DigitalWatch.h:
+src/FlipDot.o: ../src/FlipDot.cpp ../src/FlipDot.h ../src/Segment.h \
+ ../src/Dot.h ../src/HAL_Addr.h ../src/HAL_ShiftRegister.h \
+ ../src/Screen.h ../src/DigitalWatch.h ../src/HAL_HardwareDefines.h
 
 ../src/FlipDot.h:
 
-/home/alexander/rpi/wiringPi/wiringPi/wiringPi.h:
+../src/Segment.h:
+
+../src/Dot.h:
+
+../src/HAL_Addr.h:
+
+../src/HAL_ShiftRegister.h:
+
+../src/Screen.h:
+
+../src/DigitalWatch.h:
+
+../src/HAL_HardwareDefines.h:
