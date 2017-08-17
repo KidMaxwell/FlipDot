@@ -13,6 +13,7 @@
 class ClockSegment: public Segment {
 public:
 	ClockSegment();
+	void choseNumber(Screen*, int);
 	void show0(Screen*);
 	void show1(Screen*);
 	void show2(Screen*);

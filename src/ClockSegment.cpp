@@ -15,6 +15,41 @@ ClockSegment::ClockSegment() {
 	// Evtl. eine Art super-Aufruf im Konstruktor
 }
 
+void ClockSegment::choseNumber(Screen* screen_p, int number) {
+	switch (number) {
+	case (0):
+		show0(screen_p);
+		break;
+	case (1):
+		show1(screen_p);
+		break;
+	case (2):
+		show2(screen_p);
+		break;
+	case (3):
+		show3(screen_p);
+		break;
+	case (4):
+		show4(screen_p);
+		break;
+	case (5):
+		show5(screen_p);
+		break;
+	case (6):
+		show6(screen_p);
+		break;
+	case (7):
+		show7(screen_p);
+		break;
+	case (8):
+		show8(screen_p);
+		break;
+	case (9):
+		show9(screen_p);
+		break;
+	}
+}
+
 void ClockSegment::show0(Screen* screen_p) {
 	change(screen_p, 0, 1, true);
 	change(screen_p, 0, 2, true);
