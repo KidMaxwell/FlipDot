@@ -78,13 +78,12 @@ void DigitalWatch::runClock(Screen* screen_p) {
 		int min2 = (time_local->tm_min) % 10;
 		cout << "---Test---  Zeit: " << hour1 << hour2 << " : " << min1 << min2
 				<< endl;
-		/*
-		 * Darstellen der Ziffern
-		 */
+		// Darstellen der Ziffern
 		seg_hour1.choseNumber(screen_p, hour1);
 		seg_hour2.choseNumber(screen_p, hour2);
 		seg_min1.choseNumber(screen_p, min1);
 		seg_min2.choseNumber(screen_p, min2);
+		// Anzeigen auf Screen
 		screen_p->showScreen();
 	}
 }
