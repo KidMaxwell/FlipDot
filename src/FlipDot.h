@@ -23,7 +23,6 @@ public:
 	void loadSR(int, int, bool);
 	void enable(bool);
 private:
-	// TODO Fuer allg. Nutzung als Liste! Hier nur POC
 	Segment seg_complete;
 	Screen screen;
 	Screen* screen_p;

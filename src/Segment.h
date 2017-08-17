@@ -28,7 +28,7 @@ private:
 	HAL_Addr addr;
 	int c_start, r_start, width, hight;
 	bool newState;
-	// TODO Wie implementiere ich hier ein dynamisch modifizierbares Array?
+	// TODO !!! dynamisch modifizierbares Array
 	Dot dots[28][16];
 	static Screen screen;
 };

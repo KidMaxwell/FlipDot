@@ -6,7 +6,6 @@
  */
 #include "HAL_Addr.h"
 #include <wiringPi.h>
-#include "HAL_HardwareDefines.h"
 
 using namespace std;
 

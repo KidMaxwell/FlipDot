@@ -13,7 +13,6 @@
 #include "HAL_ShiftRegister.h"
 #include <iostream>
 #include <wiringPi.h>
-#include "HAL_HardwareDefines.h"
 
 using namespace std;
 

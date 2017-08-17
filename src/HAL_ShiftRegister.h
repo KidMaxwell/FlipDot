@@ -4,6 +4,7 @@
  *  Created on: 06.08.2017
  *      Author: paul, alex
  */
+#include "HAL_HardwareDefines.h"
 
 #ifndef HAL_SHIFTREGISTER_H_
 #define HAL_SHIFTREGISTER_H_

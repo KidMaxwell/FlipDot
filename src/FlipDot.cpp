@@ -18,11 +18,6 @@ using namespace std;
 FlipDot::FlipDot() {
 	screen_p = &screen;
 	seg_complete.init(0, 0, COL_MAX, ROW_MAX);
-	//TODO: Liste von Segmenten hier implementieren (Initialisierung)
-	//
-	//
-	//
-	// Grundsätzliche Erzeugung eines Segments, das das gesamte Display einnimmt
 }
 
 /*
@@ -43,20 +38,18 @@ void FlipDot::consoleMenu() {
 				<< "Fuer weitere Erlaeuterungen: Auswahlnummer? eingeben und bestaetigen"
 				<< endl;
 		cin >> input;
-		//Test
-		cout << "--Test-- Input:" << input << endl;
 		// Funktioniert noch nicht!
 		/*
 		 if (input[1] == '?') {
 		 switch (input[0]) {
 		 case '1':
-		 // TODO: Erklärung einfügen
+		 // Erklärung einfügen
 		 break;
 		 case '2':
-		 // TODO: Erklärung einfügen
+		 // Erklärung einfügen
 		 break;
 		 case '3':
-		 // TODO: Erklärung einfügen
+		 // Erklärung einfügen
 		 break;
 		 }
 		 cout << endl << endl << "Bitte erneute Auswahl:" << endl << endl;
@@ -73,8 +66,7 @@ void FlipDot::consoleMenu() {
 			break;
 		case '3':
 			DigitalWatch watch;
-//			Es muss Pointer der Segment-Liste mit übergeben
-//			watch.init(...);
+			watch.runClock(screen_p);
 			break;
 		}
 		cout << endl << endl << "Bitte erneute Auswahl:" << endl << endl;
