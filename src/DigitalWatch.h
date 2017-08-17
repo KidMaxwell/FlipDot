@@ -4,7 +4,7 @@
  *  Created on: 09.08.2017
  *      Author: alexander
  */
-#include "Segment.h"
+#include "ClockSegment.h"
 #include "Screen.h"
 
 #ifndef DIGITALWATCH_H_
@@ -17,10 +17,10 @@ public:
 	void init();
 	void initDisplay();
 private:
-	Segment seg_hour1, seg_hour2, seg_min1, seg_min2;
-	Segment seg_upperLine, seg_lowerLine;
-	Segment seg_doubleDots;
-	Segment seg_complete;
+	ClockSegment seg_hour1, seg_hour2, seg_min1, seg_min2;
+	ClockSegment seg_upperLine, seg_lowerLine;
+	ClockSegment seg_doubleDots;
+	ClockSegment seg_complete;
 	int hour1, hour2, min1, min2;
 	Screen* screen_p;
 };

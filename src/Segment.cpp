@@ -9,10 +9,10 @@
 using namespace std;
 
 Segment::Segment() {
-	this->c_start = 0;
-	this->r_start = 0;
-	this->width = 28;
-	this->hight = 16;
+	this->seg_column_start = 0;
+	this->seg_row_start = 0;
+	this->seg_column_width = 28;
+	this->seg_row_hight = 16;
 	this->newState = false;
 }
 
@@ -22,30 +22,34 @@ Segment::Segment() {
  * Dieser kann dann gesondert manipuliert werden
  * WICHTIG: die Segmente dürfen sich nicht überlagern!
  */
-void Segment::init(int c_start, int r_start, int width, int hight) {
-	this->c_start = c_start;
-	this->r_start = r_start;
-	this->width = width;
-	this->hight = hight;
+void Segment::init(int seg_colmn_start, int seg_row_start, int seg_column_width,
+		int seg_row_max) {
+	if (seg_column_start > -1 && seg_column_start < COL_MAX) {
+		this->seg_column_start = seg_column_start;
+	} else {
+		// TODO-- Interrupt
+	}
+	if (seg_row_start > -1 && seg_row_start < ROW_MAX) {
+		this->seg_row_start = seg_row_start;
+	} else {
+		// Interrupt
+	}
+	if (seg_column_width > 0 && (seg_column_start + seg_column_width) < COL_MAX) {
+		this->seg_column_width = seg_column_width;
+	} else {
+		// Interrupt
+	}
+	if (seg_row_hight > 0 && (seg_row_start + seg_row_hight) < COL_MAX) {
+		this->seg_row_hight = seg_row_hight;
+	} else {
+		// Interrupt
+	}
 	// Dots werden in der Groesse des Segements erstellt und in Array abgelegt
-	for (int r = 0; r < width; r++) {
-		for (int c = 0; c < hight; c++) {
+	for (int r = 0; r < seg_column_width; r++) {
+		for (int c = 0; c < seg_row_hight; c++) {
 			dots[r][c].set(r, c, false);
 		}
 	}
-}
-
-int Segment::getR_start() {
-	return r_start;
-}
-int Segment::getC_start() {
-	return c_start;
-}
-int Segment::getHight() {
-	return hight;
-}
-int Segment::getWidth() {
-	return width;
 }
 
 /*
@@ -56,8 +60,8 @@ int Segment::getWidth() {
  */
 void Segment::change(Screen* screen_p, int seg_row, int seg_column,
 		bool newState) {
-	int disp_row = seg_row + r_start;
-	int disp_column = seg_column + c_start;
+	int disp_row = seg_row + seg_row_start;
+	int disp_column = seg_column + seg_column_start;
 	dots[seg_row][seg_column].setState(newState);
 	addr.loadSR(disp_row, disp_column, newState);
 	addr.enable(newState);
@@ -74,19 +78,19 @@ void Segment::change(Screen* screen_p, int seg_row, int seg_column,
  */
 
 void Segment::changeRow(Screen* screen_p, int seg_row, bool newState) {
-	for (int seg_column = 0; seg_column <= width; seg_column++) {
+	for (int seg_column = 0; seg_column < seg_column_width; seg_column++) {
 		change(screen_p, seg_row, seg_column, newState);
 	}
 }
 
-void Segment::changeCollum(Screen* screen_p, int seg_column, bool newState) {
-	for (int seg_row = 0; seg_row <= hight; seg_row++) {
+void Segment::changeColumn(Screen* screen_p, int seg_column, bool newState) {
+	for (int seg_row = 0; seg_row < seg_row_hight; seg_row++) {
 		change(screen_p, seg_row, seg_column, newState);
 	}
 }
 void Segment::changeAll(Screen* screen_p, bool newState) {
-	for (int seg_row = 0; seg_row <= hight; seg_row++) {
-		for (int seg_column = 0; seg_column <= width; seg_column++) {
+	for (int seg_row = 0; seg_row < seg_row_hight; seg_row++) {
+		for (int seg_column = 0; seg_column < seg_column_width; seg_column++) {
 			change(screen_p, seg_row, seg_column, newState);
 		}
 	}

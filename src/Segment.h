@@ -15,18 +15,14 @@ class Segment {
 public:
 	Segment();
 	void init(int, int, int, int);
-	int getR_start();
-	int getC_start();
-	int getHight();
-	int getWidth();
 	void change(Screen* ,int, int, bool);
 	void changeIfDifferent(Dot, bool);
 	void changeRow(Screen*, int, bool);
-	void changeCollum(Screen*, int, bool);
+	void changeColumn(Screen*, int, bool);
 	void changeAll(Screen*, bool);
 private:
 	HAL_Addr addr;
-	int c_start, r_start, width, hight;
+	int seg_column_start, seg_row_start, seg_column_width, seg_row_hight;
 	bool newState;
 	// TODO !!! dynamisch modifizierbares Array
 	Dot dots[28][16];

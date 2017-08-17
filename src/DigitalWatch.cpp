@@ -26,10 +26,10 @@ void DigitalWatch::init() {
 	seg_hour2.init(7, 4, 5, 7);
 	seg_min1.init(16, 4, 5, 7);
 	seg_min2.init(22, 4, 5, 7);
-	seg_lowerLine.init(0, 1, 28, 1);
-	seg_upperLine.init(0, 1, 28, 1);
+	seg_lowerLine.init(0, 1, COL_MAX, 1);
+	seg_upperLine.init(0, 1, COL_MAX, 1);
 	seg_doubleDots.init(12, 5, 2, 5);
-	seg_complete.init(0, 0, 28, 16);
+	seg_complete.init(0, 0, COL_MAX, ROW_MAX);
 }
 
 void DigitalWatch::initDisplay() {
@@ -76,7 +76,147 @@ void DigitalWatch::runClock(Screen* screen_p) {
 		int hour2 = (time_local->tm_hour) % 10;
 		int min1 = (time_local->tm_min) / 10;
 		int min2 = (time_local->tm_min) % 10;
-		cout << "Zeit: " << hour1 << hour2 << " : " << min1 << min2 << endl;
+		cout << "---Test---  Zeit: " << hour1 << hour2 << " : " << min1 << min2
+				<< endl;
+		/*
+		 * Darstellen der Ziffern
+		 * 		I know it's ugly...
+		 */
+		// erste Ziffer
+		switch (hour1) {
+		case (0):
+			seg_hour1.show0(screen_p);
+			break;
+		case (1):
+			seg_hour1.show1(screen_p);
+			break;
+		case (2):
+			seg_hour1.show2(screen_p);
+			break;
+		case (3):
+			seg_hour1.show3(screen_p);
+			break;
+		case (4):
+			seg_hour1.show4(screen_p);
+			break;
+		case (5):
+			seg_hour1.show5(screen_p);
+			break;
+		case (6):
+			seg_hour1.show6(screen_p);
+			break;
+		case (7):
+			seg_hour1.show7(screen_p);
+			break;
+		case (8):
+			seg_hour1.show8(screen_p);
+			break;
+		case (9):
+			seg_hour1.show9(screen_p);
+			break;
+		}
 
+		// zweite Ziffer
+		switch (hour2) {
+		case (0):
+			seg_hour2.show0(screen_p);
+			break;
+		case (1):
+			seg_hour2.show1(screen_p);
+			break;
+		case (2):
+			seg_hour2.show2(screen_p);
+			break;
+		case (3):
+			seg_hour2.show3(screen_p);
+			break;
+		case (4):
+			seg_hour2.show4(screen_p);
+			break;
+		case (5):
+			seg_hour2.show5(screen_p);
+			break;
+		case (6):
+			seg_hour2.show6(screen_p);
+			break;
+		case (7):
+			seg_hour2.show7(screen_p);
+			break;
+		case (8):
+			seg_hour2.show8(screen_p);
+			break;
+		case (9):
+			seg_hour2.show9(screen_p);
+			break;
+		}
+
+		// Dritte Ziffer
+		switch (min1) {
+		case (0):
+			seg_min1.show0(screen_p);
+			break;
+		case (1):
+			seg_min1.show1(screen_p);
+			break;
+		case (2):
+			seg_min1.show2(screen_p);
+			break;
+		case (3):
+			seg_min1.show3(screen_p);
+			break;
+		case (4):
+			seg_min1.show4(screen_p);
+			break;
+		case (5):
+			seg_min1.show5(screen_p);
+			break;
+		case (6):
+			seg_min1.show6(screen_p);
+			break;
+		case (7):
+			seg_min1.show7(screen_p);
+			break;
+		case (8):
+			seg_min1.show8(screen_p);
+			break;
+		case (9):
+			seg_min1.show9(screen_p);
+			break;
+		}
+
+		// vierte Ziffer
+		switch (min2) {
+		case (0):
+			seg_min2.show0(screen_p);
+			break;
+		case (1):
+			seg_min2.show1(screen_p);
+			break;
+		case (2):
+			seg_min2.show2(screen_p);
+			break;
+		case (3):
+			seg_min2.show3(screen_p);
+			break;
+		case (4):
+			seg_min2.show4(screen_p);
+			break;
+		case (5):
+			seg_min2.show5(screen_p);
+			break;
+		case (6):
+			seg_min2.show6(screen_p);
+			break;
+		case (7):
+			seg_min2.show7(screen_p);
+			break;
+		case (8):
+			seg_min2.show8(screen_p);
+			break;
+		case (9):
+			seg_min2.show9(screen_p);
+			break;
+		}
+		screen_p->showScreen();
 	}
 }
