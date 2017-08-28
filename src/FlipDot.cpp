@@ -17,13 +17,13 @@ using namespace std;
  */
 FlipDot::FlipDot() {
 	screen_p = &screen;
-	seg_complete.init(0, 0, COL_MAX, ROW_MAX);
+	seg_FlipDotDisplay = new Segment(screen_p, 0, 0, COL_MAX, ROW_MAX);
 }
 
 /*
  * Nutzerkommunikation über Kosole
  * Dem Nutzer werden die einzelnen Modi vorgeschlagen und dieser kann dann auswählen
- * Noch im Aufbau: TODO Informationsanzeige
+ * Noch im Aufbau: TODO--- Informationsanzeige
  * über Modus? können Informationen zu dem Modus angezeigt werden
  */
 void FlipDot::consoleMenu() {
@@ -65,8 +65,8 @@ void FlipDot::consoleMenu() {
 			modeChangeAll();
 			break;
 		case '3':
-			DigitalWatch watch;
-			watch.runClock(screen_p);
+			DigitalWatch* watch = new DigitalWatch(screen_p);
+			watch->runClock();
 			break;
 		}
 		cout << endl << endl << "Bitte erneute Auswahl:" << endl << endl;
@@ -100,7 +100,7 @@ void FlipDot::modeChange() {
 		cin >> newStateI;
 	cout << endl << endl;
 		newState = (bool) newStateI;
-		seg_complete.change(screen_p, row, column, newState);
+		seg_FlipDotDisplay->change(row, column, newState);
 		screen_p->showScreen();
 	}
 }
@@ -114,12 +114,12 @@ void FlipDot::modeChangeAll() {
 	cout << "NewState: ";
 	cin >> value;
 	cout << endl;
-	seg_complete.changeAll(screen_p, (bool) value);
+	seg_FlipDotDisplay->changeAll((bool) value);
 	screen_p->showScreen();
 }
 
 int main() {
-	FlipDot f;
-	f.consoleMenu();
+	FlipDot* f = new FlipDot();
+	f->consoleMenu();
 	return 0;
 }

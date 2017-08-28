@@ -10,10 +10,9 @@
 
 class Dot{
 public:
-	Dot();
+	Dot(int r, int c, bool s);
 	void setState(bool);
 	bool getState();
-	void set(int, int, bool);
 	int getRow();
 	int getColumn();
 private:

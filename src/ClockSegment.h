@@ -12,18 +12,18 @@
 
 class ClockSegment: public Segment {
 public:
-	ClockSegment();
-	void choseNumber(Screen*, int);
-	void show0(Screen*);
-	void show1(Screen*);
-	void show2(Screen*);
-	void show3(Screen*);
-	void show4(Screen*);
-	void show5(Screen*);
-	void show6(Screen*);
-	void show7(Screen*);
-	void show8(Screen*);
-	void show9(Screen*);
+	ClockSegment(Screen* scr_p, int col_start, int row_start, int col_max, int row_max);
+	void choseNumber(int);
+	void show0();
+	void show1();
+	void show2();
+	void show3();
+	void show4();
+	void show5();
+	void show6();
+	void show7();
+	void show8();
+	void show9();
 };
 
 #endif /* CLOCKSEGMENT_H_ */

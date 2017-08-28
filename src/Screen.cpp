@@ -7,7 +7,6 @@
 
 #include "Screen.h"
 #include <iostream>
-#include "HAL_HardwareDefines.h"
 
 using namespace std;
 

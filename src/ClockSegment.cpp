@@ -10,198 +10,200 @@
  * 	Implementiert die Methoden zum Anzeigen der Ziffern
  */
 #include "ClockSegment.h"
+#include <iostream>
 
-ClockSegment::ClockSegment() {
-	// Evtl. eine Art super-Aufruf im Konstruktor
-}
+ClockSegment::ClockSegment(Screen* scr_p, int col_start, int row_start,
+		int col_max, int row_max):
+		Segment(scr_p, col_start, row_start, col_max, row_max)
+		{}
 
-void ClockSegment::choseNumber(Screen* screen_p, int number) {
+void ClockSegment::choseNumber(int number) {
 	switch (number) {
 	case (0):
-		show0(screen_p);
+		show0();
 		break;
 	case (1):
-		show1(screen_p);
+		show1();
 		break;
 	case (2):
-		show2(screen_p);
+		show2();
 		break;
 	case (3):
-		show3(screen_p);
+		show3();
 		break;
 	case (4):
-		show4(screen_p);
+		show4();
 		break;
 	case (5):
-		show5(screen_p);
+		show5();
 		break;
 	case (6):
-		show6(screen_p);
+		show6();
 		break;
 	case (7):
-		show7(screen_p);
+		show7();
 		break;
 	case (8):
-		show8(screen_p);
+		show8();
 		break;
 	case (9):
-		show9(screen_p);
+		show9();
 		break;
 	}
 }
 
-void ClockSegment::show0(Screen* screen_p) {
-	change(screen_p, 0, 1, true);
-	change(screen_p, 0, 2, true);
-	change(screen_p, 0, 3, true);
-	change(screen_p, 1, 0, true);
-	change(screen_p, 1, 4, true);
-	change(screen_p, 2, 0, true);
-	change(screen_p, 2, 4, true);
-	change(screen_p, 3, 0, true);
-	change(screen_p, 3, 4, true);
-	change(screen_p, 4, 0, true);
-	change(screen_p, 4, 4, true);
-	change(screen_p, 5, 0, true);
-	change(screen_p, 5, 4, true);
-	change(screen_p, 6, 1, true);
-	change(screen_p, 6, 2, true);
-	change(screen_p, 6, 3, true);
+void ClockSegment::show0() {
+	change(0, 1, true);
+	change(0, 2, true);
+	change(0, 3, true);
+	change(1, 0, true);
+	change(1, 4, true);
+	change(2, 0, true);
+	change(2, 4, true);
+	change(3, 0, true);
+	change(3, 4, true);
+	change(4, 0, true);
+	change(4, 4, true);
+	change(5, 0, true);
+	change(5, 4, true);
+	change(6, 1, true);
+	change(6, 2, true);
+	change(6, 3, true);
 }
 
-void ClockSegment::show1(Screen* screen_p) {
-	changeColumn(screen_p, 2, true);
+void ClockSegment::show1() {
+	changeColumn(2, true);
 }
 
-void ClockSegment::show2(Screen* screen_p) {
-	change(screen_p, 0, 1, true);
-	change(screen_p, 0, 2, true);
-	change(screen_p, 0, 3, true);
-	change(screen_p, 1, 0, true);
-	change(screen_p, 1, 4, true);
-	change(screen_p, 2, 3, true);
-	change(screen_p, 3, 2, true);
-	change(screen_p, 4, 1, true);
-	change(screen_p, 1, 4, true);
-	changeRow(screen_p, 6, true);
+void ClockSegment::show2() {
+	change(0, 1, true);
+	change(0, 2, true);
+	change(0, 3, true);
+	change(1, 0, true);
+	change(1, 4, true);
+	change(2, 3, true);
+	change(3, 2, true);
+	change(4, 1, true);
+	change(1, 4, true);
+	changeRow(6, true);
 }
 
-void ClockSegment::show3(Screen* screen_p) {
-	change(screen_p, 0, 0, true);
-	change(screen_p, 0, 1, true);
-	change(screen_p, 0, 2, true);
-	change(screen_p, 0, 3, true);
-	change(screen_p, 1, 4, true);
-	change(screen_p, 2, 4, true);
-	change(screen_p, 3, 1, true);
-	change(screen_p, 3, 2, true);
-	change(screen_p, 3, 3, true);
-	change(screen_p, 4, 4, true);
-	change(screen_p, 5, 4, true);
-	change(screen_p, 6, 0, true);
-	change(screen_p, 6, 1, true);
-	change(screen_p, 6, 2, true);
-	change(screen_p, 6, 3, true);
+void ClockSegment::show3() {
+	change(0, 0, true);
+	change(0, 1, true);
+	change(0, 2, true);
+	change(0, 3, true);
+	change(1, 4, true);
+	change(2, 4, true);
+	change(3, 1, true);
+	change(3, 2, true);
+	change(3, 3, true);
+	change(4, 4, true);
+	change(5, 4, true);
+	change(6, 0, true);
+	change(6, 1, true);
+	change(6, 2, true);
+	change(6, 3, true);
 }
 
-void ClockSegment::show4(Screen* screen_p) {
-	change(screen_p, 0, 0, true);
-	change(screen_p, 1, 0, true);
-	change(screen_p, 2, 0, true);
-	change(screen_p, 3, 0, true);
-	change(screen_p, 3, 2, true);
-	changeRow(screen_p, 4, true);
-	change(screen_p, 5, 2, true);
-	change(screen_p, 6, 2, true);
+void ClockSegment::show4() {
+	change(0, 0, true);
+	change(1, 0, true);
+	change(2, 0, true);
+	change(3, 0, true);
+	change(3, 2, true);
+	changeRow(4, true);
+	change(5, 2, true);
+	change(6, 2, true);
 }
 
-void ClockSegment::show5(Screen* screen_p) {
-	changeRow(screen_p, 0, true);
-	change(screen_p, 1, 0, true);
-	change(screen_p, 2, 0, true);
-	change(screen_p, 3, 0, true);
-	change(screen_p, 3, 1, true);
-	change(screen_p, 3, 2, true);
-	change(screen_p, 3, 3, true);
-	change(screen_p, 3, 4, true);
-	change(screen_p, 4, 5, true);
-	change(screen_p, 5, 5, true);
-	change(screen_p, 6, 0, true);
-	change(screen_p, 6, 1, true);
-	change(screen_p, 6, 2, true);
-	change(screen_p, 6, 3, true);
+void ClockSegment::show5() {
+	changeRow(0, true);
+	change(1, 0, true);
+	change(2, 0, true);
+	change(3, 0, true);
+	change(3, 1, true);
+	change(3, 2, true);
+	change(3, 3, true);
+	change(3, 4, true);
+	change(4, 5, true);
+	change(5, 5, true);
+	change(6, 0, true);
+	change(6, 1, true);
+	change(6, 2, true);
+	change(6, 3, true);
 }
 
-void ClockSegment::show6(Screen* screen_p) {
-	change(screen_p, 0, 0, true);
-	change(screen_p, 0, 1, true);
-	change(screen_p, 0, 2, true);
-	change(screen_p, 0, 3, true);
-	change(screen_p, 1, 0, true);
-	change(screen_p, 2, 0, true);
-	change(screen_p, 3, 0, true);
-	change(screen_p, 3, 1, true);
-	change(screen_p, 3, 2, true);
-	change(screen_p, 3, 3, true);
-	change(screen_p, 4, 0, true);
-	change(screen_p, 4, 4, true);
-	change(screen_p, 5, 0, true);
-	change(screen_p, 5, 4, true);
-	change(screen_p, 6, 1, true);
-	change(screen_p, 6, 2, true);
-	change(screen_p, 6, 3, true);
+void ClockSegment::show6() {
+	change(0, 0, true);
+	change(0, 1, true);
+	change(0, 2, true);
+	change(0, 3, true);
+	change(1, 0, true);
+	change(2, 0, true);
+	change(3, 0, true);
+	change(3, 1, true);
+	change(3, 2, true);
+	change(3, 3, true);
+	change(4, 0, true);
+	change(4, 4, true);
+	change(5, 0, true);
+	change(5, 4, true);
+	change(6, 1, true);
+	change(6, 2, true);
+	change(6, 3, true);
 }
 
-void ClockSegment::show7(Screen* screen_p) {
-	change(screen_p, 0, 0, true);
-	change(screen_p, 0, 1, true);
-	change(screen_p, 0, 2, true);
-	change(screen_p, 0, 3, true);
-	change(screen_p, 1, 3, true);
-	change(screen_p, 2, 3, true);
-	change(screen_p, 3, 3, true);
-	change(screen_p, 4, 2, true);
-	change(screen_p, 4, 3, true);
-	change(screen_p, 4, 4, true);
-	change(screen_p, 5, 3, true);
-	change(screen_p, 6, 3, true);
-	change(screen_p, 7, 3, true);
+void ClockSegment::show7() {
+	change(0, 0, true);
+	change(0, 1, true);
+	change(0, 2, true);
+	change(0, 3, true);
+	change(1, 3, true);
+	change(2, 3, true);
+	change(3, 3, true);
+	change(4, 2, true);
+	change(4, 3, true);
+	change(4, 4, true);
+	change(5, 3, true);
+	change(6, 3, true);
+	change(7, 3, true);
 }
 
-void ClockSegment::show8(Screen* screen_p) {
-	change(screen_p, 0, 1, true);
-	change(screen_p, 0, 2, true);
-	change(screen_p, 0, 3, true);
-	change(screen_p, 1, 0, true);
-	change(screen_p, 1, 4, true);
-	change(screen_p, 2, 0, true);
-	change(screen_p, 2, 4, true);
-	change(screen_p, 3, 1, true);
-	change(screen_p, 3, 2, true);
-	change(screen_p, 3, 3, true);
-	change(screen_p, 4, 0, true);
-	change(screen_p, 4, 4, true);
-	change(screen_p, 5, 0, true);
-	change(screen_p, 5, 4, true);
-	change(screen_p, 6, 1, true);
-	change(screen_p, 6, 2, true);
-	change(screen_p, 6, 3, true);
+void ClockSegment::show8() {
+	change(0, 1, true);
+	change(0, 2, true);
+	change(0, 3, true);
+	change(1, 0, true);
+	change(1, 4, true);
+	change(2, 0, true);
+	change(2, 4, true);
+	change(3, 1, true);
+	change(3, 2, true);
+	change(3, 3, true);
+	change(4, 0, true);
+	change(4, 4, true);
+	change(5, 0, true);
+	change(5, 4, true);
+	change(6, 1, true);
+	change(6, 2, true);
+	change(6, 3, true);
 }
 
-void ClockSegment::show9(Screen* screen_p) {
-	change(screen_p, 0, 1, true);
-	change(screen_p, 0, 2, true);
-	change(screen_p, 0, 3, true);
-	change(screen_p, 1, 0, true);
-	change(screen_p, 1, 4, true);
-	change(screen_p, 2, 0, true);
-	change(screen_p, 2, 4, true);
-	change(screen_p, 3, 1, true);
-	change(screen_p, 3, 2, true);
-	change(screen_p, 3, 3, true);
-	change(screen_p, 4, 4, true);
-	change(screen_p, 5, 4, true);
-	change(screen_p, 6, 1, true);
-	change(screen_p, 6, 2, true);
-	change(screen_p, 6, 3, true);
+void ClockSegment::show9() {
+	change(0, 1, true);
+	change(0, 2, true);
+	change(0, 3, true);
+	change(1, 0, true);
+	change(1, 4, true);
+	change(2, 0, true);
+	change(2, 4, true);
+	change(3, 1, true);
+	change(3, 2, true);
+	change(3, 3, true);
+	change(4, 4, true);
+	change(5, 4, true);
+	change(6, 1, true);
+	change(6, 2, true);
+	change(6, 3, true);
 }

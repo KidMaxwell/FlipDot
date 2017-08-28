@@ -4,6 +4,7 @@
  *  Created on: 13.08.2017
  *      Author: alexander
  */
+#include "HAL_HardwareDefines.h"
 
 #ifndef SCREEN_H_
 #define SCREEN_H_

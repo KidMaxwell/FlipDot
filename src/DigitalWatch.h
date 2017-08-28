@@ -12,17 +12,14 @@
 
 class DigitalWatch {
 public:
-	DigitalWatch();
-	void runClock(Screen*);
-	void init();
-	void initDisplay();
+	DigitalWatch(Screen* src_p);
+	void runClock();
 private:
-	ClockSegment seg_hour1, seg_hour2, seg_min1, seg_min2;
-	ClockSegment seg_upperLine, seg_lowerLine;
-	ClockSegment seg_doubleDots;
-	ClockSegment seg_complete;
-	int hour1, hour2, min1, min2;
-	Screen* screen_p;
+	Screen *screen_p;
+	ClockSegment *seg_complete;
+	ClockSegment *seg_upperLine, *seg_lowerLine;
+	ClockSegment *seg_doubleDots;
+	ClockSegment *seg_hour1, *seg_hour2, *seg_min1, *seg_min2;
 };
 
 #endif /* DIGITALWATCH_H_ */

@@ -23,7 +23,7 @@ public:
 	void loadSR(int, int, bool);
 	void enable(bool);
 private:
-	Segment seg_complete;
+	Segment *seg_FlipDotDisplay;
 	Screen screen;
 	Screen* screen_p;
 };

@@ -13,52 +13,48 @@
 
 using namespace std;
 
-DigitalWatch::DigitalWatch() {
-	this->screen_p = 0;
-	this->hour1 = 0;
-	this->hour2 = 0;
-	this->min1 = 0;
-	this->min2 = 0;
-}
-
-void DigitalWatch::init() {
-	seg_hour1.init(1, 4, 5, 7);
-	seg_hour2.init(7, 4, 5, 7);
-	seg_min1.init(16, 4, 5, 7);
-	seg_min2.init(22, 4, 5, 7);
-	seg_lowerLine.init(0, 1, COL_MAX, 1);
-	seg_upperLine.init(0, 1, COL_MAX, 1);
-	seg_doubleDots.init(12, 5, 2, 5);
-	seg_complete.init(0, 0, COL_MAX, ROW_MAX);
-}
-
-void DigitalWatch::initDisplay() {
-	seg_complete.changeAll(screen_p, false);
+DigitalWatch::DigitalWatch(Screen* scr_p) :
+		screen_p(scr_p),
+		seg_complete(new ClockSegment(screen_p, 0, 0, COL_MAX, ROW_MAX)),
+		seg_upperLine(new ClockSegment(screen_p, 0, 13, COL_MAX, 1)),
+		seg_lowerLine(new ClockSegment(screen_p, 0, 1, COL_MAX, 1)),
+		seg_doubleDots(new ClockSegment(screen_p, 12, 5, 2, 5)),
+		seg_hour1(new ClockSegment(screen_p, 1, 4, 5, 7)),
+		seg_hour2(new ClockSegment(screen_p, 7, 4, 5, 7)),
+		seg_min1(new ClockSegment(screen_p, 16, 4, 5, 7)),
+		seg_min2(new ClockSegment(screen_p, 22, 4, 5, 7))
+		{
+//	seg_complete = new ClockSegment(screen_p, 0, 0, COL_MAX, ROW_MAX);
+//	seg_complete->changeAll(false);
 	// Obere Linie init.
-	seg_upperLine.changeAll(screen_p, true);
+//	seg_upperLine = ClockSegment(screen_p, 0, 15, COL_MAX, 1);
+//	seg_upperLine->changeAll(true);
 	// Untere Linie init;
-	seg_lowerLine.changeAll(screen_p, true);
+//	seg_lowerLine = ClockSegment(screen_p, 0, 1, COL_MAX, 1);
+//	seg_lowerLine->changeAll(true);
 	// Doppelpunkte init.
-	seg_doubleDots.change(screen_p, 5, 12, true);
-	seg_doubleDots.change(screen_p, 5, 13, true);
-	seg_doubleDots.change(screen_p, 6, 12, true);
-	seg_doubleDots.change(screen_p, 6, 13, true);
-	seg_doubleDots.change(screen_p, 8, 12, true);
-	seg_doubleDots.change(screen_p, 8, 13, true);
-	seg_doubleDots.change(screen_p, 9, 12, true);
-	seg_doubleDots.change(screen_p, 9, 13, true);
+//	seg_doubleDots = ClockSegment(screen_p, 12, 5, 2, 5);
+	seg_doubleDots->change(5, 12, true);
+	seg_doubleDots->change(5, 13, true);
+	seg_doubleDots->change(6, 12, true);
+	seg_doubleDots->change(6, 13, true);
+	seg_doubleDots->change(8, 12, true);
+	seg_doubleDots->change(8, 13, true);
+	seg_doubleDots->change(9, 12, true);
+	seg_doubleDots->change(9, 13, true);
 	// Ziffern komplett gelb zeigen
-	seg_hour1.changeAll(screen_p, true);
-	seg_hour2.changeAll(screen_p, true);
-	seg_min1.changeAll(screen_p, true);
-	seg_min2.changeAll(screen_p, true);
+//	seg_hour1 = ClockSegment(screen_p, 1, 4, 5, 7);
+//	seg_hour1->changeAll(true);
+//	seg_hour2 = ClockSegment(screen_p, 7, 4, 5, 7);
+//	seg_hour2->changeAll(true);
+//	seg_min1 = ClockSegment(screen_p, 16, 4, 5, 7);
+//	seg_min1->changeAll(true);
+//	seg_min2 = ClockSegment(screen_p, 22, 4, 5, 7);
+//	seg_min2->changeAll(true);
 	screen_p->showScreen();
 }
 
-void DigitalWatch::runClock(Screen* screen_p) {
-	this->screen_p = screen_p;
-	init();
-	initDisplay();
+void DigitalWatch::runClock() {
 	time_t rawtime;
 	struct tm* time_local;		// allg. Zeitstruct
 	/*
@@ -79,10 +75,10 @@ void DigitalWatch::runClock(Screen* screen_p) {
 		cout << "---Test---  Zeit: " << hour1 << hour2 << " : " << min1 << min2
 				<< endl;
 		// Darstellen der Ziffern
-		seg_hour1.choseNumber(screen_p, hour1);
-		seg_hour2.choseNumber(screen_p, hour2);
-		seg_min1.choseNumber(screen_p, min1);
-		seg_min2.choseNumber(screen_p, min2);
+		seg_hour1->choseNumber(hour1);
+		seg_hour2->choseNumber(hour2);
+		seg_min1->choseNumber(min1);
+		seg_min2->choseNumber(min2);
 		// Anzeigen auf Screen
 		screen_p->showScreen();
 	}
