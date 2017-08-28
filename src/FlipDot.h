@@ -24,8 +24,7 @@ public:
 	void enable(bool);
 private:
 	Segment *seg_FlipDotDisplay;
-	Screen screen;
-	Screen* screen_p;
+	Screen *screen_p;
 };
 
 #endif /* FLIPDOT_H_ */

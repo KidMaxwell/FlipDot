@@ -16,7 +16,7 @@ using namespace std;
  * Initialisiert den Screen (Array, das in der Komandozeile angezeigt wird)
  */
 FlipDot::FlipDot() {
-	screen_p = &screen;
+	screen_p = new Screen();
 	seg_FlipDotDisplay = new Segment(screen_p, 0, 0, COL_MAX, ROW_MAX);
 }
 

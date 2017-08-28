@@ -18,6 +18,7 @@ ClockSegment::ClockSegment(Screen* scr_p, int col_start, int row_start,
 		{}
 
 void ClockSegment::choseNumber(int number) {
+	changeAll(false);
 	switch (number) {
 	case (0):
 		show0();

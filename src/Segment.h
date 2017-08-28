@@ -23,7 +23,7 @@ public:
 	void changeColumn(int, bool);
 	void changeAll(bool);
 protected:
-	HAL_Addr addr;
+	HAL_Addr *addr;
 	const int seg_column_start, seg_row_start, seg_column_width, seg_row_hight;
 	bool newState;
 	std::vector< std::vector<Dot> > vec_dots;
