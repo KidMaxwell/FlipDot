@@ -65,8 +65,11 @@ void FlipDot::consoleMenu() {
 			modeChangeAll();
 			break;
 		case '3':
-			DigitalWatch* watch = new DigitalWatch(screen_p);
-			watch->runClock();
+			seg_FlipDotDisplay->changeAll(false);
+			screen_p->showScreen();
+			DigitalWatch* clock = new DigitalWatch(screen_p);
+			clock->runClock();
+			seg_FlipDotDisplay->changeAll(true);
 			break;
 		}
 		cout << endl << endl << "Bitte erneute Auswahl:" << endl << endl;

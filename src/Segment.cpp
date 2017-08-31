@@ -72,6 +72,8 @@ void Segment::change(int seg_row, int seg_column,
 	addr->loadSR(disp_row, disp_column, newState);
 	addr->enable(newState);
 	screen_p->updateScreen(disp_row, disp_column, newState);
+	// TEST
+//	screen_p->showScreen();
 }
 
 /*

@@ -85,7 +85,7 @@ void ClockSegment::show2() {
 	change(2, 3, true);
 	change(3, 2, true);
 	change(4, 1, true);
-	change(1, 4, true);
+	change(5, 0, true);
 	changeRow(6, true);
 }
 
