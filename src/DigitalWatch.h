@@ -6,6 +6,11 @@
  */
 #include "ClockSegment.h"
 #include "Screen.h"
+#include <iostream>
+#include <time.h>
+#include <string>
+#include <unistd.h>
+
 
 #ifndef DIGITALWATCH_H_
 #define DIGITALWATCH_H_

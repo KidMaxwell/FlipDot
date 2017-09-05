@@ -10,7 +10,11 @@
 #include "Segment.h"
 #include "Dot.h"
 #include "DigitalWatch.h"
+#include "SnakeSingle.h"
 #include "Screen.h"
+#include "HAL_HardwareDefines.h"
+#include <iostream>
+#include <string>
 
 class FlipDot {
 public:

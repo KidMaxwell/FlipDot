@@ -9,7 +9,9 @@
 #define HAL_HARDWAREDEFINES_H_
 
 #define COL_MAX 28
+#define COL_MIN 0
 #define ROW_MAX 16
+#define ROW_MIN 0
 #define DELAY_SR 1
 
 // Pin-Belegung Raspi
@@ -18,5 +20,9 @@
 #define CLK_P 2
 #define SER_P 3
 #define S_ENABLE_P 4
+
+// Pin-Belegung Snake
+#define T_RIGHT 5
+#define T_LEFT 6
 
 #endif /* HAL_HARDWAREDEFINES_H_ */

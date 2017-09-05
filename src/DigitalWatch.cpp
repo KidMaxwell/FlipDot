@@ -6,10 +6,6 @@
  */
 
 #include "DigitalWatch.h"
-#include <iostream>
-#include <time.h>
-#include <string>
-#include <unistd.h>
 
 using namespace std;
 
@@ -23,7 +19,6 @@ DigitalWatch::DigitalWatch(Screen* scr_p) :
 				new ClockSegment(screen_p, 7, 4, 5, 7)), seg_min1(
 				new ClockSegment(screen_p, 16, 4, 5, 7)), seg_min2(
 				new ClockSegment(screen_p, 22, 4, 5, 7)) {
-//	seg_complete->changeAll(false);
 	// Obere Linie init.
 	seg_upperLine->changeAll(true);
 	// Untere Linie init;

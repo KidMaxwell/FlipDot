@@ -5,9 +5,6 @@
  *      Author: paul, alex
  */
 #include "FlipDot.h"
-#include "HAL_HardwareDefines.h"
-#include <string>
-#include <iostream>
 
 using namespace std;
 
@@ -27,7 +24,7 @@ FlipDot::FlipDot() {
  * über Modus? können Informationen zu dem Modus angezeigt werden
  */
 void FlipDot::consoleMenu() {
-	char input = '0';
+	int input = 0;
 	cout << "Hallo und Herzlich Willkommen in der Welt der flippenden Dots"
 			<< endl << "Es gibt folgende Modi:" << endl << endl;
 	while (1) {
@@ -58,19 +55,27 @@ void FlipDot::consoleMenu() {
 		 */
 		//	switch (input[0]) {
 		switch (input) {
-		case '1':
+		case 1:
 			modeChange();
 			break;
-		case '2':
+		case 2:
 			modeChangeAll();
 			break;
-		case '3':
+		case 3:
 			seg_FlipDotDisplay->changeAll(false);
-			screen_p->showScreen();
 			DigitalWatch* clock = new DigitalWatch(screen_p);
 			clock->runClock();
 			seg_FlipDotDisplay->changeAll(true);
 			break;
+			break;
+		/*
+		case 4:
+			seg_FlipDotDisplay->changeAll(false);
+			SnakeSingle *snake = new SnakeSingle(screen_p);
+			snake->consoleMenu();
+			seg_FlipDotDisplay->changeAll(true);
+			break;
+		*/
 		}
 		cout << endl << endl << "Bitte erneute Auswahl:" << endl << endl;
 		continue;
@@ -101,7 +106,7 @@ void FlipDot::modeChange() {
 		cin >> column;
 		cout << "Neuer Status: ";
 		cin >> newStateI;
-	cout << endl << endl;
+		cout << endl << endl;
 		newState = (bool) newStateI;
 		seg_FlipDotDisplay->change(row, column, newState);
 		screen_p->showScreen();
