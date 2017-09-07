@@ -37,7 +37,8 @@ DigitalWatch::DigitalWatch(Screen* scr_p) :
 	seg_hour2->changeAll(true);
 	seg_min1->changeAll(true);
 	seg_min2->changeAll(true);
-	screen_p->showScreen();
+	screen_p->showScreen_Display();
+	screen_p->showScreen_Console();
 }
 
 void DigitalWatch::runClock() {
@@ -68,8 +69,14 @@ void DigitalWatch::runClock() {
 			seg_hour2->choseNumber(hour2);
 			seg_min1->choseNumber(min1);
 			seg_min2->choseNumber(min2);
+			// Anzeigen auf des Soll-Displays auf Konsole
+			screen_p->showSollScreen_Console();
 			// Anzeigen auf Screen
-			screen_p->showScreen();
+			screen_p->showScreen_Display();
+			// --- TEST ---
+			// Anzeigen auf des Ist-Displays auf Konsole
+			// muss mit Soll-Screen uebereinstimmen
+			screen_p->showIstScreen_Console();
 			min2_prev = min2;
 		}
 	}

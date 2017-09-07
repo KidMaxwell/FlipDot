@@ -16,7 +16,8 @@ SnakeSingle::SnakeSingle(Screen* scr_p) :
 		screen_p(scr_p), head_column(0), head_row(0), tail_column(0), tail_row(
 				0), seg_FlipDotDisplay(
 				new Segment(scr_p, 0, 0, COL_MAX, ROW_MAX)), vec_snake(0), movingDirection(
-				"H-R")	//Horizontal - Rechts
+				"H-R"),	//Horizontal - Rechts
+		cookie(0)
 {
 	for (int col = 0; col < 6; col++) {
 		vec_snake->push_back(*(new Dot(7, col, true)));

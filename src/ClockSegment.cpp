@@ -70,10 +70,12 @@ void ClockSegment::show0() {
 	change(6, 1, true);
 	change(6, 2, true);
 	change(6, 3, true);
+	screen_p->updateScreen_Segment(*this);
 }
 
 void ClockSegment::show1() {
 	changeColumn(2, true);
+	screen_p->updateScreen_Segment(*this);
 }
 
 void ClockSegment::show2() {
@@ -87,6 +89,7 @@ void ClockSegment::show2() {
 	change(4, 1, true);
 	change(5, 0, true);
 	changeRow(6, true);
+	screen_p->updateScreen_Segment(*this);
 }
 
 void ClockSegment::show3() {
@@ -105,6 +108,7 @@ void ClockSegment::show3() {
 	change(6, 1, true);
 	change(6, 2, true);
 	change(6, 3, true);
+	screen_p->updateScreen_Segment(*this);
 }
 
 void ClockSegment::show4() {
@@ -116,6 +120,7 @@ void ClockSegment::show4() {
 	changeRow(4, true);
 	change(5, 2, true);
 	change(6, 2, true);
+	screen_p->updateScreen_Segment(*this);
 }
 
 void ClockSegment::show5() {
@@ -133,6 +138,7 @@ void ClockSegment::show5() {
 	change(6, 1, true);
 	change(6, 2, true);
 	change(6, 3, true);
+	screen_p->updateScreen_Segment(*this);
 }
 
 void ClockSegment::show6() {
@@ -153,6 +159,7 @@ void ClockSegment::show6() {
 	change(6, 1, true);
 	change(6, 2, true);
 	change(6, 3, true);
+	screen_p->updateScreen_Segment(*this);
 }
 
 void ClockSegment::show7() {
@@ -169,6 +176,7 @@ void ClockSegment::show7() {
 	change(5, 3, true);
 	change(6, 3, true);
 	change(7, 3, true);
+	screen_p->updateScreen_Segment(*this);
 }
 
 void ClockSegment::show8() {
@@ -189,6 +197,7 @@ void ClockSegment::show8() {
 	change(6, 1, true);
 	change(6, 2, true);
 	change(6, 3, true);
+	screen_p->updateScreen_Segment(*this);
 }
 
 void ClockSegment::show9() {
@@ -207,4 +216,5 @@ void ClockSegment::show9() {
 	change(6, 1, true);
 	change(6, 2, true);
 	change(6, 3, true);
+	screen_p->updateScreen_Segment(*this);
 }
