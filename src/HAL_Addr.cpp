@@ -10,20 +10,20 @@
 using namespace std;
 
 HAL_Addr::HAL_Addr() {
-//	wiringPiSetup();
-//	pinMode(D_ENABLE_P, OUTPUT);
-//	digitalWrite(D_ENABLE_P, 0);
-//	pinMode(D_DP, OUTPUT);
-//	digitalWrite(D_DP, 0);
+	wiringPiSetup();
+	pinMode(D_ENABLE_P, OUTPUT);
+	digitalWrite(D_ENABLE_P, 0);
+	pinMode(D_DP, OUTPUT);
+	digitalWrite(D_DP, 0);
 }
 
 void HAL_Addr::enable(bool newState) {
 	sr.enableSR();
-//	digitalWrite(D_DP, !newState);
-//	delay(1);
-//	digitalWrite(D_ENABLE_P, 1);
-//	delay(10);
-//	digitalWrite(D_ENABLE_P, 0);
+	digitalWrite(D_DP, !newState);
+	delay(1);
+	digitalWrite(D_ENABLE_P, 1);
+	delay(10);
+	digitalWrite(D_ENABLE_P, 0);
 	sr.disableSR();
 }
 

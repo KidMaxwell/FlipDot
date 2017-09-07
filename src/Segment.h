@@ -7,12 +7,12 @@
 
 #ifndef SEGMENT_H_
 #define SEGMENT_H_
-#include "Screen.h"
 #include <vector>
+#include "HAL_HardwareDefines.h"
 
 class Segment {
 public:
-	Segment(Screen* scr_p, int col_start, int row_start, int col_max,
+	Segment(int col_start, int row_start, int col_max,
 			int row_max);
 	void change(int seg_row, int seg_column, bool newState);
 	void changeRow(int seg_row, bool newState);
@@ -29,7 +29,6 @@ protected:
 	const int seg_column_start, seg_row_start, seg_column_width, seg_row_hight;
 	bool newState;
 	std::vector< std::vector<bool> > vec_dots;
-	Screen *screen_p;
 };
 
 #endif /* SEGMENT_H_ */

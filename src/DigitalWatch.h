@@ -21,9 +21,8 @@ public:
 	void runClock();
 private:
 	Screen *screen_p;
-	ClockSegment *seg_complete;
-	ClockSegment *seg_upperLine, *seg_lowerLine;
-	ClockSegment *seg_doubleDots;
+	Segment *seg_upperLine, *seg_lowerLine;
+	Segment *seg_doubleDots;
 	ClockSegment *seg_hour1, *seg_hour2, *seg_min1, *seg_min2;
 };
 

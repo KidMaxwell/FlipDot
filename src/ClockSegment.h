@@ -12,8 +12,8 @@
 
 class ClockSegment: public Segment {
 public:
-	ClockSegment(Screen* scr_p, int col_start, int row_start, int col_max, int row_max);
-	void choseNumber(int);
+	ClockSegment(int col_start, int row_start, int col_max, int row_max);
+	void choseNumber(int number);
 	void show0();
 	void show1();
 	void show2();

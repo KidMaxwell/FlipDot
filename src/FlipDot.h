@@ -7,14 +7,13 @@
 
 #ifndef FLIPDOT_H_
 #define FLIPDOT_H_
-#include "Segment.h"
-#include "Dot.h"
-#include "DigitalWatch.h"
-#include "SnakeSingle.h"
-#include "Screen.h"
-#include "HAL_HardwareDefines.h"
 #include <iostream>
 #include <string>
+#include "Dot.h"
+#include "DigitalWatch.h"
+//#include "SnakeSingle.h"
+#include "Screen.h"
+#include "HAL_HardwareDefines.h"
 
 class FlipDot {
 public:
@@ -27,7 +26,6 @@ public:
 	void loadSR(int, int, bool);
 	void enable(bool);
 private:
-	Segment *seg_FlipDotDisplay;
 	Screen *screen_p;
 };
 

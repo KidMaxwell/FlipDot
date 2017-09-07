@@ -14,7 +14,6 @@ using namespace std;
  */
 FlipDot::FlipDot() {
 	screen_p = new Screen();
-	seg_FlipDotDisplay = new Segment(screen_p, 0, 0, COL_MAX, ROW_MAX);
 }
 
 /*
@@ -62,11 +61,10 @@ void FlipDot::consoleMenu() {
 			modeChangeAll();
 			break;
 		case 3:
-			seg_FlipDotDisplay->changeAll(false);
 			DigitalWatch* clock = new DigitalWatch(screen_p);
 			clock->runClock();
-			seg_FlipDotDisplay->changeAll(true);
-			break;
+			screen_p->updateScreen_All(false);
+			screen_p->showScreen_Display();
 			break;
 		/*
 		case 4:
@@ -93,7 +91,7 @@ void FlipDot::modeChange() {
 	int column = 0;
 	int newStateI = 0;
 	bool newState = false;
-	screen_p->showScreen();
+	screen_p->showIstScreen_Console();
 	char abort = 'n';
 	while (1) {
 		cout << endl << "Abbruch? y/n: ";
@@ -108,8 +106,9 @@ void FlipDot::modeChange() {
 		cin >> newStateI;
 		cout << endl << endl;
 		newState = (bool) newStateI;
-		seg_FlipDotDisplay->change(row, column, newState);
-		screen_p->showScreen();
+		screen_p->updateScreen_Single(row, column, newState);
+		screen_p->showScreen_Display();
+		screen_p->showIstScreen_Console();
 	}
 }
 
@@ -118,12 +117,13 @@ void FlipDot::modeChange() {
  * danach direkter Rücksprung ins Hauptmenü
  */
 void FlipDot::modeChangeAll() {
-	int value = 0;
+	int newState = 0;
 	cout << "NewState: ";
-	cin >> value;
+	cin >> newState;
 	cout << endl;
-	seg_FlipDotDisplay->changeAll((bool) value);
-	screen_p->showScreen();
+	screen_p->updateScreen_All(newState);
+	screen_p->showScreen_Display();
+	screen_p->showIstScreen_Console();
 }
 
 int main() {

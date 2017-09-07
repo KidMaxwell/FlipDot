@@ -4,10 +4,11 @@
  *  Created on: 13.08.2017
  *      Author: alexander
  */
-#include "Segment.h"
+#include <iostream>
 #include "HAL_HardwareDefines.h"
-#include "Dot.h"
 #include "HAL_Addr.h"
+#include "Dot.h"
+#include "Segment.h"
 
 #ifndef SCREEN_H_
 #define SCREEN_H_
@@ -21,11 +22,11 @@ public:
 	void showScreen_Display();
 	void showIstScreen_Console();
 	void showSollScreen_Console();
+	void showScreen_Console();
 private:
 	Dot* istDisplay[ROW_MAX][COL_MAX];
 	Dot* sollDisplay[ROW_MAX][COL_MAX];
-	int consoleArray[ROW_MAX][COL_MAX];
-	HAL_Addr *addr;
+	HAL_Addr* addr;
 };
 
 #endif /* SCREEN_H_ */

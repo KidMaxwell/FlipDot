@@ -17,9 +17,9 @@ using namespace std;
  * Dieser kann dann gesondert manipuliert werden
  * WICHTIG: die Segmente dürfen sich nicht überlagern!
  */
-Segment::Segment(Screen* scr_p, int col_start, int row_start, int col_max,
+Segment::Segment(int col_start, int row_start, int col_max,
 		int row_max) :
-		screen_p(scr_p), seg_column_start(col_start), seg_row_start(row_start), seg_column_width(
+		seg_column_start(col_start), seg_row_start(row_start), seg_column_width(
 				col_max), seg_row_hight(row_max), newState(false) {
 	if (!checkValues()) {
 		// TODO- - - Interrupt
@@ -40,20 +40,20 @@ Segment::Segment(Screen* scr_p, int col_start, int row_start, int col_max,
  * 	Bei manueller Eingabe über Konsole wichtig!
  */
 bool Segment::checkValues() {
-	if (!(seg_column_start >= 0 && seg_column_start < COL_MAX)) {
+	if (!(seg_column_start >= COL_MIN && seg_column_start < COL_MAX)) {
 		cout << "Error: seg_column_start out of bounds" << endl;
 		return false;
 	}
-	if (!(seg_row_start >= 0 && seg_row_start < ROW_MAX)) {
+	if (!(seg_row_start >= ROW_MIN && seg_row_start < ROW_MAX)) {
 		cout << "Error: seg_row_start out of bounds" << endl;
 		return false;
 	}
-	if (!(seg_column_width > 0
+	if (!(seg_column_width > COL_MIN
 			&& (seg_column_start + seg_column_width) <= COL_MAX)) {
 		cout << "Error: seg_column_width out of bounds" << endl;
 		return false;
 	}
-	if (!(seg_row_hight > 0 && (seg_row_start + seg_row_hight) <= ROW_MAX)) {
+	if (!(seg_row_hight >  ROW_MIN && (seg_row_start + seg_row_hight) <= ROW_MAX)) {
 		cout << "Error: seg_row_hight out of bounds" << endl;
 		return false;
 	}
