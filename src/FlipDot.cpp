@@ -44,10 +44,10 @@ void FlipDot::consoleMenu() {
 			screen_p->updateScreen_All(false);
 			screen_p->showScreen_Display();
 		} else if (input == "4") {
-			seg_FlipDotDisplay->changeAll(false);
 			SnakeSingle *snake = new SnakeSingle(screen_p);
 			snake->consoleMenu();
-			seg_FlipDotDisplay->changeAll(true);
+			screen_p->updateScreen_All(false);
+
 		} else if (input == 1?) {
 
 		} else if (input == 2?) {
