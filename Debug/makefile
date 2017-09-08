@@ -44,7 +44,7 @@ all: FlipDot
 FlipDot: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross G++ Linker'
-	arm-linux-gnueabihf-g++ -L/home/paul/eclipse/wiringPi/wiringPi -L/home/alexander/rpi/wiringPi/wiringPi -o "FlipDot" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-linux-gnueabihf-g++ -L/home/paul/eclipse/wiringPi/wiringPi -o "FlipDot" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
