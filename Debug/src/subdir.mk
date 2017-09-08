@@ -11,7 +11,8 @@ CPP_SRCS += \
 ../src/HAL_Addr.cpp \
 ../src/HAL_ShiftRegister.cpp \
 ../src/Screen.cpp \
-../src/Segment.cpp 
+../src/Segment.cpp \
+../src/SnakeSingle.cpp 
 
 OBJS += \
 ./src/ClockSegment.o \
@@ -21,7 +22,8 @@ OBJS += \
 ./src/HAL_Addr.o \
 ./src/HAL_ShiftRegister.o \
 ./src/Screen.o \
-./src/Segment.o 
+./src/Segment.o \
+./src/SnakeSingle.o 
 
 CPP_DEPS += \
 ./src/ClockSegment.d \
@@ -31,7 +33,8 @@ CPP_DEPS += \
 ./src/HAL_Addr.d \
 ./src/HAL_ShiftRegister.d \
 ./src/Screen.d \
-./src/Segment.d 
+./src/Segment.d \
+./src/SnakeSingle.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
