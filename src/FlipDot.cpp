@@ -49,13 +49,19 @@ void FlipDot::consoleMenu() {
 			screen_p->updateScreen_All(false);
 
 		} else if (input == "1?") {
-
+			cout << endl << "Auswahl einzelner Dots möglich." << endl;
 		} else if (input == "2?") {
-
+			cout << endl << "Ansteuerung des gesamten Displays." << endl;
 		} else if (input == "3?") {
-
+			cout << endl
+					<< "Es wird die aktuelle Uhrzeit in digitaler Form angezeigt."
+					<< endl << "(Raspi muss mit dem Internet verbunden sein)"
+					<< endl;
 		} else if (input == "4?") {
-
+			cout << endl << "Snake kann im Single-Player-Modus gespielt werden."
+					<< endl
+					<< "weitere Informationen in der Menüführung der Spiels."
+					<< endl;
 		} else {
 			cout << endl << endl << "Bitte erneute Auswahl:" << endl << endl;
 			continue;
@@ -109,9 +115,9 @@ void FlipDot::modeChangeAll() {
 }
 
 /*
- * main Methode, erzeugt ein FlipDot objekt
+ * main-Methode:
+ * Start des Programms
  */
-
 int main() {
 	FlipDot* f = new FlipDot();
 	f->consoleMenu();

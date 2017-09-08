@@ -32,7 +32,7 @@ private:
 	int head_column, head_row, tail_column, tail_row;
 	Screen* screen_p;
 	Segment* seg_FullScreen;
-	std::vector<Dot> *vec_snake;
+	std::vector<Dot*> *vec_snake;
 	std::string movingDirection;
 	Dot* cookie;
 };

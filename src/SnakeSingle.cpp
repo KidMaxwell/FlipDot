@@ -20,7 +20,7 @@ SnakeSingle::SnakeSingle(Screen* scr_p) :
 		cookie(0)
 {
 	for (int col = 0; col < 6; col++) {
-		vec_snake->push_back(*(new Dot(7, col, true)));
+		vec_snake->push_back(new Dot(7, col, true));
 	}
 }
 
@@ -64,7 +64,7 @@ void SnakeSingle::runSnake(int speed) {
 		seg_FullScreen->change(tail_row, tail_column, false);
 //TODO Auf jeden Fall testen, ob das mit dem Entfernen funktioniert!
 		int size = vec_snake->size();
-		vec_snake->push_back(*(new Dot(head_row, head_column, true)));
+		vec_snake->push_back(new Dot(head_row, head_column, true));
 		vec_snake->erase(vec_snake->begin());
 		cout << "Test: Grösse vorher: " << size << endl << "Jetzt: "
 				<< vec_snake->size() << endl;
