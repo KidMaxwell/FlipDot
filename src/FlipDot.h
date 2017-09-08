@@ -7,32 +7,22 @@
 
 #ifndef FLIPDOT_H_
 #define FLIPDOT_H_
-
+#include <iostream>
+#include <string>
+#include "Dot.h"
+#include "DigitalWatch.h"
+//#include "SnakeSingle.h"
+#include "Screen.h"
+#include "HAL_HardwareDefines.h"
 
 class FlipDot {
 public:
-
 	FlipDot();
-	void start();
 	void consoleMenu();
 	void modeChange();
 	void modeChangeAll();
-	void showScreen();
-	void change(int, int, bool);
-	void changeIfDifferent(Dot, bool);
-	void changeRow(int, bool);
-	void changeCollum(int, bool);
-	void changeAll(bool);
-	void loadSR(int, int, bool);
-	void enable();
 private:
-	Dot dots[16][28];
-	ShiftRegister SR;
-	int row, column, newStateI;
-	bool newState;
-
+	Screen *screen_p;
 };
-
-
 
 #endif /* FLIPDOT_H_ */

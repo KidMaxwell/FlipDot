@@ -4,21 +4,20 @@
  *  Created on: 06.08.2017
  *      Author: paul, alex
  */
+#include "HAL_HardwareDefines.h"
 
-#ifndef SHIFTREGISTER_H_
-#define SHIFTREGISTER_H_
+#ifndef HAL_SHIFTREGISTER_H_
+#define HAL_SHIFTREGISTER_H_
 
-class ShiftRegister{
+class HAL_ShiftRegister{
 public:
-	ShiftRegister();
-	void Init(int, int, int);
+	HAL_ShiftRegister();
 	void loadnWrite(bool []);
 	void enableSR(void);
 	void disableSR(void);
 private:
-	int clkP, serP, sEnableP;
 	void shifter(int);
 
 };
 
-#endif /* SHIFTREGISTER_H_ */
+#endif /* HAL_SHIFTREGISTER_H_ */

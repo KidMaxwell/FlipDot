@@ -4,25 +4,34 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/ClockSegment.cpp \
 ../src/DigitalWatch.cpp \
 ../src/Dot.cpp \
 ../src/FlipDot.cpp \
-../src/Segment.cpp \
-../src/ShiftRegister.cpp 
+../src/HAL_Addr.cpp \
+../src/HAL_ShiftRegister.cpp \
+../src/Screen.cpp \
+../src/Segment.cpp 
 
 OBJS += \
+./src/ClockSegment.o \
 ./src/DigitalWatch.o \
 ./src/Dot.o \
 ./src/FlipDot.o \
-./src/Segment.o \
-./src/ShiftRegister.o 
+./src/HAL_Addr.o \
+./src/HAL_ShiftRegister.o \
+./src/Screen.o \
+./src/Segment.o 
 
 CPP_DEPS += \
+./src/ClockSegment.d \
 ./src/DigitalWatch.d \
 ./src/Dot.d \
 ./src/FlipDot.d \
-./src/Segment.d \
-./src/ShiftRegister.d 
+./src/HAL_Addr.d \
+./src/HAL_ShiftRegister.d \
+./src/Screen.d \
+./src/Segment.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

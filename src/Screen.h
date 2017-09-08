@@ -1,0 +1,32 @@
+/*
+ * Screen.h
+ *
+ *  Created on: 13.08.2017
+ *      Author: alexander
+ */
+#include <iostream>
+#include "HAL_HardwareDefines.h"
+#include "HAL_Addr.h"
+#include "Dot.h"
+#include "Segment.h"
+
+#ifndef SCREEN_H_
+#define SCREEN_H_
+
+class Screen {
+public:
+	Screen();
+	void updateScreen_Segment(Segment segment);
+	void updateScreen_Single(int row, int column, bool state);
+	void updateScreen_All(bool state);
+	void showScreen_Display();
+	void showIstScreen_Console();
+	void showSollScreen_Console();
+	void showScreen_Console();
+private:
+	Dot* istDisplay[ROW_MAX][COL_MAX];
+	Dot* sollDisplay[ROW_MAX][COL_MAX];
+	HAL_Addr* addr;
+};
+
+#endif /* SCREEN_H_ */
