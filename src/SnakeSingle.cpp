@@ -223,6 +223,7 @@ bool SnakeSingle::biten(int head_column, int head_row) {
 void SnakeSingle::placeCookie() {
 	bool cookieHitSnake = false;
 	while (!cookieHitSnake) {
+		//TODO +++ Testen, ob funktioniert!
 		srand((unsigned) time(NULL));
 		int rand_column = rand() % (COL_MAX - COL_MIN + 1) + COL_MIN + 1;
 		int rand_row = rand() % (ROW_MAX - ROW_MIN + 1) + ROW_MIN + 1;
