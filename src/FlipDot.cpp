@@ -23,7 +23,7 @@ FlipDot::FlipDot() {
  * über Modus? können Informationen zu dem Modus angezeigt werden
  */
 void FlipDot::consoleMenu() {
-	int input = 0;
+	string input = 0;
 	cout << "Hallo und Herzlich Willkommen in der Welt der flippenden Dots"
 			<< endl << "Es gibt folgende Modi:" << endl << endl;
 	while (1) {
@@ -34,50 +34,25 @@ void FlipDot::consoleMenu() {
 				<< "Fuer weitere Erlaeuterungen: Auswahlnummer? eingeben und bestaetigen"
 				<< endl;
 		cin >> input;
-		// Funktioniert noch nicht!
-		/*
-		 if (input[1] == '?') {
-		 switch (input[0]) {
-		 case '1':
-		 // Erklärung einfügen
-		 break;
-		 case '2':
-		 // Erklärung einfügen
-		 break;
-		 case '3':
-		 // Erklärung einfügen
-		 break;
-		 }
-		 cout << endl << endl << "Bitte erneute Auswahl:" << endl << endl;
-		 continue;
-		 } else {
-		 */
-		//	switch (input[0]) {
-		switch (input) {
-		case 1:
-			modeChange();
-			break;
-		case 2:
-			modeChangeAll();
-			break;
-		case 3:
+		if(input == "1") modeChange();
+		else if(input == "2") modeChangeAll();
+		else if(input == "3"){
 			DigitalWatch* clock = new DigitalWatch(screen_p);
 			clock->runClock();
 			screen_p->updateScreen_All(false);
 			screen_p->showScreen_Display();
-			break;
-		/*
-		case 4:
-			seg_FlipDotDisplay->changeAll(false);
+		}
+		else if(input == "4"){
+		/*	seg_FlipDotDisplay->changeAll(false);
 			SnakeSingle *snake = new SnakeSingle(screen_p);
 			snake->consoleMenu();
 			seg_FlipDotDisplay->changeAll(true);
-			break;
-		*/
+		 */
 		}
+		else{
 		cout << endl << endl << "Bitte erneute Auswahl:" << endl << endl;
 		continue;
-		//}
+		}
 	}
 }
 
