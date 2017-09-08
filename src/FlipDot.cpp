@@ -44,15 +44,20 @@ void FlipDot::consoleMenu() {
 			screen_p->updateScreen_All(false);
 			screen_p->showScreen_Display();
 		} else if (input == "4") {
-			/*	seg_FlipDotDisplay->changeAll(false);
-			 SnakeSingle *snake = new SnakeSingle(screen_p);
-			 snake->consoleMenu();
-			 seg_FlipDotDisplay->changeAll(true);
-			 */
-		}
-		else {
-			cout << endl << endl << "Bitte erneute Auswahl:" << endl
-			<< endl;
+			seg_FlipDotDisplay->changeAll(false);
+			SnakeSingle *snake = new SnakeSingle(screen_p);
+			snake->consoleMenu();
+			seg_FlipDotDisplay->changeAll(true);
+		} else if (input == 1?) {
+
+		} else if (input == 2?) {
+
+		} else if (input == 3?) {
+
+		} else if (input == 4?) {
+
+		} else {
+			cout << endl << endl << "Bitte erneute Auswahl:" << endl << endl;
 			continue;
 		}
 	}
@@ -64,29 +69,29 @@ void FlipDot::consoleMenu() {
  * Rücksprung ins Hauptmenü durch Abbruch
  */
 void FlipDot::modeChange() {
-int row = 0;
-int column = 0;
-int newStateI = 0;
-bool newState = false;
-screen_p->showIstScreen_Console();
-char abort = 'n';
-while (1) {
-	cout << endl << "Abbruch? y/n: ";
-	cin >> abort;
-	if (abort == 'y')
-	break;
-	cout << "Reihe: ";
-	cin >> row;
-	cout << "Spalte: ";
-	cin >> column;
-	cout << "Neuer Status: ";
-	cin >> newStateI;
-	cout << endl << endl;
-	newState = (bool) newStateI;
-	screen_p->updateScreen_Single(row, column, newState);
-	screen_p->showScreen_Display();
+	int row = 0;
+	int column = 0;
+	int newStateI = 0;
+	bool newState = false;
 	screen_p->showIstScreen_Console();
-}
+	char abort = 'n';
+	while (1) {
+		cout << endl << "Abbruch? y/n: ";
+		cin >> abort;
+		if (abort == 'y')
+			break;
+		cout << "Reihe: ";
+		cin >> row;
+		cout << "Spalte: ";
+		cin >> column;
+		cout << "Neuer Status: ";
+		cin >> newStateI;
+		cout << endl << endl;
+		newState = (bool) newStateI;
+		screen_p->updateScreen_Single(row, column, newState);
+		screen_p->showScreen_Display();
+		screen_p->showIstScreen_Console();
+	}
 }
 
 /*
@@ -94,13 +99,13 @@ while (1) {
  * danach direkter Rücksprung ins Hauptmenü
  */
 void FlipDot::modeChangeAll() {
-int newState = 0;
-cout << "NewState: ";
-cin >> newState;
-cout << endl;
-screen_p->updateScreen_All(newState);
-screen_p->showScreen_Display();
-screen_p->showIstScreen_Console();
+	int newState = 0;
+	cout << "NewState: ";
+	cin >> newState;
+	cout << endl;
+	screen_p->updateScreen_All(newState);
+	screen_p->showScreen_Display();
+	screen_p->showIstScreen_Console();
 }
 
 /*
@@ -108,7 +113,7 @@ screen_p->showIstScreen_Console();
  */
 
 int main() {
-FlipDot* f = new FlipDot();
-f->consoleMenu();
-return 0;
+	FlipDot* f = new FlipDot();
+	f->consoleMenu();
+	return 0;
 }
