@@ -17,13 +17,17 @@ SnakeSingle::SnakeSingle(Screen* scr_p) :
 				0), seg_FullScreen(
 				new Segment(COL_MIN, ROW_MIN, COL_MAX, ROW_MAX)), vec_snake(0), movingDirection(
 				"H-R"),	//Horizontal - Rechts
-		cookie(0)
-{
+		cookie(0) {
+	// vec_snake stellt die Schlange dar
+	// "back" ist in dem Fall der Kopf der Schlange
 	for (int col = 0; col < 6; col++) {
 		vec_snake->push_back(new Dot(7, col, true));
 	}
 }
 
+/*
+ * Menüführung, in der die Geschwindigkeit eingestellt werden kann.
+ */
 void SnakeSingle::consoleMenu() {
 	int speed = 0;
 	cout << "Herzlich willkommen beim Single Player des Spiels Snake" << endl;
@@ -39,9 +43,21 @@ void SnakeSingle::consoleMenu() {
 	cout << endl << "Auf Wiedersehen!" << endl;
 }
 
+/*
+ * Hauptsteuerschleife
+ * 	1. Kopf und Schwanz bestimmen
+ * 	2. Eingabe abfragen (wie auch immer)
+ * 	3. Testen, ob Cookie getroffen
+ * 	3.1. 	wenn ja: neuen Cookie platzieren
+ * 	3.2.	Schlange länger werden lassen
+ * 	4. Bewegung ausführen
+ * 	5. Testen, ob Schlange sich selbst gebissen hat
+ */
 void SnakeSingle::runSnake(int speed) {
+	placeCookie();
 	while (1) {
 		usleep(speed);
+		bool hitCookie = false;
 		//TODO Keyboard read
 		// Erstes Element der Snake (in dem Fall "back" des Vectors)
 		Dot* head = vec_snake->back();
@@ -57,11 +73,13 @@ void SnakeSingle::runSnake(int speed) {
 		//Aufruf in der Form:
 		if (!moveStraight())
 			wall = true;
-
+		// [...]
+		// -----------------
 		if (wall == true)
 			break;
 		seg_FullScreen->change(head_row, head_column, true);
-		seg_FullScreen->change(tail_row, tail_column, false);
+		if (!hitCookie)
+			seg_FullScreen->change(tail_row, tail_column, false);
 //TODO Auf jeden Fall testen, ob das mit dem Entfernen funktioniert!
 		int size = vec_snake->size();
 		vec_snake->push_back(new Dot(head_row, head_column, true));
@@ -189,8 +207,9 @@ bool SnakeSingle::moveLeft() {
  * Vector durchgehen und prüfen ob sich Position des Kopfs mit einem der Dots überschneidet
  */
 bool SnakeSingle::biten(int head_column, int head_row) {
-	for (iterator it = (vec_snake->begin()) + 1; it < vec_snake->size(); it++) {
-		Dot snakeElement = *it;
+	for (vector<Dot*>::iterator it = vec_snake->begin() + 1;
+			it != vec_snake->end(); ++it) {
+		Dot snakeElement = **it;
 		if (head_column == snakeElement.getColumn()
 				&& head_row == snakeElement.getRow())
 			return true;
@@ -198,9 +217,24 @@ bool SnakeSingle::biten(int head_column, int head_row) {
 	return false;
 }
 
-void SnakeSingle::placeCookie(){
-	srand((unsigned)time(NULL));
-	int rand_column = rand() % (COL_MAX - COL_MIN + 1) + COL_MIN +1;
-	int rand_row = rand() % (ROW_MAX - ROW_MIN + 1) + ROW_MIN +1;
-	cookie = new Dot(rand_row, rand_column, true);
+/*
+ * Platziert einen Cookie im Display (darf nicht auf Schlange liegen)
+ */
+void SnakeSingle::placeCookie() {
+	bool cookieHitSnake = false;
+	while (!cookieHitSnake) {
+		srand((unsigned) time(NULL));
+		int rand_column = rand() % (COL_MAX - COL_MIN + 1) + COL_MIN + 1;
+		int rand_row = rand() % (ROW_MAX - ROW_MIN + 1) + ROW_MIN + 1;
+		cookie = new Dot(rand_row, rand_column, true);
+		for (vector<Dot*>::iterator it = vec_snake->begin();
+				it != vec_snake->end(); ++it) {
+			Dot dotSnake = **it;
+			if ((dotSnake.getColumn() != rand_column)
+					&& (dotSnake.getRow() != rand_row)) {
+				cookieHitSnake = true;
+				break;
+			}
+		}
+	}
 }

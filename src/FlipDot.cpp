@@ -19,7 +19,6 @@ FlipDot::FlipDot() {
 /*
  * Nutzerkommunikation über Kosole
  * Dem Nutzer werden die einzelnen Modi vorgeschlagen und dieser kann dann auswählen
- * Noch im Aufbau: TODO--- Informationsanzeige
  * über Modus? können Informationen zu dem Modus angezeigt werden
  */
 void FlipDot::consoleMenu() {
@@ -47,7 +46,7 @@ void FlipDot::consoleMenu() {
 			SnakeSingle *snake = new SnakeSingle(screen_p);
 			snake->consoleMenu();
 			screen_p->updateScreen_All(false);
-
+			screen_p->showScreen_Display();
 		} else if (input == "1?") {
 			cout << endl << "Auswahl einzelner Dots möglich." << endl;
 		} else if (input == "2?") {
