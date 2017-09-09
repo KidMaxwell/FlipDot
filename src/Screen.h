@@ -17,6 +17,7 @@ class Screen {
 public:
 	Screen();
 	void updateScreen_Segment(Segment segment);
+	void updateScreen_Dot(Dot dot);
 	void updateScreen_Single(int row, int column, bool state);
 	void updateScreen_All(bool state);
 	void showScreen_Display();
