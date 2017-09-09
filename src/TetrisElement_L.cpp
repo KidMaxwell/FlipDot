@@ -1,13 +1,13 @@
 /*
- * TetrisElementStair.cpp
+ * TetrisElement_L.cpp
  *
  *  Created on: 09.09.2017
  *      Author: alexander
  */
 
-#include "TetrisElementStair.h"
+#include "TetrisElement_L.h"
 
-TetrisElement_Stair::TetrisElement_Stair() {
+TetrisElement_L::TetrisElement_L() {
 	// TODO Auto-generated constructor stub
 
 }

@@ -1,13 +1,13 @@
 /*
- * TetrisElementBlock.cpp
+ * TetrisElement_I.cpp
  *
  *  Created on: 09.09.2017
  *      Author: alexander
  */
 
-#include "TetrisElementBlock.h"
+#include "TetrisElement_I.h"
 
-Tetris_Element_Block::Tetris_Element_Block() {
+TetrisElement_I::TetrisElement_I() {
 	// TODO Auto-generated constructor stub
 
 }

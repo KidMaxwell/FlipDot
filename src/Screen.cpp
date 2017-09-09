@@ -35,7 +35,10 @@ void Screen::updateScreen_Segment(Segment segment) {
 }
 
 void Screen::updateScreen_Dot(Dot dot){
-	sollDisplay[dot.getRow()][dot.getColumn]->setState(dot.getState());
+	int column = dot.getColumn();
+	int row = dot.getRow();
+	int newState = dot.getState();
+	sollDisplay[row][column]->setState(newState);
 }
 
 void Screen::updateScreen_Single(int row, int column, bool newState) {

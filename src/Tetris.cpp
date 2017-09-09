@@ -7,8 +7,15 @@
 
 #include "Tetris.h"
 
-Tetris::Tetris() {
-	// TODO Auto-generated constructor stub
+Tetris::Tetris(Screen* scr_p) :
+		screen_p(scr_p) {
+	elements_Array = { new TetrisElement_Block(), new TetrisElement_I(),
+			new TetrisElement_L(), new TetrisElement_Stair(),
+			new TetrisElement_T() };
+}
+
+Segment* Tetris::createElement(){
 
 }
+
 
