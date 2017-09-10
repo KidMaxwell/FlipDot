@@ -125,7 +125,7 @@ void Screen::showScreen_Console() {
  * Auffinden und Löschen vollständiger Reihen
  * Führt nur ein Update auf dem Screen druch -> liegt im sollDisplay!
  */
-// TODO +++ Testen!
+// TODO In Tetris übernehmen
 void Screen::remove_builtColumn() {
 	vector<int> built_columns;
 	// Auffinden einer vollständigen Reihe (von oben nach unten)
@@ -159,6 +159,7 @@ void Screen::remove_builtColumn() {
 	}
 }
 
+// TODO In Tetris übernehmen
 /*
  * Prüfen, ob Koordinaten des tiefsten Punkts einen Dot berühren
  */
@@ -171,6 +172,7 @@ bool Screen::check_hitBuilt(Segment::koordinates koord) {
 	return true;
 }
 
+// TODO In Tetris übernehmen
 bool Screen::check_hitTop() {
 	for (int row = ROW_MIN; row < ROW_MAX; row++) {
 		if (sollDisplay[row][COL_MIN]->getState())
