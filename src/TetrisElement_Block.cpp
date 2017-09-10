@@ -7,14 +7,15 @@
 
 #include "TetrisElement_Block.h"
 
-TetrisElement_Block::TetrisElement_Block() {
-	Segment(13, 7, 2, 2);
+TetrisElement_Block::TetrisElement_Block() :
+		TetrisElement(13, 7, 2, 2) {
+	changeAll(true);
 }
 
-void TetrisElement_Block::rotate_Right(){
+void TetrisElement_Block::rotate_Right(int amount) {
 
 }
 
-void TetrisElement_Block::rotate_Left(){
+void TetrisElement_Block::rotate_Left(int amount) {
 
 }

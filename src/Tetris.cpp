@@ -9,13 +9,20 @@
 
 Tetris::Tetris(Screen* scr_p) :
 		screen_p(scr_p) {
-	elements_Array = { new TetrisElement_Block(), new TetrisElement_I(),
-			new TetrisElement_L(), new TetrisElement_Stair(),
-			new TetrisElement_T() };
+	elements_Array[0] = new TetrisElement_Block();
+	elements_Array[1] = new TetrisElement_I();
+	elements_Array[2] = new TetrisElement_L();
+	elements_Array[3] = new TetrisElement_Stair();
+	elements_Array[4] = new TetrisElement_T();
 }
 
-Segment* Tetris::createElement(){
-
+TetrisElement Tetris::createElement() {
+	TetrisElement newElement = *(elements_Array[rand_min_max(0, 3)]);
+	newElement.rotate_Right(rand_min_max(0, 3));
+	return newElement;
 }
 
-
+int Tetris::rand_min_max(int min, int max) {
+	srand((unsigned) time(NULL));
+	return rand() % (max - min + 1) + min + 1;
+}

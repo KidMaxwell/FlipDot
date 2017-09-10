@@ -5,14 +5,16 @@
  *      Author: alexander
  */
 
+#include "TetrisElement.h"
+
 #ifndef TETRISELEMENT_I_H_
 #define TETRISELEMENT_I_H_
 
-class TetrisElement_I : public Segment{
+class TetrisElement_I: public TetrisElement {
 public:
 	TetrisElement_I();
-	void rotate_Right();
-	void rotate_Left();
+	void rotate_Right(int amount);
+	void rotate_Left(int amount);
 };
 
 #endif /* TETRISELEMENT_I_H_ */

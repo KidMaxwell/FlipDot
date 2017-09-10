@@ -7,8 +7,15 @@
 
 #include "TetrisElement_I.h"
 
-TetrisElement_I::TetrisElement_I() {
-	// TODO Auto-generated constructor stub
+TetrisElement_I::TetrisElement_I() :
+		TetrisElement(14, 0, 1, 4) {
+	changeAll(true);
+}
+
+void TetrisElement_I::rotate_Right(int amount) {
 
 }
 
+void TetrisElement_I::rotate_Left(int amount) {
+
+}

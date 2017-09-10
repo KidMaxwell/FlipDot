@@ -7,8 +7,16 @@
 
 #include "TetrisElement_L.h"
 
-TetrisElement_L::TetrisElement_L() {
-	// TODO Auto-generated constructor stub
+TetrisElement_L::TetrisElement_L() :
+		TetrisElement(0, 7, 3, 2) {
+	changeRow(1, true);
+	change(0, 2, true);
+}
+
+void TetrisElement_L::rotate_Right(int amount) {
 
 }
 
+void TetrisElement_L::rotate_Left(int amount) {
+
+}

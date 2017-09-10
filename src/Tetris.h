@@ -6,8 +6,11 @@
  */
 
 #include <iostream>
+#include <unistd.h>
+#include <stdlib.h>
+#include <time.h>
 #include "Screen.h"
-#include "Random.h"
+#include "TetrisElement.h"
 #include "TetrisElement_Block.h"
 #include "TetrisElement_I.h"
 #include "TetrisElement_L.h"
@@ -20,10 +23,12 @@
 class Tetris {
 public:
 	Tetris(Screen* scr_p);
-	Segment* createElement();
+	TetrisElement createElement();
+	int rand_min_max(int min, int max);
 private:
 	Screen* screen_p;
-	Segment* elements_Array[5];
+	TetrisElement* elements_Array[5];
+	TetrisElement* newElement;
 
 };
 
