@@ -7,6 +7,8 @@
 
 #include "Tetris.h"
 
+using namespace std;
+
 Tetris::Tetris(Screen* scr_p) :
 		screen_p(scr_p),
 		newElement_p(0),
@@ -21,8 +23,12 @@ Tetris::Tetris(Screen* scr_p) :
 	elements_Array[4] = new TetrisElement("T", 3);
 }
 
-void Tetris::runTetris(int speed) {
-	this->speed = speed;
+void Tetris::menuTetris(){
+	cout << "Gechwindigkeit?" << endl;
+	cin >> speed;
+}
+
+void Tetris::runTetris() {
 	while (1) {
 		TetrisElement newElement = createElement();
 		newElement_p = &newElement;

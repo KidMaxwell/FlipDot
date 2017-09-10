@@ -34,7 +34,7 @@ void Screen::updateScreen_Segment(Segment segment) {
 	}
 }
 
-void Screen::updateScreen_Dot(Dot dot){
+void Screen::updateScreen_Dot(Dot dot) {
 	int column = dot.getColumn();
 	int row = dot.getRow();
 	int newState = dot.getState();
@@ -116,8 +116,29 @@ void Screen::showScreen_Console() {
 			else
 				cout << "  ";
 		}
-			cout << "|" << endl;
+		cout << "|" << endl;
 	}
 	cout << "-----------------------------------------------------------"
 			<< endl;
+}
+
+/*
+ * Auffinden und Löschen vollständiger Reihen
+ */
+void Screen::remove_builtColumn() {
+	vector<int> built_columns;
+	// Auffinden einer vollständigen Reihe
+	for (int column = COL_MAX; column != 0; column--) {
+		bool built = true;
+		for (int row = 0; row < ROW_MAX; row++) {
+			if (!istDisplay[row][column]->getState()) {
+				built = false;
+				break;
+			}
+		}
+		built_columns.push_back(column);
+	}
+	// Löschen einer vollständigen Reihe
+	// Reihen die darüber liegen rutschen nach
+	for()
 }

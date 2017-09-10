@@ -24,6 +24,7 @@ public:
 	void showIstScreen_Console();
 	void showSollScreen_Console();
 	void showScreen_Console();
+	void remove_builtColumn();
 private:
 	Dot* istDisplay[ROW_MAX][COL_MAX];
 	Dot* sollDisplay[ROW_MAX][COL_MAX];

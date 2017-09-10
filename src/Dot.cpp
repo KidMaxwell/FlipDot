@@ -8,11 +8,15 @@
 #include "Dot.h"
 
 	Dot::Dot(int r, int c, bool s):
-	row(r), column(c), state(s)
+	row(r), column(c), state(s), built(false)
 	{}
 
 	void Dot::setState(bool state) {
 		this->state=state;
+	}
+
+	void Dot::setBuilt(bool built){
+		this->built = built;
 	}
 
 	bool Dot::getState() {
@@ -27,3 +31,6 @@
 		return column;
 	}
 
+	bool Dot::getBuilt(){
+		return built;
+	}

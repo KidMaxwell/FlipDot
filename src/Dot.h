@@ -11,13 +11,15 @@
 class Dot{
 public:
 	Dot(int r, int c, bool s);
-	void setState(bool);
+	void setState(bool state);
+	void setBuilt(bool build);
 	bool getState();
 	int getRow();
 	int getColumn();
+	bool getBuilt();
 private:
 	int row, column;
-	bool state;
+	bool state, built;
 };
 
 #endif /* DOT_H_ */

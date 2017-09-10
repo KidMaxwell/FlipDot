@@ -21,7 +21,8 @@
 class Tetris {
 public:
 	Tetris(Screen* scr_p);
-	void runTetris(int speed);
+	void menuTetris();
+	void runTetris();
 	void move_Down(TetrisElement* newElement, int move_amount);
 	void move_Right(TetrisElement* newElement, int move_amount);
 	void move_Left(TetrisElement* newElement, int move_amount);
