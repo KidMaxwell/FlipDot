@@ -14,12 +14,7 @@ CPP_SRCS += \
 ../src/Screen.cpp \
 ../src/Segment.cpp \
 ../src/Tetris.cpp \
-../src/TetrisElement.cpp \
-../src/TetrisElement_Block.cpp \
-../src/TetrisElement_I.cpp \
-../src/TetrisElement_L.cpp \
-../src/TetrisElement_Stair.cpp \
-../src/TetrisElement_T.cpp 
+../src/TetrisElement.cpp 
 
 OBJS += \
 ./src/ClockSegment.o \
@@ -32,12 +27,7 @@ OBJS += \
 ./src/Screen.o \
 ./src/Segment.o \
 ./src/Tetris.o \
-./src/TetrisElement.o \
-./src/TetrisElement_Block.o \
-./src/TetrisElement_I.o \
-./src/TetrisElement_L.o \
-./src/TetrisElement_Stair.o \
-./src/TetrisElement_T.o 
+./src/TetrisElement.o 
 
 CPP_DEPS += \
 ./src/ClockSegment.d \
@@ -50,12 +40,7 @@ CPP_DEPS += \
 ./src/Screen.d \
 ./src/Segment.d \
 ./src/Tetris.d \
-./src/TetrisElement.d \
-./src/TetrisElement_Block.d \
-./src/TetrisElement_I.d \
-./src/TetrisElement_L.d \
-./src/TetrisElement_Stair.d \
-./src/TetrisElement_T.d 
+./src/TetrisElement.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

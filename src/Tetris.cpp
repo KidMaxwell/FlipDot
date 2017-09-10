@@ -8,49 +8,41 @@
 #include "Tetris.h"
 
 Tetris::Tetris(Screen* scr_p) :
-		screen_p(scr_p), newElement_p(0), buttons(new HAL_Button()) {
-	elements_Array[0] = new TetrisElement_Block();
-	elements_Array[1] = new TetrisElement_I();
-	elements_Array[2] = new TetrisElement_L();
-	elements_Array[3] = new TetrisElement_Stair();
-	elements_Array[4] = new TetrisElement_T();
+		screen_p(scr_p),
+		newElement_p(0),
+		buttons(new HAL_Button()),
+		speed(0),
+		button_hits( { 0, 0, 0, 0 })
+{
+	elements_Array[0] = new TetrisElement("Block", 2);
+	elements_Array[1] = new TetrisElement("I", 4);
+	elements_Array[2] = new TetrisElement("L", 3);
+	elements_Array[3] = new TetrisElement("Stair", 3);
+	elements_Array[4] = new TetrisElement("T", 3);
 }
 
 void Tetris::runTetris(int speed) {
 	this->speed = speed;
 	while (1) {
-		newElement = createElement();
+		TetrisElement newElement = createElement();
+		newElement_p = &newElement;
 		// Implementiert auch das Warten
-		buttons->readButton(speed);
+		button_hits = buttons->readButton(speed);
+		// pos: Verschiebung nach links, neg: Verschiebung nach rechts
+		int move_amount = button_hits.b_left - button_hits.b_right;
+		if (move_amount > 0)
+			newElement_p->move_Left(move_amount);
+		if (move_amount < 0)
+			newElement_p->move_Right(0 - move_amount);
+
+
 	}
 }
 
 TetrisElement Tetris::createElement() {
 	TetrisElement newElement = *(elements_Array[rand_min_max(0, 3)]);
-	newElement.rotate_Right(rand_min_max(0, 3));
+	newElement.rotate(rand_min_max(0, 3));
 	return newElement;
-}
-
-void Tetris::move_Down(TetrisElement* newElement) {
-	int newColumn_start = (newElement->get_seg_row_start());
-	newColumn_start++;
-	newElement->set_seg_column_start(newColumn_start);
-}
-
-void Tetris::move_Right(TetrisElement* newElement) {
-	if (newElement->get_seg_row_start() > ROW_MIN) {
-		int newRow_start = newElement->get_seg_row_start();
-		newRow_start--;
-		newElement->set_seg_row_start(newRow_start);
-	}
-}
-void Tetris::move_Left(TetrisElement* newElement) {
-	if ((newElement->get_seg_row_start() + newElement->get_seg_row_hight())
-			< (ROW_MAX - 1)) {
-		int newRow_start = newElement->get_seg_row_start();
-		newRow_start++;
-		newElement->set_seg_row_start(newRow_start);
-	}
 }
 
 int Tetris::rand_min_max(int min, int max) {

@@ -5,6 +5,9 @@
  *      Author: alexander
  */
 
+#include <iostream>
+#include <string>
+#include <vector>
 #include "Segment.h"
 
 #ifndef TETRISELEMENT_H_
@@ -12,10 +15,13 @@
 
 class TetrisElement : public Segment {
 public:
-	TetrisElement(int col_start, int row_start, int col_max,
-			int row_max);
-	void rotate_Right(int amount);
-	void rotate_Left(int amount);
+	TetrisElement(std::string type, int seg_size);
+	void move_Down(int move_amount);
+	void move_Right(int move_amount);
+	void move_Left(int move_amount);
+	void rotate(int amount);
+private:
+	int element_size;
 };
 
 #endif /* TETRISELEMENT_H_ */
