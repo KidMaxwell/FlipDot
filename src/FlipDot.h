@@ -11,6 +11,7 @@
 #include <string>
 #include "Dot.h"
 #include "DigitalWatch.h"
+#include "TextEditor.h"
 //#include "SnakeSingle.h"
 #include "Screen.h"
 #include "HAL_HardwareDefines.h"

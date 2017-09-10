@@ -10,7 +10,6 @@
  * 	Implementiert die Methoden zum Anzeigen der Ziffern
  */
 #include "ClockSegment.h"
-#include <iostream>
 
 ClockSegment::ClockSegment(int col_start, int row_start,
 		int col_max, int row_max):

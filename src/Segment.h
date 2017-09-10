@@ -8,6 +8,7 @@
 #ifndef SEGMENT_H_
 #define SEGMENT_H_
 #include <vector>
+#include <iostream>
 #include "HAL_HardwareDefines.h"
 
 class Segment {

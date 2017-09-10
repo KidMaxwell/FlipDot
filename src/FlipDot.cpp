@@ -28,7 +28,7 @@ void FlipDot::consoleMenu() {
 			<< endl << "Es gibt folgende Modi:" << endl << endl;
 	while (1) {
 		cout << "\t1: Einzelauswahl" << endl << "\t2: Gesamtauswahl" << endl
-				<< "\t3: Digitaluhr" << endl << endl
+				<< "\t3: Digitaluhr" << endl << "\t5: Text Editor" << endl <<endl
 				<< "Auswahl durch eintippen der Auswahlnummer und Bestaetigung mittels Enter"
 				<< endl
 				<< "Fuer weitere Erlaeuterungen: Auswahlnummer? eingeben und bestaetigen"
@@ -49,6 +49,8 @@ void FlipDot::consoleMenu() {
 			 snake->consoleMenu();
 			 seg_FlipDotDisplay->changeAll(true);
 			 */
+		}	else if (input=="5") {
+			TextEditor *textEditor = new TextEditor(screen_p);
 		}
 		else {
 			cout << endl << endl << "Bitte erneute Auswahl:" << endl
