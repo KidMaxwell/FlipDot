@@ -14,10 +14,15 @@ class Segment {
 public:
 	Segment(int col_start, int row_start, int col_max,
 			int row_max);
+	struct koordinates{
+		std::vector<int> row;
+		std::vector<int> column;
+	};
 	void change(int seg_row, int seg_column, bool newState);
 	void changeRow(int seg_row, bool newState);
 	void changeColumn(int seg_column, bool newState);
 	void changeAll(bool newState);
+	void changeSegment(Segment* segment);
 	//Getter
 	int get_seg_row_start();
 	int get_seg_row_hight();

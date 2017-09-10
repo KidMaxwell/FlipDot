@@ -20,6 +20,7 @@ public:
 	void move_Right(int move_amount);
 	void move_Left(int move_amount);
 	void rotate(int amount);
+	Segment::koordinates get_lowestDot();
 private:
 	int element_size;
 };

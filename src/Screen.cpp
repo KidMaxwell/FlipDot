@@ -6,7 +6,6 @@
  */
 
 #include "Screen.h"
-#include <iostream>
 
 using namespace std;
 
@@ -138,7 +137,8 @@ void Screen::remove_builtColumn() {
 				break;
 			}
 		}
-		built_columns.push_back(column);
+		if (!built)
+			built_columns.push_back(column);
 	}
 	// Löschen einer vollständigen Spalte
 	// Spalten, die links davon liegen rutschen nach
@@ -155,6 +155,27 @@ void Screen::remove_builtColumn() {
 			}
 		}
 		seg_leftToBuiltColumn.set_seg_column_start(COL_MIN + 1);
-		updateScreen_Segment (seg_leftToBuiltColumn);
+		updateScreen_Segment(seg_leftToBuiltColumn);
 	}
 }
+
+/*
+ * Prüfen, ob Koordinaten des tiefsten Punkts einen Dot berühren
+ */
+bool Screen::check_hitBuilt(Segment::koordinates koord) {
+	int lowestColumn = koord.column.front() + 1;
+	for (vector<int>::iterator it_row = koord.row.begin();
+			it_row != koord.row.end(); it_row++) {
+		return sollDisplay[*it_row][lowestColumn]->getState();
+	}
+	return true;
+}
+
+bool Screen::check_hitTop() {
+	for (int row = ROW_MIN; row < ROW_MAX; row++) {
+		if (sollDisplay[row][COL_MIN]->getState())
+			return true;
+	}
+	return false;
+}
+

@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "Screen.h"
+#include "Segment.h"
 #include "TetrisElement.h"
 #include "HAL_HardwareDefines.h"
 #include "TetrisDefines.h"
@@ -23,18 +24,18 @@ public:
 	Tetris(Screen* scr_p);
 	void menuTetris();
 	void runTetris();
-	void move_Down(TetrisElement* newElement, int move_amount);
-	void move_Right(TetrisElement* newElement, int move_amount);
-	void move_Left(TetrisElement* newElement, int move_amount);
+	void moveElement();
 	TetrisElement createElement();
+	bool check_hitBuilt();
 	int rand_min_max(int min, int max);
 private:
 	Screen* screen_p;
+	Segment* seg_built;
 	TetrisElement* elements_Array[5];
 	TetrisElement* newElement_p;
 	HAL_Button* buttons;
 	HAL_Button::buttonHits_Tetris button_hits;
-	unsigned int speed;
+	unsigned int speed, highscore;
 
 };
 

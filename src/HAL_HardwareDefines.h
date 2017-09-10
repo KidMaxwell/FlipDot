@@ -4,7 +4,6 @@
  *  Created on: 13.08.2017
  *      Author: alexander
  */
-#include "TetrisDefines.h"
 
 #ifndef HAL_HARDWAREDEFINES_H_
 #define HAL_HARDWAREDEFINES_H_

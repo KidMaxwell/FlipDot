@@ -89,6 +89,23 @@ void Segment::changeAll(bool newState) {
 	}
 }
 
+void Segment::changeSegment(Segment* segment) {
+	int row_start = segment->get_seg_row_start();
+	int column_start = segment->get_seg_column_start();
+	int row_max = segment->get_seg_row_hight();
+	int column_max = segment->get_seg_column_width();
+	// Grenzen testen, ob es reinpasst
+	if (row_start >= seg_row_hight && column_start >= seg_column_width
+			&& (row_start + row_max) <= (seg_row_start + seg_row_hight)
+			&& (column_start + column_max)
+					<= (seg_column_start + seg_column_width)) {
+		//TODO Eingügen des Segments
+	}
+	else{
+		cout << "neues Segment passt nicht in Ausgangssegment" << endl;
+	}
+}
+
 /*
  * Getter für die Werte, die im Vector stehen
  */
