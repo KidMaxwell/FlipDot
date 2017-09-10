@@ -390,7 +390,7 @@ void Digit3x5::showX() {
 	change(0, 2, true);
 	change(1, 0, true);
 	change(1, 2, true);
-	changeRow(2, true);
+	change(2, 1, true);
 	change(3, 0, true);
 	change(3, 2, true);
 	change(4, 0, true);

@@ -22,7 +22,7 @@ void TextEditor::loop() {
 		screen->updateScreen_All(false);
 		cout << endl << "Text eintippen!" << endl;
 		string in;
-		cin >> in;
+		getline(cin, in);
 			int length = in.length();
 			if (length < 15) {
 				for (int i = 0; i < length; i++) {
