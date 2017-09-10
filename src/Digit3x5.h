@@ -57,7 +57,10 @@ public:
 	void show9();
 	void showQM();
 	void showFS();
+	void showComma();
 	void showEM();
+	void showDP();
+	void showSemCol();
 	void showError();
 };
 

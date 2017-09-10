@@ -16,10 +16,10 @@
 class TextEditor {
 public:
 	TextEditor(Screen* scr_p);
-
+	void stringInput(string print);
+	void userInput();
 private:
 	Screen* screen;
-	void loop();
 };
 
 

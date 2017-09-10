@@ -51,6 +51,7 @@ void FlipDot::consoleMenu() {
 			 */
 		}	else if (input=="5") {
 			TextEditor *textEditor = new TextEditor(screen_p);
+			textEditor->userInput();
 		}
 		else {
 			cout << endl << endl << "Bitte erneute Auswahl:" << endl
@@ -70,7 +71,7 @@ int row = 0;
 int column = 0;
 int newStateI = 0;
 bool newState = false;
-screen_p->showIstScreen_Console();
+screen_p->showScreen_Console();
 char abort = 'n';
 while (1) {
 	cout << endl << "Abbruch? y/n: ";
@@ -87,7 +88,7 @@ while (1) {
 	newState = (bool) newStateI;
 	screen_p->updateScreen_Single(row, column, newState);
 	screen_p->showScreen_Display();
-	screen_p->showIstScreen_Console();
+	screen_p->showScreen_Console();
 }
 }
 
@@ -102,7 +103,7 @@ cin >> newState;
 cout << endl;
 screen_p->updateScreen_All(newState);
 screen_p->showScreen_Display();
-screen_p->showIstScreen_Console();
+screen_p->showScreen_Console();
 }
 
 /*

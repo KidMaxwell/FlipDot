@@ -125,11 +125,20 @@ void Digit3x5::chooseDigit(string digit) {
 	else if(digit=="."){
 		showFS();
 	}
+	else if(digit==","){
+		showComma();
+	}
 	else if(digit=="!"){
 		showEM();
 	}
 	else if(digit==" "){
 
+	}
+	else if(digit==":"){
+		showDP();
+	}
+	else if(digit==";"){
+		showSemCol();
 	}
 	else {
 		showError();
@@ -521,11 +530,27 @@ void Digit3x5::showFS() {
 	change(4, 0, true);
 }
 
+void Digit3x5::showComma() {
+	change(3, 1, true);
+	change(4, 0, true);
+}
+
 void Digit3x5::showEM() {
 	change(0, 1, true);
 	change(1, 1, true);
 	change(2, 1, true);
 	change(4, 1, true);
+}
+
+void Digit3x5::showDP() {
+	change(1, 1, true);
+	change(3, 1, true);
+}
+
+void Digit3x5::showSemCol() {
+	change(1, 1, true);
+	change(3, 1, true);
+	change(4, 0, true);
 }
 
 void Digit3x5::showError() {
