@@ -124,10 +124,12 @@ void Screen::showScreen_Console() {
 
 /*
  * Auffinden und Löschen vollständiger Reihen
+ * Führt nur ein Update auf dem Screen druch -> liegt im sollDisplay!
  */
+// TODO +++ Testen!
 void Screen::remove_builtColumn() {
 	vector<int> built_columns;
-	// Auffinden einer vollständigen Reihe
+	// Auffinden einer vollständigen Reihe (von oben nach unten)
 	for (int column = COL_MAX; column != 0; column--) {
 		bool built = true;
 		for (int row = 0; row < ROW_MAX; row++) {
@@ -138,7 +140,21 @@ void Screen::remove_builtColumn() {
 		}
 		built_columns.push_back(column);
 	}
-	// Löschen einer vollständigen Reihe
-	// Reihen die darüber liegen rutschen nach
-	for()
+	// Löschen einer vollständigen Spalte
+	// Spalten, die links davon liegen rutschen nach
+	for (vector<int>::iterator it = built_columns.begin();
+			it != built_columns.end(); it++) {
+		int remove_column = *it;
+		Segment seg_leftToBuiltColumn = *(new Segment(COL_MIN, ROW_MIN,
+				(COL_MAX - remove_column), ROW_MAX));
+		for (int column = COL_MIN; column < remove_column; column++) {
+			for (int row = ROW_MIN; row < ROW_MIN; row++) {
+				bool newState = sollDisplay[row][column]->getState();
+				seg_leftToBuiltColumn.change(row, column, newState);
+				sollDisplay[row][column]->setState(false);
+			}
+		}
+		seg_leftToBuiltColumn.set_seg_column_start(COL_MIN + 1);
+		updateScreen_Segment (seg_leftToBuiltColumn);
+	}
 }

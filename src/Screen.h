@@ -5,6 +5,8 @@
  *      Author: alexander
  */
 #include <iostream>
+#include <vector>
+#include <iterator>
 #include "HAL_HardwareDefines.h"
 #include "HAL_Addr.h"
 #include "Dot.h"

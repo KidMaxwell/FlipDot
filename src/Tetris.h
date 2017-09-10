@@ -26,7 +26,6 @@ public:
 	void move_Down(TetrisElement* newElement, int move_amount);
 	void move_Right(TetrisElement* newElement, int move_amount);
 	void move_Left(TetrisElement* newElement, int move_amount);
-	int countButtonHits();
 	TetrisElement createElement();
 	int rand_min_max(int min, int max);
 private:
