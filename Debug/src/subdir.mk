@@ -9,6 +9,7 @@ CPP_SRCS += \
 ../src/Dot.cpp \
 ../src/FlipDot.cpp \
 ../src/HAL_Addr.cpp \
+../src/HAL_Button.cpp \
 ../src/HAL_ShiftRegister.cpp \
 ../src/Screen.cpp \
 ../src/Segment.cpp \
@@ -26,6 +27,7 @@ OBJS += \
 ./src/Dot.o \
 ./src/FlipDot.o \
 ./src/HAL_Addr.o \
+./src/HAL_Button.o \
 ./src/HAL_ShiftRegister.o \
 ./src/Screen.o \
 ./src/Segment.o \
@@ -43,6 +45,7 @@ CPP_DEPS += \
 ./src/Dot.d \
 ./src/FlipDot.d \
 ./src/HAL_Addr.d \
+./src/HAL_Button.d \
 ./src/HAL_ShiftRegister.d \
 ./src/Screen.d \
 ./src/Segment.d \

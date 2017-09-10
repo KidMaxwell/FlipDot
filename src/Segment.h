@@ -24,9 +24,14 @@ public:
 	int get_seg_column_start();
 	int get_seg_column_width();
 	bool get_state(int seg_row, int seg_column);
+	//Setter
+	void set_seg_row_start(int row_start);
+	void set_seg_row_hight(int row_hight);
+	void set_seg_column_start(int column_start);
+	void set_seg_column_width(int column_width);
 protected:
 	bool checkValues();
-	const int seg_column_start, seg_row_start, seg_column_width, seg_row_hight;
+	int seg_column_start, seg_row_start, seg_column_width, seg_row_hight;
 	bool newState;
 	std::vector< std::vector<bool> > vec_dots;
 };
