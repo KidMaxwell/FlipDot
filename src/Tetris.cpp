@@ -30,7 +30,7 @@ void Tetris::menuTetris() {
  * Hauptsteuerschleife
  */
 void Tetris::runTetris() {
-	while (screen_p->check_hitTop()) {
+	do {
 		// zufälliges Erzeugen neuer Elemente
 		TetrisElement newElement = createElement();
 		newElement_p = &newElement;
@@ -40,7 +40,7 @@ void Tetris::runTetris() {
 		seg_built->changeSegment(newElement_p);
 		// Löschen voller Reihen
 		screen_p->remove_builtColumn();
-	}
+	} while (screen_p->check_hitTop());
 }
 
 void Tetris::moveElement() {
@@ -50,17 +50,43 @@ void Tetris::moveElement() {
 		// pos: Verschiebung nach links, neg: Verschiebung nach rechts
 		int move_amount = button_hits.b_left - button_hits.b_right;
 		if (move_amount > 0)
-			newElement_p->move_Left(move_amount);
+			moveElement_Direction("left", move_amount);
 		if (move_amount < 0)
-			newElement_p->move_Right(0 - move_amount);
+			moveElement_Direction("right", 0 - move_amount);
+		moveElement_Direction("down", 1);
+		screen_p->updateScreen_Segment(*newElement_p);
+		screen_p->showScreen_Display();
+		screen_p->showScreen_Console();
 	}
 }
+
+/*
+ * Erzeugt ein zufälliges TetrisElement
+ */
 TetrisElement Tetris::createElement() {
 	TetrisElement newElement = *(elements_Array[rand_min_max(0, 3)]);
 	newElement.rotate(rand_min_max(0, 3));
 	return newElement;
 }
 
+void Tetris::moveElement_Direction(string direction, int move_amount) {
+	Segment* seg_p = (Segment*) malloc(sizeof(Segment));
+	if (direction == "down") {
+		seg_p = newElement_p->move_Down(move_amount);
+	} else if (direction == "left") {
+		seg_p = newElement_p->move_Left(move_amount);
+	} else if (direction == "right") {
+		seg_p = newElement_p->move_Right(move_amount);
+	} else {
+		cout << "Fehler: falscher Parameter moveElement_Direction" << endl;
+	}
+	screen_p->updateScreen_Segment(*seg_p);
+	free(seg_p);
+}
+
+/*
+ * Prüft, ob Element schon auf Built-Bereich ist
+ */
 bool Tetris::check_hitBuilt() {
 	Segment::koordinates koord = newElement_p->get_lowestDot();
 	if (koord.row.front() != -1 && koord.column.front() != -1)
@@ -71,6 +97,9 @@ bool Tetris::check_hitBuilt() {
 	}
 }
 
+/*
+ * Gernerierten einer Zufallszahl im Bereich [min, max]
+ */
 int Tetris::rand_min_max(int min, int max) {
 	srand((unsigned) time(NULL));
 	return rand() % (max - min + 1) + min + 1;

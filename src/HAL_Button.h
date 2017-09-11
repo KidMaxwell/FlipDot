@@ -7,6 +7,7 @@
 #include <iostream>
 #include <wiringPi.h>
 #include "HAL_HardwareDefines.h"
+#include "TetrisDefines.h"
 
 #ifndef HAL_BUTTON_H_
 #define HAL_BUTTON_H_

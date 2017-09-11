@@ -40,15 +40,28 @@ TetrisElement::TetrisElement(string type, int seg_size) :
 	}
 }
 
-void TetrisElement::move_Down(int move_amount) {
+Segment* TetrisElement::move_Down(int move_amount) {
+	Segment* seg_above = new Segment(seg_column_start, seg_row_start,
+			move_amount, seg_row_hight);
+	seg_above->changeAll(false);
 	seg_column_start += move_amount;
+	return seg_above;
 }
 
-void TetrisElement::move_Right(int move_amount) {
+Segment* TetrisElement::move_Right(int move_amount) {
+	Segment* seg_right = new Segment(seg_column_start, (seg_row_start + seg_row_hight),
+				move_amount, 1);
+		seg_right->changeAll(false);
 	seg_row_start -= move_amount;
+	return seg_right;
 }
-void TetrisElement::move_Left(int move_amount) {
+
+Segment* TetrisElement::move_Left(int move_amount) {
+	Segment* seg_left = new Segment(seg_column_start, seg_row_start,
+					move_amount, 1);
+			seg_left->changeAll(false);
 	seg_row_start += move_amount;
+	return seg_left;
 }
 
 void TetrisElement::rotate(int amount) {
