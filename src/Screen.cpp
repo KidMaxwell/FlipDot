@@ -54,8 +54,7 @@ void Screen::showScreen_Display() {
 			if (sollDot->getState() != istDot->getState()) {
 				bool newState = sollDot->getState();
 				istDot->setState(newState);
-				addr->loadSR(disp_row, disp_column, newState);
-				addr->enable(newState);
+				hardwareFlip(disp_row, disp_column, newState);
 			}
 		}
 	}
@@ -113,4 +112,22 @@ void Screen::showScreen_Console() {
 	}
 	cout << "-----------------------------------------------------------"
 			<< endl;
+}
+
+void Screen::showInstantSingle(int row, int column, bool newState) {
+	istDisplay[row][column]->setState(newState);
+	hardwareFlip(row, column, newState);
+}
+
+void Screen::showInstantDot(Dot dot) {
+	int row=dot.getRow();
+	int column=dot.getColumn();
+	bool newState=dot.getState();
+	istDisplay[row][column]->setState(newState);
+	hardwareFlip(row, column, newState);
+}
+
+void Screen::hardwareFlip(int row, int column, bool newState) {
+	addr->loadSR(row, column, newState);
+	addr->enable(newState);
 }
