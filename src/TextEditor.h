@@ -16,8 +16,8 @@
 class TextEditor {
 public:
 	TextEditor(Screen* scr_p);
-	void stringInput(string print);
 	void userInput();
+	bool stringInput(string print);
 private:
 	Screen* screen;
 };

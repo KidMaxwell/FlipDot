@@ -13,7 +13,7 @@ TextEditor::TextEditor(Screen* scr_p) :
 		screen(scr_p) {
 	screen->updateScreen_All(false);
 	screen->showScreen_Display();
-	screen->showScreen_Console();
+//	screen->showScreen_Console();
 }
 
 void TextEditor::userInput() {
@@ -26,7 +26,7 @@ void TextEditor::userInput() {
 	}
 }
 
-void TextEditor::stringInput(string print) {
+bool TextEditor::stringInput(string print) {
 	int length = print.length();
 	if (length < 15) {
 		for (int i = 0; i < length; i++) {
@@ -34,8 +34,10 @@ void TextEditor::stringInput(string print) {
 			digit->chooseDigit(print.substr(i, 1));
 			screen->updateScreen_Segment(*digit);
 		}
+		return true;
 	} else {
 		cout << "Text zu lang, bitte kuerzer (max. 14)" << endl;
+		return false;
 	}
 	screen->showScreen_Display();
 	screen->showScreen_Console();
