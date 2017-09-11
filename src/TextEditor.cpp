@@ -12,7 +12,7 @@ using namespace std;
 TextEditor::TextEditor(Screen* scr_p) :
 		screen(scr_p) {
 	screen->updateScreen_All(false);
-	screen->showScreen_Display();
+//	screen->showScreen_Display();
 //	screen->showScreen_Console();
 }
 
@@ -22,7 +22,9 @@ void TextEditor::userInput() {
 		cout << endl << "Text eintippen!" << endl;
 		string in;
 		getline(cin, in);
-		stringInput(in);
+		if (!stringInput(in)) {
+			cout << "Text zu lang, bitte kuerzer (max. 14)" << endl;
+		}
 	}
 }
 
@@ -34,11 +36,10 @@ bool TextEditor::stringInput(string print) {
 			digit->chooseDigit(print.substr(i, 1));
 			screen->updateScreen_Segment(*digit);
 		}
+		screen->showScreen_Display();
+		screen->showScreen_Console();
 		return true;
 	} else {
-		cout << "Text zu lang, bitte kuerzer (max. 14)" << endl;
 		return false;
 	}
-	screen->showScreen_Display();
-	screen->showScreen_Console();
 }
