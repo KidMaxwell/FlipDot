@@ -7,11 +7,9 @@
 #include <iostream>
 #include <vector>
 #include <iterator>
-#include "HAL_HardwareDefines.h"
 #include "HAL_Addr.h"
 #include "Dot.h"
 #include "Segment.h"
-#include "TetrisElement.h"
 
 #ifndef SCREEN_H_
 #define SCREEN_H_

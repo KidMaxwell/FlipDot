@@ -14,7 +14,6 @@
 //#include "SnakeSingle.h"
 #include "Tetris.h"
 #include "Screen.h"
-#include "HAL_HardwareDefines.h"
 
 class FlipDot {
 public:

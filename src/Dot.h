@@ -5,6 +5,8 @@
  *      Author: paul, alex
  */
 
+#include <iostream>
+
 #ifndef DOT_H_
 #define DOT_H_
 

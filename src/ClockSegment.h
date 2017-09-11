@@ -4,8 +4,8 @@
  *  Created on: 17.08.2017
  *      Author: alexander, paul
  */
-#include "Segment.h"
 #include "Screen.h"
+#include "Segment.h"
 
 #ifndef CLOCKSEGMENT_H_
 #define CLOCKSEGMENT_H_

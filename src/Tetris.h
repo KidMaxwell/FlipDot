@@ -10,9 +10,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "Screen.h"
-#include "Segment.h"
 #include "TetrisElement.h"
-#include "HAL_HardwareDefines.h"
 #include "TetrisDefines.h"
 #include "HAL_Button.h"
 

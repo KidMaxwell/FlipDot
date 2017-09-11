@@ -4,6 +4,7 @@
  *  Created on: 13.08.2017
  *      Author: alexander
  */
+#include <iostream>
 #include <wiringPi.h>
 #include "HAL_HardwareDefines.h"
 #include "HAL_ShiftRegister.h"

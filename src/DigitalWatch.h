@@ -4,13 +4,13 @@
  *  Created on: 09.08.2017
  *      Author: alexander
  */
-#include "ClockSegment.h"
-#include "Screen.h"
+
 #include <iostream>
 #include <time.h>
 #include <string>
 #include <unistd.h>
-
+#include "Screen.h"
+#include "ClockSegment.h"
 
 #ifndef DIGITALWATCH_H_
 #define DIGITALWATCH_H_
