@@ -7,7 +7,6 @@
  *  Möglichkeit die Anzeige in Segemente zu unterteilen.
  */
 #include "Segment.h"
-#include <iostream>
 
 using namespace std;
 

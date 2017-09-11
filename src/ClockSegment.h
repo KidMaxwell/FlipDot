@@ -5,7 +5,7 @@
  *      Author: alexander, paul
  */
 #include "Segment.h"
-#include "Screen.h"
+#include <iostream>
 
 #ifndef CLOCKSEGMENT_H_
 #define CLOCKSEGMENT_H_

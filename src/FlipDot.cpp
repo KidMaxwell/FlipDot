@@ -27,7 +27,8 @@ void FlipDot::consoleMenu() {
 			<< endl << "Es gibt folgende Modi:" << endl << endl;
 	while (1) {
 		cout << "\t1: Einzelauswahl" << endl << "\t2: Gesamtauswahl" << endl
-				<< "\t3: Digitaluhr" << endl << endl
+				<< "\t3: Digitaluhr" << endl << "\t5: Text Editor" << endl
+				<< endl
 				<< "Auswahl durch eintippen der Auswahlnummer und Bestaetigung mittels Enter"
 				<< endl
 				<< "Fuer weitere Erlaeuterungen: Auswahlnummer? eingeben und bestaetigen"
@@ -47,6 +48,9 @@ void FlipDot::consoleMenu() {
 			snake->consoleMenu();
 			screen_p->updateScreen_All(false);
 			screen_p->showScreen_Display();
+		} else if (input == "5") {
+			TextEditor *textEditor = new TextEditor(screen_p);
+			textEditor->userInput();
 		} else if (input == "1?") {
 			cout << endl << "Auswahl einzelner Dots möglich." << endl;
 		} else if (input == "2?") {
@@ -61,7 +65,8 @@ void FlipDot::consoleMenu() {
 					<< endl
 					<< "weitere Informationen in der Menüführung der Spiels."
 					<< endl;
-		} else {
+		}
+		else {
 			cout << endl << endl << "Bitte erneute Auswahl:" << endl << endl;
 			continue;
 		}
@@ -78,7 +83,7 @@ void FlipDot::modeChange() {
 	int column = 0;
 	int newStateI = 0;
 	bool newState = false;
-	screen_p->showIstScreen_Console();
+	screen_p->showScreen_Console();
 	char abort = 'n';
 	while (1) {
 		cout << endl << "Abbruch? y/n: ";
@@ -95,7 +100,7 @@ void FlipDot::modeChange() {
 		newState = (bool) newStateI;
 		screen_p->updateScreen_Single(row, column, newState);
 		screen_p->showScreen_Display();
-		screen_p->showIstScreen_Console();
+		screen_p->showScreen_Console();
 	}
 }
 
@@ -104,13 +109,13 @@ void FlipDot::modeChange() {
  * danach direkter Rücksprung ins Hauptmenü
  */
 void FlipDot::modeChangeAll() {
-	int newState = 0;
-	cout << "NewState: ";
-	cin >> newState;
-	cout << endl;
-	screen_p->updateScreen_All(newState);
-	screen_p->showScreen_Display();
-	screen_p->showIstScreen_Console();
+int newState = 0;
+cout << "NewState: ";
+cin >> newState;
+cout << endl;
+screen_p->updateScreen_All(newState);
+screen_p->showScreen_Display();
+screen_p->showScreen_Console();
 }
 
 /*
@@ -118,7 +123,7 @@ void FlipDot::modeChangeAll() {
  * Start des Programms
  */
 int main() {
-	FlipDot* f = new FlipDot();
-	f->consoleMenu();
-	return 0;
+FlipDot* f = new FlipDot();
+f->consoleMenu();
+return 0;
 }
