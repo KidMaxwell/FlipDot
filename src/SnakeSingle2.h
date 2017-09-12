@@ -17,6 +17,8 @@
 #include <vector>
 #include "HAL_HardwareDefines.h"
 #include <cstdlib>
+#include "TextEditor.h"
+#include <sstream>
 
 using namespace std;
 

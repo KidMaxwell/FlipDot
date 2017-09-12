@@ -13,6 +13,9 @@ SnakeSingle2::SnakeSingle2(Screen* scr_p) :
 	screen->showScreen_Display();
 	consoleOutput = true;
 	lastDirection = 5;
+	alive = true;
+	startOrientation = 0;
+	apple = NULL;
 }
 
 void SnakeSingle2::menu() {
@@ -50,6 +53,10 @@ void SnakeSingle2::game() {
 		move(dir);
 	}
 	cout << "GAME OVER!!" << endl << endl;
+	TextEditor* textEditor=new TextEditor(screen);
+	stringstream out;
+	out << "score: " << (snakeVector.size()-START_LENGTH);
+	textEditor->stringInput(out.str());
 
 }
 
@@ -85,9 +92,13 @@ void SnakeSingle2::placeApple() {
 	int randRow = rand()%14+1;
 	int randColumn = rand()%26+1;
 	apple = new Dot(randRow, randColumn, true);
-	screen->showInstantDot(*apple);
-	if(consoleOutput) {
-		screen->showScreen_Console();
+	if(checkNewHeadNoSnake(apple)) {
+		screen->showInstantDot(*apple);
+		if(consoleOutput) {
+			screen->showScreen_Console();
+		}
+	} else {
+		placeApple();
 	}
 }
 
@@ -188,7 +199,7 @@ void SnakeSingle2::move(int dir) {
 
 bool SnakeSingle2::checkNewHeadNoSnake(Dot* newHead) {
 	bool noSnake = true;
-	for(int i=0 ; i<snakeVector.size(); i++) {
+	for(unsigned int i=0 ; i<snakeVector.size(); i++) {
 		if(snakeVector.at(i)->getRow()==newHead->getRow()&&snakeVector.at(i)->getColumn()==newHead->getColumn()) {
 			noSnake=false;
 		}
@@ -198,7 +209,7 @@ bool SnakeSingle2::checkNewHeadNoSnake(Dot* newHead) {
 
 bool SnakeSingle2::checkNewHeadNoBorder(Dot* newHead) {
 	bool noBorder = true;
-	for(int i=0 ; i<borderVector.size(); i++) {
+	for(unsigned int i=0 ; i<borderVector.size(); i++) {
 		if(borderVector.at(i)->getRow()==newHead->getRow()&&borderVector.at(i)->getColumn()==newHead->getColumn()) {
 			noBorder=false;
 		}
