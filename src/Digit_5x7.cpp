@@ -1,59 +1,59 @@
 /*
- * ClockSegment.cpp
+ * Digit_5x7.cpp
  *
- *  Created on: 17.08.2017
+ *  Created on: 17.09.2017
  *      Author: alexander
  */
 
-/*
- * Sub-Klasse von Segment
- * 	Implementiert die Methoden zum Anzeigen der Ziffern
- */
-#include "ClockSegment.h"
-#include <iostream>
+#include "Digit_5x7.h"
 
-ClockSegment::ClockSegment(int col_start, int row_start,
-		int col_max, int row_max):
-		Segment(col_start, row_start, col_max, row_max)
-		{}
+using namespace std;
 
-void ClockSegment::choseNumber(int number) {
+Digit_5x7::Digit_5x7(int col_start, int row_start) :
+		Segment(col_start, row_start, 5, 7) {
+}
+
+void Digit_5x7::choseDigit(string digit) {
 	changeAll(false);
-	switch (number) {
-	case (0):
+	if(digit == "0"){
 		show0();
-		break;
-	case (1):
+	}
+	else if (digit == "1") {
 		show1();
-		break;
-	case (2):
-		show2();
-		break;
-	case (3):
-		show3();
-		break;
-	case (4):
-		show4();
-		break;
-	case (5):
-		show5();
-		break;
-	case (6):
-		show6();
-		break;
-	case (7):
-		show7();
-		break;
-	case (8):
-		show8();
-		break;
-	case (9):
-		show9();
-		break;
+	}
+	else if (digit == "2") {
+			show2();
+		}
+	else if (digit == "3") {
+			show3();
+		}
+	else if (digit == "4") {
+			show4();
+		}
+	else if (digit == "5") {
+			show5();
+		}
+	else if (digit == "6") {
+			show6();
+		}
+	else if (digit == "7") {
+			show7();
+		}
+	else if (digit == "8") {
+			show8();
+		}
+	else if (digit == "9") {
+			show9();
+		}
+	else if (digit == ":") {
+			showDoubleDots();
+		}
+	else{
+		cout << "Fehler: nicht darstellbares Zeichen eingegeben" << endl;
 	}
 }
 
-void ClockSegment::show0() {
+void Digit_5x7::show0() {
 	change(0, 1, true);
 	change(0, 2, true);
 	change(0, 3, true);
@@ -72,11 +72,11 @@ void ClockSegment::show0() {
 	change(6, 3, true);
 }
 
-void ClockSegment::show1() {
+void Digit_5x7::show1() {
 	changeColumn(2, true);
 }
 
-void ClockSegment::show2() {
+void Digit_5x7::show2() {
 	change(0, 1, true);
 	change(0, 2, true);
 	change(0, 3, true);
@@ -89,7 +89,7 @@ void ClockSegment::show2() {
 	changeRow(6, true);
 }
 
-void ClockSegment::show3() {
+void Digit_5x7::show3() {
 	change(0, 0, true);
 	change(0, 1, true);
 	change(0, 2, true);
@@ -107,7 +107,7 @@ void ClockSegment::show3() {
 	change(6, 3, true);
 }
 
-void ClockSegment::show4() {
+void Digit_5x7::show4() {
 	change(0, 0, true);
 	change(1, 0, true);
 	change(2, 0, true);
@@ -118,7 +118,7 @@ void ClockSegment::show4() {
 	change(6, 2, true);
 }
 
-void ClockSegment::show5() {
+void Digit_5x7::show5() {
 	changeRow(0, true);
 	change(1, 0, true);
 	change(2, 0, true);
@@ -134,7 +134,7 @@ void ClockSegment::show5() {
 	change(6, 3, true);
 }
 
-void ClockSegment::show6() {
+void Digit_5x7::show6() {
 	change(0, 1, true);
 	change(0, 2, true);
 	change(0, 3, true);
@@ -153,7 +153,7 @@ void ClockSegment::show6() {
 	change(6, 3, true);
 }
 
-void ClockSegment::show7() {
+void Digit_5x7::show7() {
 	change(0, 0, true);
 	change(0, 1, true);
 	change(0, 2, true);
@@ -168,7 +168,7 @@ void ClockSegment::show7() {
 	change(6, 3, true);
 }
 
-void ClockSegment::show8() {
+void Digit_5x7::show8() {
 	change(0, 1, true);
 	change(0, 2, true);
 	change(0, 3, true);
@@ -188,7 +188,7 @@ void ClockSegment::show8() {
 	change(6, 3, true);
 }
 
-void ClockSegment::show9() {
+void Digit_5x7::show9() {
 	change(0, 1, true);
 	change(0, 2, true);
 	change(0, 3, true);
@@ -205,4 +205,15 @@ void ClockSegment::show9() {
 	change(6, 1, true);
 	change(6, 2, true);
 	change(6, 3, true);
+}
+
+void Digit_5x7::showDoubleDots(){
+	change(0, 0, true);
+	change(0, 1, true);
+	change(1, 0, true);
+	change(1, 1, true);
+	change(3, 0, true);
+	change(3, 1, true);
+	change(4, 0, true);
+	change(4, 1, true);
 }

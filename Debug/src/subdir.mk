@@ -4,7 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/ClockSegment.cpp \
+../src/Digit_5x7.cpp \
 ../src/DigitalWatch.cpp \
 ../src/Dot.cpp \
 ../src/FlipDot.cpp \
@@ -17,7 +17,7 @@ CPP_SRCS += \
 ../src/TetrisElement.cpp 
 
 OBJS += \
-./src/ClockSegment.o \
+./src/Digit_5x7.o \
 ./src/DigitalWatch.o \
 ./src/Dot.o \
 ./src/FlipDot.o \
@@ -30,7 +30,7 @@ OBJS += \
 ./src/TetrisElement.o 
 
 CPP_DEPS += \
-./src/ClockSegment.d \
+./src/Digit_5x7.d \
 ./src/DigitalWatch.d \
 ./src/Dot.d \
 ./src/FlipDot.d \

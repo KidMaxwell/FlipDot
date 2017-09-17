@@ -8,9 +8,10 @@
 #include <iostream>
 #include <time.h>
 #include <string>
+#include <sstream>
 #include <unistd.h>
 #include "Screen.h"
-#include "ClockSegment.h"
+#include "Digit_5x7.h"
 
 #ifndef DIGITALWATCH_H_
 #define DIGITALWATCH_H_
@@ -22,8 +23,8 @@ public:
 private:
 	Screen *screen_p;
 	Segment *seg_upperLine, *seg_lowerLine;
-	Segment *seg_doubleDots;
-	ClockSegment *seg_hour1, *seg_hour2, *seg_min1, *seg_min2;
+	Digit_5x7 *seg_doubleDots;
+	Digit_5x7 *seg_hour1, *seg_hour2, *seg_min1, *seg_min2;
 };
 
 #endif /* DIGITALWATCH_H_ */
