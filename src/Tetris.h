@@ -27,7 +27,10 @@ private:
 	void moveElement();
 	void moveElement_Direction(std::string direction, int amount);
 	TetrisElement createElement();
+	bool check_validMovement(int move_amount);
+	bool check_hitTop();
 	bool check_hitBuilt();
+	void remove_builtColumn();
 	int rand_min_max(int min, int max);
 	Screen* screen_p;
 	Segment* seg_built;

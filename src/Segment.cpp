@@ -89,17 +89,27 @@ void Segment::changeAll(bool newState) {
 	}
 }
 
-void Segment::changeSegment(Segment* segment) {
-	int row_start = segment->get_seg_row_start();
-	int column_start = segment->get_seg_column_start();
-	int row_max = segment->get_seg_row_hight();
-	int column_max = segment->get_seg_column_width();
+void Segment::changeSegment(Segment* newSegment) {
+	int newSegment_row_start = newSegment->get_seg_row_start();
+	int newSegment_column_start = newSegment->get_seg_column_start();
+	int newSegment_row_max = newSegment->get_seg_row_hight();
+	int newSegment_column_max = newSegment->get_seg_column_width();
 	// Grenzen testen, ob es reinpasst
-	if (row_start >= seg_row_hight && column_start >= seg_column_width
-			&& (row_start + row_max) <= (seg_row_start + seg_row_hight)
-			&& (column_start + column_max)
+	if (newSegment_row_start >= seg_row_hight && newSegment_column_start >= seg_column_width
+			&& (newSegment_row_start + newSegment_row_max) <= (seg_row_start + seg_row_hight)
+			&& (newSegment_column_start + newSegment_column_max)
 					<= (seg_column_start + seg_column_width)) {
 		//TODO Eingügen des Segments
+		for (int newSegment_row = 0; newSegment_row < newSegment_row_max; newSegment_row++){
+			for (int newSegment_column = 0; newSegment_column < newSegment_column_max; newSegment_column++){
+				bool newSegment_state = newSegment->get_state(newSegment_row, newSegment_column);
+				// Umrechnen in Koordinaten des Segments, in das eingefügt werden soll
+				int seg_row = newSegment_row + newSegment_row_start - seg_row_start;
+				int seg_column = newSegment_column + newSegment_column_start - seg_column_start;
+				// Einfügen ins Segment
+				change(seg_row, seg_column, newSegment_state);
+			}
+		}
 	}
 	else{
 		cout << "neues Segment passt nicht in Ausgangssegment" << endl;

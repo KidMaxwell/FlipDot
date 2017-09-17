@@ -149,6 +149,7 @@ void TetrisElement::rotate(int amount) {
 
 /*
  * Tiefsten Punkt im Element lokalisieren (Querformat: am weitesten links)
+ * Rückgabe als Koordinaten in Bezug auf das gesamte Display
  */
 Segment::koordinates TetrisElement::get_lowestDot() {
 	Segment::koordinates koordinates;
@@ -157,8 +158,8 @@ Segment::koordinates TetrisElement::get_lowestDot() {
 		for (int seg_row = 0; seg_row < seg_row_hight; seg_row++) {
 			if (vec_dots[seg_row][seg_column]) {
 				found = true;
-				koordinates.row.push_back(seg_row);
-				koordinates.column.push_back(seg_column);
+				koordinates.row.push_back(seg_row + seg_row_start);
+				koordinates.column.push_back(seg_column + seg_column_start);
 			}
 		}
 		if (found)
