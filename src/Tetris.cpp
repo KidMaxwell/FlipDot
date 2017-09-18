@@ -42,7 +42,10 @@ void Tetris::runTetris() {
 }
 
 void Tetris::moveElement() {
-	while (check_hitBuilt()) {
+	// TEST
+	bool checkBuilt = check_hitBuilt();
+	/*
+	while (!check_hitBuilt()) {
 		// Steuerbewegungen Abfragen
 		// Implementiert auch das Warten
 		button_hits = buttons->readButton(speed);
@@ -57,6 +60,7 @@ void Tetris::moveElement() {
 		screen_p->showScreen_Display();
 		screen_p->showScreen_Console();
 	}
+	*/
 	// Element zum Built-Bereich hinzufügen
 	seg_built->changeSegment(newElement_p);
 }
@@ -66,7 +70,8 @@ void Tetris::moveElement() {
  */
 TetrisElement Tetris::createElement() {
 	TetrisElement newElement = *(elements_Array[rand_min_max(0, 3)]);
-	newElement.rotate(rand_min_max(0, 3));
+	// TODO Rotate() nochmal anschauen!
+//	newElement.rotate(rand_min_max(0, 3));
 	return newElement;
 }
 
@@ -120,13 +125,14 @@ bool Tetris::check_validMovement(int move_amount) {
 		}
 		return (move_amount <= max_move_amount);
 	}
-	for (int element_column = 0;
-			element_column < newElement_p->get_seg_column_width();
-			element_column++) {
-		int disp_column = element_column + newElement_p->get_seg_column_start();
-		// Bewegung nach UNTEN (Querformat)
-		if (move_amount < 0) {
-			// Am unteren Rand mit dem Durchsuchen beginne
+	// Bewegung nach UNTEN (Querformat)
+	if (move_amount < 0) {
+		for (int element_column = 0;
+				element_column < newElement_p->get_seg_column_width();
+				element_column++) {
+			int disp_column = element_column
+					+ newElement_p->get_seg_column_start();
+			// Am unteren Rand mit dem Durchsuchen beginnen
 			for (int element_row = newElement_p->get_seg_row_hight() - 1;
 					element_row != 0; element_row--) {
 				// Bestimmung macht nur bei true-Dot Sinn!
@@ -222,6 +228,19 @@ void Tetris::remove_builtColumn() {
 		seg_built->changeSegment(&seg_leftToBuiltColumn);
 		screen_p->updateScreen_Segment(*seg_built);
 	}
+	increment_Highscore(built_columns.size());
+}
+
+/*
+ * Aktualisiert den Highscore
+ * auch in Abhängigkeit von der Anzahl der auf ein Mal entfernten Reihen
+ * 10 Pkt. pro Reihe
+ * Bonus für mehrere Reihen noch zusätzlich überlegen
+ */
+void Tetris::increment_Highscore(int removed_columns){
+	int increment = removed_columns * 10;
+	// TODO Bonus noch implementieren
+	highscore += increment;
 }
 
 /*

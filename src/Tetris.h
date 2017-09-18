@@ -31,6 +31,7 @@ private:
 	bool check_hitTop();
 	bool check_hitBuilt();
 	void remove_builtColumn();
+	void increment_Highscore(int removed_columns);
 	int rand_min_max(int min, int max);
 	Screen* screen_p;
 	Segment* seg_built;

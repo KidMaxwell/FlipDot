@@ -95,11 +95,12 @@ void Segment::changeSegment(Segment* newSegment) {
 	int newSegment_row_max = newSegment->get_seg_row_hight();
 	int newSegment_column_max = newSegment->get_seg_column_width();
 	// Grenzen testen, ob es reinpasst
-	if (newSegment_row_start >= seg_row_hight && newSegment_column_start >= seg_column_width
+	if (newSegment_row_start >= seg_row_start
+			&& newSegment_column_start >= seg_column_start
 			&& (newSegment_row_start + newSegment_row_max) <= (seg_row_start + seg_row_hight)
 			&& (newSegment_column_start + newSegment_column_max)
 					<= (seg_column_start + seg_column_width)) {
-		//TODO Eingügen des Segments
+		// Einfügen des Segments
 		for (int newSegment_row = 0; newSegment_row < newSegment_row_max; newSegment_row++){
 			for (int newSegment_column = 0; newSegment_column < newSegment_column_max; newSegment_column++){
 				bool newSegment_state = newSegment->get_state(newSegment_row, newSegment_column);
@@ -112,7 +113,7 @@ void Segment::changeSegment(Segment* newSegment) {
 		}
 	}
 	else{
-		cout << "neues Segment passt nicht in Ausgangssegment" << endl;
+		cout << "Fehler: Neues Segment passt nicht in Ausgangssegment" << endl;
 	}
 }
 
@@ -122,19 +123,15 @@ void Segment::changeSegment(Segment* newSegment) {
 int Segment::get_seg_row_start() {
 	return seg_row_start;
 }
-
 int Segment::get_seg_row_hight() {
 	return seg_row_hight;
 }
-
 int Segment::get_seg_column_start() {
 	return seg_column_start;
 }
-
 int Segment::get_seg_column_width() {
 	return seg_column_width;
 }
-
 bool Segment::get_state(int seg_row, int seg_column) {
 	return vec_dots[seg_row][seg_column];
 }
