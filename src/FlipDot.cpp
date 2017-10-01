@@ -14,6 +14,7 @@ using namespace std;
  */
 FlipDot::FlipDot() {
 	screen_p = new Screen();
+	screen_p->showBlackScreen_Display();
 }
 
 /*

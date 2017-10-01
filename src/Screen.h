@@ -32,6 +32,7 @@ public:
 	void showScreen_Console();
 	void showInstantSingle(int row, int column, bool newState);
 	void showInstantDot(Dot dot);
+	void showBlackScreen_Display();
 
 private:
 	Dot* istDisplay[ROW_MAX][COL_MAX];

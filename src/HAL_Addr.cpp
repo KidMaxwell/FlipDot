@@ -5,6 +5,7 @@
  *      Author: alexander
  */
 #include "HAL_Addr.h"
+#include <iostream>
 
 using namespace std;
 
@@ -22,25 +23,32 @@ void HAL_Addr::enable(bool newState) {
 	delay(1);
 	digitalWrite(D_ENABLE_P, 1);
 	delay(10);
+	//cout << "disable?" << endl;
+	//int in;
+	//cin >> in;
 	digitalWrite(D_ENABLE_P, 0);
 	sr.disableSR();
 }
 
 void HAL_Addr::loadSR(int row, int column, bool newState) {
-	bool inputArray[32];
-	for (int i = 0; i < 32; i++) {
+	bool inputArray[SR_LENGTH];
+	for (int i = 0; i < SR_LENGTH; i++) {
 		inputArray[i] = false;
 	}
 // Auswählen der Zeile
 	for (int i = 0; i < row; i++) {
-		inputArray[16 + i] = !newState;
+		inputArray[24 + i] = !newState;
 	}
-	inputArray[16 + row] = newState;
+	inputArray[24 + row] = newState;
 	for (int i = (row + 1); i < 16; i++) {
-		inputArray[16 + i] = !newState;
+		inputArray[24 + i] = !newState;
 	}
 // Zeilen Enable
-	inputArray[8 + ((row) / 2)] = true;
+	if (newState == true) {
+		inputArray[8 + ((row) / 2)] = true;
+	} else if (newState == false) {
+		inputArray[16 + ((row) / 2)] = true;
+	}
 // Auswählen der Spalte
 	switch (column) {
 	case 0:

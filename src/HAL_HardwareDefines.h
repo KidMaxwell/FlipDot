@@ -13,6 +13,7 @@
 #define ROW_MAX 16
 #define ROW_MIN 0
 #define DELAY_SR 1
+#define SR_LENGTH 40
 
 // Pin-Belegung Raspi
 #define D_ENABLE_P 0

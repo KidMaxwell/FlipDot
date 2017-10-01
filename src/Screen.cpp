@@ -60,6 +60,14 @@ void Screen::showScreen_Display() {
 	}
 }
 
+void Screen::showBlackScreen_Display() {
+	for (int disp_row = ROW_MIN; disp_row < ROW_MAX; disp_row++) {
+		for (int disp_column = COL_MIN; disp_column < COL_MAX; disp_column++) {
+			hardwareFlip(disp_row, disp_column, false);
+		}
+	}
+}
+
 /*
  * Anzeigen des Ist-Displays in der Konsole (mit Gitter)
  */

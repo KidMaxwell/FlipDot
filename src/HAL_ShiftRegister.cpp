@@ -17,16 +17,17 @@
 using namespace std;
 
 HAL_ShiftRegister::HAL_ShiftRegister() {
+	wiringPiSetup();
 	pinMode(CLK_P, OUTPUT);
 	pinMode(SER_P, OUTPUT);
-	pinMode(D_ENABLE_P, OUTPUT);
+	pinMode(S_ENABLE_P, OUTPUT);
 	digitalWrite(CLK_P, 0);
 	digitalWrite(SER_P, 0);
 	digitalWrite(S_ENABLE_P, 1);
 }
 
 void HAL_ShiftRegister::loadnWrite(bool inputArray[]) {
-	for (int i = 31; i > -1; i--) {
+	for (int i = SR_LENGTH-1; i > -1; i--) {
 		digitalWrite(SER_P, inputArray[i]);
 		shifter(1);
 	}

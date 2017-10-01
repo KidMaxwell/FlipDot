@@ -57,6 +57,7 @@ void SnakeSingle2::game() {
 	stringstream out;
 	out << "score: " << (snakeVector.size()-START_LENGTH);
 	textEditor->stringInput(out.str());
+	delay(2E3);
 
 }
 
