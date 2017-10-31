@@ -19,11 +19,10 @@ Screen::Screen() :
 		}
 	}
 }
-//TODO +++ hight in HEIGHT aendern (fuer Paul)
 void Screen::updateScreen_Segment(Segment segment) {
-	int seg_row_hight = segment.get_seg_row_hight();
+	int seg_row_height = segment.get_seg_row_height();
 	int seg_column_width = segment.get_seg_column_width();
-	for (int seg_row = 0; seg_row < seg_row_hight; seg_row++) {
+	for (int seg_row = 0; seg_row < seg_row_height; seg_row++) {
 		for (int seg_column = 0; seg_column < seg_column_width; seg_column++) {
 			// Umrechnen ins Display-Format
 			int disp_row = seg_row + segment.get_seg_row_start();
