@@ -6,6 +6,7 @@
 CPP_SRCS += \
 ../src/ClockSegment.cpp \
 ../src/Digit3x5.cpp \
+../src/Digit_5x7.cpp \
 ../src/DigitalWatch.cpp \
 ../src/Dot.cpp \
 ../src/FlipDot.cpp \
@@ -20,6 +21,7 @@ CPP_SRCS += \
 OBJS += \
 ./src/ClockSegment.o \
 ./src/Digit3x5.o \
+./src/Digit_5x7.o \
 ./src/DigitalWatch.o \
 ./src/Dot.o \
 ./src/FlipDot.o \
@@ -34,6 +36,7 @@ OBJS += \
 CPP_DEPS += \
 ./src/ClockSegment.d \
 ./src/Digit3x5.d \
+./src/Digit_5x7.d \
 ./src/DigitalWatch.d \
 ./src/Dot.d \
 ./src/FlipDot.d \
