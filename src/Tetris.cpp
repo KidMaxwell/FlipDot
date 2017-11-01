@@ -30,13 +30,11 @@ void Tetris::menuTetris() {
  * Hauptsteuerschleife
  */
 void Tetris::runTetris() {
-	// Geleichverteilung anlegen (Bereich 0-4)
-	default_random_engine rand_gen;
-	uniform_int_distribution<int> rand_dist(0, 4);
 	int i = 0;
 	do {
 		// zufälliges Erzeugen neuer Elemente
-		TetrisElement newElement = *(elements_Array[rand_dist(rand_gen)]);
+		TetrisElement newElement = *(elements_Array[rand_min_max(0, 4)]);
+//		TetrisElement newElement = *(elements_Array[rand_dist(rand_gen)]);
 		newElement.rotate(rand_min_max(0, 3));
 		screen_p->updateScreen_Segment(newElement);
 		newElement_p = &newElement;
@@ -174,7 +172,7 @@ bool Tetris::check_validMovement(int move_amount) {
 bool Tetris::check_hitBuilt() {
 	Segment::koordinates koord_display = newElement_p->get_lowestDot();
 	if (koord_display.row.front() != -1 && koord_display.column.front() != -1) {
-		// Built-Bereich durchsuchen in wo true-Dots sind
+		// Built-Bereich durchsuchen wo true-Dots sind
 		for (int disp_column = 0; disp_column < COL_MAX; disp_column++) {
 			for (int disp_row = 0; disp_row < ROW_MAX; disp_row++) {
 				if (!seg_built->get_state(disp_row, disp_column))
@@ -266,8 +264,7 @@ void Tetris::remove_builtColumn() {
  * Bonus für mehrere Reihen noch zusätzlich überlegen
  */
 void Tetris::increment_Highscore(int removed_columns) {
-	int increment = removed_columns * 10;
-	// TODO Bonus noch implementieren
+	int increment = removed_columns * removed_columns * 10;
 	highscore += increment;
 }
 

@@ -9,6 +9,7 @@
 #include <cstdlib>
 #include <random>
 #include <string>
+
 #include "Screen.h"
 #include "TetrisElement.h"
 #include "HAL_Button.h"
@@ -38,7 +39,6 @@ private:
 	HAL_Button* buttons;
 	HAL_Button::buttonHits_Tetris button_hits;
 	unsigned int speed, highscore;
-
 };
 
 #endif /* TETRIS_H_ */

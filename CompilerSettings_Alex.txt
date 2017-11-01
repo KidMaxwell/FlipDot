@@ -1,2 +1,9 @@
 /home/alexander/rpi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin
 /home/alexander/rpi/wiringPi/wiringPi
+
+Falls C++11 fehlt:
+	1. Project Properties
+	2. C/C++ Built
+	3. Compiler wählen
+	4. Dialect
+	5. Language Standart: ISO C++11 wählen
