@@ -30,23 +30,29 @@ void Tetris::menuTetris() {
  * Hauptsteuerschleife
  */
 void Tetris::runTetris() {
+	// Geleichverteilung anlegen (Bereich 0-4)
+	default_random_engine rand_gen;
+	uniform_int_distribution<int> rand_dist(0, 4);
+	int i = 0;
 	do {
 		// zufälliges Erzeugen neuer Elemente
-		TetrisElement newElement = createElement();
+		TetrisElement newElement = *(elements_Array[rand_dist(rand_gen)]);
+		newElement.rotate(rand_min_max(0, 3));
+		screen_p->updateScreen_Segment(newElement);
 		newElement_p = &newElement;
+		screen_p->showScreen_Display();
+		screen_p->showScreen_Console();
 		// Bewegung des Elements
 		moveElement();
 		// Löschen voller Reihen
 		remove_builtColumn();
-	} while (check_hitTop());
+	} while (!check_hitTop());
+	// TODO Highscore anzeigen + Konsolenausgabe
 }
 
 void Tetris::moveElement() {
-	// TEST
-	bool checkBuilt = check_hitBuilt();
-	/*
-	while (!check_hitBuilt()) {
-		// Steuerbewegungen Abfragen
+	while (!check_hitBuilt() && !check_hitBottom()) {
+		// Steuerbewegungen abfragen
 		// Implementiert auch das Warten
 		button_hits = buttons->readButton(speed);
 		// pos: Verschiebung nach links, neg: Verschiebung nach rechts
@@ -56,23 +62,29 @@ void Tetris::moveElement() {
 		if (move_amount < 0 && check_validMovement(move_amount))
 			moveElement_Direction("right", 0 - move_amount);
 		moveElement_Direction("down", 1);
-		screen_p->updateScreen_Segment(*newElement_p);
+		// Problem: Wenn das TetrisElement direkt übergeben wird, wird
+		// der Built-Bereich mit den auf false steheneden Dots überschrieben.
+		// Lösung: Erzeugen eines Zwischenelements, wobei bei allen false-Dots
+		// der Built-Bereich mit höherer Priorität überlagert wird
+		// -> Dieser wird dann schließlich auch an Screen übergeben.
+		// TODO move Element Funktioniert nicht!!!
+		TetrisElement element = *newElement_p;
+		for (int row = 0; row < element.get_seg_row_hight(); row++) {
+			for (int col = 0; col < element.get_seg_column_width(); col++) {
+				if (element.get_state(row, col))
+					continue;
+				bool seg_built_state = seg_built->get_state(
+						(element.get_seg_row_start() + row),
+						(element.get_seg_column_start() + col));
+				element.change(row, col, seg_built_state);
+			}
+		}
+		screen_p->updateScreen_Segment(element);
 		screen_p->showScreen_Display();
 		screen_p->showScreen_Console();
 	}
-	*/
 	// Element zum Built-Bereich hinzufügen
 	seg_built->changeSegment(newElement_p);
-}
-
-/*
- * Erzeugt ein zufälliges TetrisElement
- */
-TetrisElement Tetris::createElement() {
-	TetrisElement newElement = *(elements_Array[rand_min_max(0, 3)]);
-	// TODO Rotate() nochmal anschauen!
-//	newElement.rotate(rand_min_max(0, 3));
-	return newElement;
 }
 
 void Tetris::moveElement_Direction(string direction, int move_amount) {
@@ -157,15 +169,17 @@ bool Tetris::check_validMovement(int move_amount) {
 }
 
 /*
- * Prüft, ob Element schon auf Built-Bereich ist
+ * Prüft, ob Element schon auf Built-Bereich getroffen ist
  */
 bool Tetris::check_hitBuilt() {
 	Segment::koordinates koord_display = newElement_p->get_lowestDot();
 	if (koord_display.row.front() != -1 && koord_display.column.front() != -1) {
+		// Built-Bereich durchsuchen in wo true-Dots sind
 		for (int disp_column = 0; disp_column < COL_MAX; disp_column++) {
 			for (int disp_row = 0; disp_row < ROW_MAX; disp_row++) {
 				if (!seg_built->get_state(disp_row, disp_column))
 					continue;
+				// Abgleich, ob die unterste Dot-Reihe mit dem gefundenden Dot übereinstimmt
 				vector<int>::iterator it_column = koord_display.column.begin();
 				for (vector<int>::iterator it_row = koord_display.row.begin();
 						it_row != koord_display.row.end(); it_row++) {
@@ -187,6 +201,20 @@ bool Tetris::check_hitBuilt() {
 bool Tetris::check_hitTop() {
 	for (int row = ROW_MIN; row < ROW_MAX; row++) {
 		if (seg_built->get_state(row, 0))
+			return true;
+	}
+	return false;
+}
+
+/*
+ * Prüfen, ob der Boden berührt wurde
+ */
+bool Tetris::check_hitBottom() {
+	Segment::koordinates koord_display = newElement_p->get_lowestDot();
+	vector<int>::iterator it_column = koord_display.column.begin();
+	for (vector<int>::iterator it_row = koord_display.row.begin();
+			it_row != koord_display.row.end(); it_row++) {
+		if (*it_column == COL_MAX - 1)
 			return true;
 	}
 	return false;
@@ -237,7 +265,7 @@ void Tetris::remove_builtColumn() {
  * 10 Pkt. pro Reihe
  * Bonus für mehrere Reihen noch zusätzlich überlegen
  */
-void Tetris::increment_Highscore(int removed_columns){
+void Tetris::increment_Highscore(int removed_columns) {
 	int increment = removed_columns * 10;
 	// TODO Bonus noch implementieren
 	highscore += increment;
@@ -245,8 +273,9 @@ void Tetris::increment_Highscore(int removed_columns){
 
 /*
  * Gernerierten einer Zufallszahl im Bereich [min, max]
+ * -> Funktioniert!
  */
 int Tetris::rand_min_max(int min, int max) {
-	srand((unsigned) time(NULL));
-	return rand() % (max - min + 1) + min + 1;
+	random_device rd;
+	return rd() % (max - min + 1) + min;
 }

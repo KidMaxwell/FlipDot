@@ -4,6 +4,8 @@
  *  Created on: 06.08.2017
  *      Author: paul, alex
  */
+#include <iostream>
+#include <wiringPi.h>
 #include "HAL_HardwareDefines.h"
 
 #ifndef HAL_SHIFTREGISTER_H_

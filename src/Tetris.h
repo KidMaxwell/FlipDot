@@ -7,9 +7,7 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <unistd.h>
-#include <stdlib.h>
-#include <time.h>
+#include <random>
 #include <string>
 #include "Screen.h"
 #include "TetrisElement.h"
@@ -26,9 +24,9 @@ public:
 private:
 	void moveElement();
 	void moveElement_Direction(std::string direction, int amount);
-	TetrisElement createElement();
 	bool check_validMovement(int move_amount);
 	bool check_hitTop();
+	bool check_hitBottom();
 	bool check_hitBuilt();
 	void remove_builtColumn();
 	void increment_Highscore(int removed_columns);

@@ -38,6 +38,8 @@ protected:
 	bool checkValues();
 	int seg_column_start, seg_row_start, seg_column_width, seg_row_hight;
 	bool newState;
+// Test
+public:
 	std::vector< std::vector<bool> > vec_dots;
 };
 

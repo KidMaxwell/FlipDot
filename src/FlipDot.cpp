@@ -35,32 +35,39 @@ void FlipDot::consoleMenu() {
 				<< "Fuer weitere Erlaeuterungen: Auswahlnummer? eingeben und bestaetigen"
 				<< endl;
 		cin >> input;
-		if (input == "1")
+		if (input == "1") {
 			modeChange();
-		else if (input == "2")
+		} else if (input == "1?") {
+			cout << "Beschreibung change" << endl;
+		} else if (input == "2") {
 			modeChangeAll();
-		else if (input == "3") {
+		} else if (input == "2?") {
+			cout << "Beschreibung change all" << endl;
+		} else if (input == "3") {
 			DigitalWatch* clock = new DigitalWatch(screen_p);
 			clock->runClock();
 			screen_p->updateScreen_All(false);
 			screen_p->showScreen_Display();
+		} else if (input == "3?") {
+			cout << "Beschreibung Uhr" << endl;
 		} else if (input == "4") {
 			/*	seg_FlipDotDisplay->changeAll(false);
 			 SnakeSingle *snake = new SnakeSingle(screen_p);
 			 snake->consoleMenu();
 			 seg_FlipDotDisplay->changeAll(true);
 			 */
+		} else if (input == "4?") {
+			cout << "Beschreibung Snake" << endl;
 		} else if (input == "5") {
 			Tetris* tetris = new Tetris(screen_p);
 			tetris->menuTetris();
 			tetris->runTetris();
 			screen_p->updateScreen_All(false);
 			screen_p->showScreen_Display();
-		}
-
-		else {
+		} else if (input == "5?") {
+			cout << "Beschreibung Tetris" << endl;
+		} else {
 			cout << endl << endl << "Bitte erneute Auswahl:" << endl << endl;
-			continue;
 		}
 	}
 }

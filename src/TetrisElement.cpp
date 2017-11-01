@@ -11,7 +11,7 @@ using namespace std;
 
 TetrisElement::TetrisElement(string type, int seg_size) :
 		Segment(0, (8 - seg_size / 2), seg_size, seg_size), element_size(
-				seg_size) {
+				seg_size), type(type) {
 	if (type == "Block" && seg_size == 2) {
 		changeAll(true);
 	} else if (type == "I" && seg_size == 4) {
@@ -20,7 +20,7 @@ TetrisElement::TetrisElement(string type, int seg_size) :
 
 	else if (type == "L" && seg_size == 3) {
 		changeRow(2, true);
-		change(1, 3, true);
+		change(1, 2, true);
 	}
 
 	else if (type == "Stair" && seg_size == 3) {
@@ -31,7 +31,7 @@ TetrisElement::TetrisElement(string type, int seg_size) :
 	}
 
 	else if (type == "T" && seg_size == 3) {
-		changeRow(1, true);
+		change(1, 1, true);
 		changeColumn(0, true);
 	}
 
@@ -40,6 +40,11 @@ TetrisElement::TetrisElement(string type, int seg_size) :
 	}
 }
 
+/*
+ * Führt die Bewegung der Segmente aus
+ * Rückgabeobjekt ist der Teil des Segments, der gecleart werden soll
+ * Für die Bewegung an sich werden nur die Startkoordinaten des Segments manipuliert
+ */
 Segment* TetrisElement::move_Down(int move_amount) {
 	Segment* seg_above = new Segment(seg_column_start, seg_row_start,
 			move_amount, seg_row_hight);
@@ -49,17 +54,17 @@ Segment* TetrisElement::move_Down(int move_amount) {
 }
 
 Segment* TetrisElement::move_Right(int move_amount) {
-	Segment* seg_right = new Segment(seg_column_start, (seg_row_start + seg_row_hight),
-				move_amount, 1);
-		seg_right->changeAll(false);
+	Segment* seg_right = new Segment(seg_column_start,
+			(seg_row_start + seg_row_hight), move_amount, 1);
+	seg_right->changeAll(false);
 	seg_row_start -= move_amount;
 	return seg_right;
 }
 
 Segment* TetrisElement::move_Left(int move_amount) {
 	Segment* seg_left = new Segment(seg_column_start, seg_row_start,
-					move_amount, 1);
-			seg_left->changeAll(false);
+			move_amount, 1);
+	seg_left->changeAll(false);
 	seg_row_start += move_amount;
 	return seg_left;
 }
@@ -77,72 +82,10 @@ void TetrisElement::rotate(int amount) {
 			vec_rotate.push_back(vec_row);
 		}
 		// eigentliche Rotation
-		// 'break' bewusst weggelassen, dass an der entsprechenden Stelle begonnen wird
-		switch (e_size) {
-		case 4:
-			// Querformat
-			// linke Reihe
-			vec_dots[e_size - 4][e_size - 4] =
-					vec_rotate[e_size - 4][e_size - 1];
-			vec_dots[e_size - 3][e_size - 4] =
-					vec_rotate[e_size - 4][e_size - 2];
-			vec_dots[e_size - 2][e_size - 4] =
-					vec_rotate[e_size - 4][e_size - 3];
-			vec_dots[e_size - 1][e_size - 4] =
-					vec_rotate[e_size - 4][e_size - 4];
-			// obere Reihe
-			vec_dots[e_size - 4][e_size - 3] =
-					vec_rotate[e_size - 3][e_size - 1];
-			vec_dots[e_size - 4][e_size - 2] =
-					vec_rotate[e_size - 2][e_size - 1];
-			// rechte Reihe
-			vec_dots[e_size - 4][e_size - 1] =
-					vec_rotate[e_size - 1][e_size - 4];
-			vec_dots[e_size - 3][e_size - 1] =
-					vec_rotate[e_size - 1][e_size - 3];
-			vec_dots[e_size - 2][e_size - 1] =
-					vec_rotate[e_size - 1][e_size - 2];
-			vec_dots[e_size - 1][e_size - 1] =
-					vec_rotate[e_size - 1][e_size - 1];
-			// untere Reihe
-			vec_dots[e_size - 1][e_size - 2] =
-					vec_rotate[e_size - 2][e_size - 4];
-			vec_dots[e_size - 1][e_size - 3] =
-					vec_rotate[e_size - 3][e_size - 4];
-			e_size--;
-		case 3:
-			// linke Reihe
-			vec_dots[e_size - 3][e_size - 3] =
-					vec_rotate[e_size - 3][e_size - 1];
-			vec_dots[e_size - 2][e_size - 3] =
-					vec_rotate[e_size - 3][e_size - 2];
-			vec_dots[e_size - 1][e_size - 3] =
-					vec_rotate[e_size - 3][e_size - 3];
-			// obere Reihe
-			vec_dots[e_size - 3][e_size - 2] =
-					vec_rotate[e_size - 2][e_size - 1];
-			// rechte Reihe
-			vec_dots[e_size - 3][e_size - 1] =
-					vec_rotate[e_size - 1][e_size - 3];
-			vec_dots[e_size - 2][e_size - 1] =
-					vec_rotate[e_size - 1][e_size - 2];
-			vec_dots[e_size - 1][e_size - 1] =
-					vec_rotate[e_size - 1][e_size - 1];
-			// untere Reihe
-			vec_dots[e_size - 1][e_size - 2] =
-					vec_rotate[e_size - 2][e_size - 4];
-			e_size--;
-		case 2:
-			// linke Reihe
-			vec_dots[e_size - 2][e_size - 2] =
-					vec_rotate[e_size - 2][e_size - 1];
-			vec_dots[e_size - 1][e_size - 2] =
-					vec_rotate[e_size - 2][e_size - 2];
-			// rechte Reihe
-			vec_dots[e_size - 2][e_size - 1] =
-					vec_rotate[e_size - 1][e_size - 2];
-			vec_dots[e_size - 1][e_size - 1] =
-					vec_rotate[e_size - 1][e_size - 1];
+		for (int col = 0; col < e_size; col++) {
+			for (int row = 0; row < e_size; row++) {
+				vec_dots[col][row] = vec_rotate[e_size - 1 - row][col];
+			}
 		}
 	}
 }

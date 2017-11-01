@@ -11,8 +11,6 @@
  */
 
 #include "HAL_ShiftRegister.h"
-#include <iostream>
-#include <wiringPi.h>
 
 using namespace std;
 

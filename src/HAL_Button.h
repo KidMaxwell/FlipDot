@@ -22,10 +22,6 @@ public:
 		int b_movedown;
 	};
 	buttonHits_Tetris readButton(int speed);
-private:
-	HAL_Button::buttonHits_Tetris button_hits;
-	int input_Array[4];
-	int prev_input_Array[4];
 };
 
 #endif /* HAL_BUTTON_H_ */

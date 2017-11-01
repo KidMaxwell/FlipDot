@@ -23,6 +23,7 @@ public:
 	Segment::koordinates get_lowestDot();
 private:
 	int element_size;
+	std::string type;
 };
 
 #endif /* TETRISELEMENT_H_ */
