@@ -21,13 +21,13 @@ public:
 	void changeAll(bool newState);
 	//Getter
 	int get_seg_row_start();
-	int get_seg_row_hight();
+	int get_seg_row_height();
 	int get_seg_column_start();
 	int get_seg_column_width();
 	bool get_state(int seg_row, int seg_column);
 protected:
 	bool checkValues();
-	const int seg_column_start, seg_row_start, seg_column_width, seg_row_hight;
+	const int seg_column_start, seg_row_start, seg_column_width, seg_row_height;
 	bool newState;
 	std::vector< std::vector<bool> > vec_dots;
 };

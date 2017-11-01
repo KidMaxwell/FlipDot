@@ -19,11 +19,10 @@ Screen::Screen() :
 		}
 	}
 }
-//TODO +++ hight in HEIGHT aendern (fuer Paul)
 void Screen::updateScreen_Segment(Segment segment) {
-	int seg_row_hight = segment.get_seg_row_hight();
+	int seg_row_height = segment.get_seg_row_height();
 	int seg_column_width = segment.get_seg_column_width();
-	for (int seg_row = 0; seg_row < seg_row_hight; seg_row++) {
+	for (int seg_row = 0; seg_row < seg_row_height; seg_row++) {
 		for (int seg_column = 0; seg_column < seg_column_width; seg_column++) {
 			// Umrechnen ins Display-Format
 			int disp_row = seg_row + segment.get_seg_row_start();
@@ -54,9 +53,16 @@ void Screen::showScreen_Display() {
 			if (sollDot->getState() != istDot->getState()) {
 				bool newState = sollDot->getState();
 				istDot->setState(newState);
-				addr->loadSR(disp_row, disp_column, newState);
-				addr->enable(newState);
+				hardwareFlip(disp_row, disp_column, newState);
 			}
+		}
+	}
+}
+
+void Screen::showBlackScreen_Display() {
+	for (int disp_row = ROW_MIN; disp_row < ROW_MAX; disp_row++) {
+		for (int disp_column = COL_MIN; disp_column < COL_MAX; disp_column++) {
+			hardwareFlip(disp_row, disp_column, false);
 		}
 	}
 }
@@ -113,4 +119,22 @@ void Screen::showScreen_Console() {
 	}
 	cout << "-----------------------------------------------------------"
 			<< endl;
+}
+
+void Screen::showInstantSingle(int row, int column, bool newState) {
+	istDisplay[row][column]->setState(newState);
+	hardwareFlip(row, column, newState);
+}
+
+void Screen::showInstantDot(Dot dot) {
+	int row=dot.getRow();
+	int column=dot.getColumn();
+	bool newState=dot.getState();
+	istDisplay[row][column]->setState(newState);
+	hardwareFlip(row, column, newState);
+}
+
+void Screen::hardwareFlip(int row, int column, bool newState) {
+	addr->loadSR(row, column, newState);
+	addr->enable(newState);
 }

@@ -19,13 +19,13 @@ using namespace std;
 Segment::Segment(int col_start, int row_start, int col_max,
 		int row_max) :
 		seg_column_start(col_start), seg_row_start(row_start), seg_column_width(
-				col_max), seg_row_hight(row_max), newState(false) {
+				col_max), seg_row_height(row_max), newState(false) {
 	if (!checkValues()) {
 		// TODO- - - Interrupt
 	}
 	// Dots werden in der Groesse des Segements erstellt und in Array abgelegt
 	// States der Dots werden erst mal als BOOL gespeichert
-	for (int row = 0; row < seg_row_hight; row++) {
+	for (int row = 0; row < seg_row_height; row++) {
 		vector<bool> vec_row;
 		for (int col = 0; col < seg_column_width; col++) {
 			vec_row.push_back(false);
@@ -52,8 +52,8 @@ bool Segment::checkValues() {
 		cout << "Error: seg_column_width out of bounds" << endl;
 		return false;
 	}
-	if (!(seg_row_hight >  ROW_MIN && (seg_row_start + seg_row_hight) <= ROW_MAX)) {
-		cout << "Error: seg_row_hight out of bounds" << endl;
+	if (!(seg_row_height >  ROW_MIN && (seg_row_start + seg_row_height) <= ROW_MAX)) {
+		cout << "Error: seg_row_height out of bounds" << endl;
 		return false;
 	}
 	return true;
@@ -76,13 +76,13 @@ void Segment::changeRow(int seg_row, bool newState) {
 }
 
 void Segment::changeColumn(int seg_column, bool newState) {
-	for (int seg_row = 0; seg_row < seg_row_hight; seg_row++) {
+	for (int seg_row = 0; seg_row < seg_row_height; seg_row++) {
 		vec_dots[seg_row][seg_column] = newState;
 	}
 }
 
 void Segment::changeAll(bool newState) {
-	for (int seg_row = 0; seg_row < seg_row_hight; seg_row++) {
+	for (int seg_row = 0; seg_row < seg_row_height; seg_row++) {
 		for (int seg_column = 0; seg_column < seg_column_width; seg_column++) {
 			vec_dots[seg_row][seg_column] = newState;
 		}
@@ -96,8 +96,8 @@ int Segment::get_seg_row_start() {
 	return seg_row_start;
 }
 
-int Segment::get_seg_row_hight() {
-	return seg_row_hight;
+int Segment::get_seg_row_height() {
+	return seg_row_height;
 }
 
 int Segment::get_seg_column_start() {
