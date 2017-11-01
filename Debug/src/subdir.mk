@@ -6,7 +6,7 @@
 CPP_SRCS += \
 ../src/ClockSegment.cpp \
 ../src/Digit3x5.cpp \
-../src/Digit_5x7.cpp \
+../src/Digit5x7.cpp \
 ../src/DigitalWatch.cpp \
 ../src/Dot.cpp \
 ../src/FlipDot.cpp \
@@ -15,14 +15,13 @@ CPP_SRCS += \
 ../src/HAL_ShiftRegister.cpp \
 ../src/Screen.cpp \
 ../src/Segment.cpp \
-../src/SnakeSingle.cpp \
 ../src/SnakeSingle2.cpp \
 ../src/TextEditor.cpp 
 
 OBJS += \
 ./src/ClockSegment.o \
 ./src/Digit3x5.o \
-./src/Digit_5x7.o \
+./src/Digit5x7.o \
 ./src/DigitalWatch.o \
 ./src/Dot.o \
 ./src/FlipDot.o \
@@ -31,14 +30,13 @@ OBJS += \
 ./src/HAL_ShiftRegister.o \
 ./src/Screen.o \
 ./src/Segment.o \
-./src/SnakeSingle.o \
 ./src/SnakeSingle2.o \
 ./src/TextEditor.o 
 
 CPP_DEPS += \
 ./src/ClockSegment.d \
 ./src/Digit3x5.d \
-./src/Digit_5x7.d \
+./src/Digit5x7.d \
 ./src/DigitalWatch.d \
 ./src/Dot.d \
 ./src/FlipDot.d \
@@ -47,7 +45,6 @@ CPP_DEPS += \
 ./src/HAL_ShiftRegister.d \
 ./src/Screen.d \
 ./src/Segment.d \
-./src/SnakeSingle.d \
 ./src/SnakeSingle2.d \
 ./src/TextEditor.d 
 

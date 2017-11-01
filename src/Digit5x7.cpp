@@ -1,285 +1,285 @@
 /*
- * Digit_5x7.cpp
+ * Digit5x7.cpp
  *
  *  Created on: 08.10.2017
  *      Author: paul
  */
 
-#include "Digit_5x7.h"
+#include "Digit5x7.h"
 
 using namespace std;
 
-Digit_5x7::Digit_5x7(int col_start, int row_start) :
+Digit5x7::Digit5x7(int col_start, int row_start) :
 		Segment(col_start, row_start, 5, 7) {
 }
 
-void Digit_5x7::showDigit(string digit) {
+void Digit5x7::chooseDigit(string digit) {
 	changeAll(false);
 	if (digit == "a") {
-		show_a();
+		showa();
 	} else if (digit == "A") {
-		show_A();
+		showA();
 	}
 
 	else if (digit == "b") {
-		show_b();
+		showb();
 	}
 
 	else if (digit == "B") {
-		show_B();
+		showB();
 	}
 
 	else if (digit == "c") {
-		show_c();
+		showc();
 	}
 
 	else if (digit == "C") {
-		show_C();
+		showC();
 	}
 
 	else if (digit == "d") {
-		show_d();
+		showd();
 	}
 
 	else if (digit == "D") {
-		show_D();
+		showD();
 	}
 
 	else if (digit == "e") {
-		show_e();
+		showe();
 	}
 
 	else if (digit == "E") {
-		show_E();
+		showE();
 	}
 
 	else if (digit == "f") {
-		show_f();
+		showf();
 	}
 
 	else if (digit == "F") {
-		show_F();
+		showF();
 	}
 
 	else if (digit == "g") {
-		show_g();
+		showg();
 	}
 
 	else if (digit == "G") {
-		show_G();
+		showG();
 	}
 
 	else if (digit == "h") {
-		show_h();
+		showh();
 	}
 
 	else if (digit == "H") {
-		show_H();
+		showH();
 	}
 
 	else if (digit == "i") {
-		show_i();
+		showi();
 	}
 
 	else if (digit == "I") {
-		show_I();
+		showI();
 	}
 
 	else if (digit == "j") {
-		show_j();
+		showj();
 	}
 
 	else if (digit == "J") {
-		show_J();
+		showJ();
 	}
 
 	else if (digit == "k") {
-		show_k();
+		showk();
 	}
 
 	else if (digit == "K") {
-		show_K();
+		showK();
 	}
 
 	else if (digit == "l") {
-		show_l();
+		showl();
 	}
 
 	else if (digit == "L") {
-		show_L();
+		showL();
 	}
 
 	else if (digit == "m") {
-		show_m();
+		showm();
 	}
 
 	else if (digit == "M") {
-		show_M();
+		showM();
 	}
 
 	else if (digit == "n") {
-		show_n();
+		shown();
 	}
 
 	else if (digit == "N") {
-		show_N();
+		showN();
 	}
 
 	else if (digit == "o") {
-		show_o();
+		showo();
 	}
 
 	else if (digit == "O") {
-		show_O();
+		showO();
 	}
 
 	else if (digit == "p") {
-		show_p();
+		showp();
 	}
 
 	else if (digit == "P") {
-		show_P();
+		showP();
 	}
 
 	else if (digit == "q") {
-		show_q();
+		showq();
 	}
 
 	else if (digit == "Q") {
-		show_Q();
+		showQ();
 	}
 
 	else if (digit == "r") {
-		show_r();
+		showr();
 	}
 
 	else if (digit == "R") {
-		show_R();
+		showR();
 	}
 
 	else if (digit == "s") {
-		show_s();
+		shows();
 	}
 
 	else if (digit == "S") {
-		show_S();
+		showS();
 	}
 
 	else if (digit == "t") {
-		show_t();
+		showt();
 	}
 
 	else if (digit == "T") {
-		show_T();
+		showT();
 	}
 
 	else if (digit == "u") {
-		show_u();
+		showu();
 	}
 
 	else if (digit == "U") {
-		show_U();
+		showU();
 	}
 
 	else if (digit == "v") {
-		show_v();
+		showv();
 	}
 
 	else if (digit == "V") {
-		show_V();
+		showV();
 	}
 
 	else if (digit == "w") {
-		show_w();
+		showw();
 	}
 
 	else if (digit == "W") {
-		show_W();
+		showW();
 	}
 
 	else if (digit == "x") {
-		show_x();
+		showx();
 	}
 
 	else if (digit == "X") {
-		show_X();
+		showX();
 	}
 
 	else if (digit == "y") {
-		show_y();
+		showy();
 	}
 
 	else if (digit == "Y") {
-		show_Y();
+		showY();
 	}
 
 	else if (digit == "z") {
-		show_z();
+		showz();
 	}
 
 	else if (digit == "Z") {
-		show_Z();
+		showZ();
 	}
 
 	else if (digit == "0") {
-		show_0();
+		show0();
 	}
 
 	else if (digit == "1") {
-		show_1();
+		show1();
 	}
 
 	else if (digit == "2") {
-		show_2();
+		show2();
 	}
 
 	else if (digit == "3") {
-		show_3();
+		show3();
 	}
 
 	else if (digit == "4") {
-		show_4();
+		show4();
 	}
 
 	else if (digit == "5") {
-		show_5();
+		show5();
 	}
 
 	else if (digit == "6") {
-		show_6();
+		show6();
 	}
 
 	else if (digit == "7") {
-		show_7();
+		show7();
 	}
 
 	else if (digit == "8") {
-		show_8();
+		show8();
 	}
 
 	else if (digit == "9") {
-		show_9();
+		show9();
 	} else if (digit == "?") {
-		show_QM();
+		showQM();
 	} else if (digit == ".") {
-		show_FS();
+		showFS();
 	} else if (digit == ",") {
-		show_Comma();
+		showComma();
 	} else if (digit == "!") {
-		show_EM();
+		showEM();
 	} else if (digit == " ") {
 
 	} else if (digit == ":") {
-		show_DP();
+		showDP();
 	} else if (digit == ";") {
-		show_SemCol();
+		showSemCol();
 	} else {
-		show_Error();
+		showError();
 	}
 
 }
 
-void Digit_5x7::show_a() {
+void Digit5x7::showa() {
 	change(3, 0, true);
 	change(4, 0, true);
 	change(5, 0, true);
@@ -287,16 +287,15 @@ void Digit_5x7::show_a() {
 	change(6, 1, true);
 	change(2, 2, true);
 	change(6, 2, true);
-	change(3, 3, true);
+	change(2, 3, true);
 	change(5, 3, true);
-	change(2, 4, true);
 	change(3, 4, true);
 	change(4, 4, true);
 	change(5, 4, true);
 	change(6, 4, true);
 }
 
-void Digit_5x7::show_A() {
+void Digit5x7::showA() {
 	change(1, 0, true);
 	change(2, 0, true);
 	change(3, 0, true);
@@ -305,15 +304,15 @@ void Digit_5x7::show_A() {
 	change(0, 1, true);
 	change(0, 2, true);
 	change(0, 3, true);
-	change(1, 5, true);
-	change(2, 6, true);
-	change(3, 6, true);
-	change(5, 6, true);
-	change(6, 6, true);
+	change(1, 4, true);
+	change(2, 4, true);
+	change(3, 4, true);
+	change(5, 4, true);
+	change(6, 4, true);
 	changeRow(4, true);
 }
 
-void Digit_5x7::show_b() {
+void Digit5x7::showb() {
 	changeColumn(0, true);
 	change(3, 1, true);
 	change(5, 1, true);
@@ -327,7 +326,7 @@ void Digit_5x7::show_b() {
 
 }
 
-void Digit_5x7::show_B() {
+void Digit5x7::showB() {
 	changeColumn(0, true);
 	change(0, 1, true);
 	change(0, 2, true);
@@ -344,7 +343,7 @@ void Digit_5x7::show_B() {
 	change(5, 4, true);
 }
 
-void Digit_5x7::show_c() {
+void Digit5x7::showc() {
 	change(2, 1, true);
 	change(2, 2, true);
 	change(2, 3, true);
@@ -358,7 +357,7 @@ void Digit_5x7::show_c() {
 	change(6, 4, true);
 }
 
-void Digit_5x7::show_C() {
+void Digit5x7::showC() {
 	change(0, 1, true);
 	change(0, 2, true);
 	change(0, 3, true);
@@ -374,7 +373,7 @@ void Digit_5x7::show_C() {
 	change(6, 3, true);
 }
 
-void Digit_5x7::show_d() {
+void Digit5x7::showd() {
 	changeColumn(4, true);
 	change(2, 1, true);
 	change(2, 2, true);
@@ -387,7 +386,7 @@ void Digit_5x7::show_d() {
 	change(6, 3, true);
 }
 
-void Digit_5x7::show_D() {
+void Digit5x7::showD() {
 	changeColumn(0, true);
 	change(0, 1, true);
 	change(0, 2, true);
@@ -400,7 +399,7 @@ void Digit_5x7::show_D() {
 	change(6, 2, true);
 }
 
-void Digit_5x7::show_e() {
+void Digit5x7::showe() {
 	changeRow(4, true);
 	change(2, 1, true);
 	change(2, 2, true);
@@ -414,7 +413,7 @@ void Digit_5x7::show_e() {
 	change(6, 4, true);
 }
 
-void Digit_5x7::show_E() {
+void Digit5x7::showE() {
 	changeRow(0, true);
 	changeRow(6, true);
 	changeColumn(0, true);
@@ -423,7 +422,7 @@ void Digit_5x7::show_E() {
 	change(3, 3, true);
 }
 
-void Digit_5x7::show_f() {
+void Digit5x7::showf() {
 	change(0, 3, true);
 	change(0, 4, true);
 	change(1, 2, true);
@@ -436,7 +435,7 @@ void Digit_5x7::show_f() {
 	change(6, 2, true);
 }
 
-void Digit_5x7::show_F() {
+void Digit5x7::showF() {
 	changeRow(0, true);
 	changeColumn(0, true);
 	change(3, 1, true);
@@ -444,7 +443,7 @@ void Digit_5x7::show_F() {
 	change(3, 3, true);
 }
 
-void Digit_5x7::show_g() {
+void Digit5x7::showg() {
 	change(1, 1, true);
 	change(1, 2, true);
 	change(1, 3, true);
@@ -463,7 +462,7 @@ void Digit_5x7::show_g() {
 	change(6, 3, true);
 }
 
-void Digit_5x7::show_G() {
+void Digit5x7::showG() {
 	change(0, 1, true);
 	change(0, 2, true);
 	change(0, 3, true);
@@ -484,7 +483,7 @@ void Digit_5x7::show_G() {
 	change(6, 4, true);
 }
 
-void Digit_5x7::show_h() {
+void Digit5x7::showh() {
 	changeColumn(0, true);
 	change(2, 1, true);
 	change(2, 2, true);
@@ -495,13 +494,13 @@ void Digit_5x7::show_h() {
 	change(6, 4, true);
 }
 
-void Digit_5x7::show_H() {
+void Digit5x7::showH() {
 	changeColumn(0, true);
 	changeColumn(4, true);
 	changeRow(3, true);
 }
 
-void Digit_5x7::show_i() {
+void Digit5x7::showi() {
 	change(0, 2, true);
 	change(2, 1, true);
 	change(2, 2, true);
@@ -513,7 +512,7 @@ void Digit_5x7::show_i() {
 	change(6, 3, true);
 }
 
-void Digit_5x7::show_I() {
+void Digit5x7::showI() {
 	changeColumn(2, true);
 	change(0, 1, true);
 	change(0, 3, true);
@@ -521,7 +520,7 @@ void Digit_5x7::show_I() {
 	change(6, 3, true);
 }
 
-void Digit_5x7::show_j() {
+void Digit5x7::showj() {
 	change(0, 3, true);
 	change(2, 2, true);
 	change(2, 3, true);
@@ -533,7 +532,7 @@ void Digit_5x7::show_j() {
 	change(6, 2, true);
 }
 
-void Digit_5x7::show_J() {
+void Digit5x7::showJ() {
 	changeRow(0, true);
 	change(1, 4, true);
 	change(2, 4, true);
@@ -546,7 +545,7 @@ void Digit_5x7::show_J() {
 	change(6, 3, true);
 }
 
-void Digit_5x7::show_k() {
+void Digit5x7::showk() {
 	changeColumn(0, true);
 	change(2, 4, true);
 	change(3, 3, true);
@@ -556,7 +555,7 @@ void Digit_5x7::show_k() {
 	change(6, 4, true);
 }
 
-void Digit_5x7::show_K() {
+void Digit5x7::showK() {
 	changeColumn(0, true);
 	change(0, 4, true);
 	change(1, 3, true);
@@ -567,19 +566,19 @@ void Digit_5x7::show_K() {
 	change(6, 4, true);
 }
 
-void Digit_5x7::show_l() {
+void Digit5x7::showl() {
 	changeColumn(2, true);
 	change(0, 1, true);
 	change(6, 1, true);
 	change(6, 3, true);
 }
 
-void Digit_5x7::show_L() {
+void Digit5x7::showL() {
 	changeColumn(0, true);
 	changeRow(6, true);
 }
 
-void Digit_5x7::show_m() {
+void Digit5x7::showm() {
 	change(2, 0, true);
 	change(2, 1, true);
 	change(2, 2, true);
@@ -598,7 +597,7 @@ void Digit_5x7::show_m() {
 	change(6, 4, true);
 }
 
-void Digit_5x7::show_M() {
+void Digit5x7::showM() {
 	changeColumn(0, true);
 	changeColumn(4, true);
 	change(1, 1, true);
@@ -606,7 +605,7 @@ void Digit_5x7::show_M() {
 	change(2, 2, true);
 }
 
-void Digit_5x7::show_n() {
+void Digit5x7::shown() {
 	change(2, 0, true);
 	change(2, 1, true);
 	change(2, 2, true);
@@ -621,7 +620,7 @@ void Digit_5x7::show_n() {
 	change(6, 4, true);
 }
 
-void Digit_5x7::show_N() {
+void Digit5x7::showN() {
 	changeColumn(0, true);
 	changeColumn(4, true);
 	change(2, 1, true);
@@ -629,166 +628,166 @@ void Digit_5x7::show_N() {
 	change(4, 3, true);
 }
 
-void Digit_5x7::show_o() {
+void Digit5x7::showo() {
 
 }
 
-void Digit_5x7::show_O() {
+void Digit5x7::showO() {
 
 }
 
-void Digit_5x7::show_p() {
+void Digit5x7::showp() {
 
 }
 
-void Digit_5x7::show_P() {
+void Digit5x7::showP() {
 
 }
 
-void Digit_5x7::show_q() {
+void Digit5x7::showq() {
 
 }
 
-void Digit_5x7::show_Q() {
+void Digit5x7::showQ() {
 
 }
 
-void Digit_5x7::show_r() {
+void Digit5x7::showr() {
 
 }
 
-void Digit_5x7::show_R() {
+void Digit5x7::showR() {
 
 }
 
-void Digit_5x7::show_s() {
+void Digit5x7::shows() {
 
 }
 
-void Digit_5x7::show_S() {
+void Digit5x7::showS() {
 
 }
 
-void Digit_5x7::show_t() {
+void Digit5x7::showt() {
 
 }
 
-void Digit_5x7::show_T() {
+void Digit5x7::showT() {
 
 }
 
-void Digit_5x7::show_u() {
+void Digit5x7::showu() {
 
 }
 
-void Digit_5x7::show_U() {
+void Digit5x7::showU() {
 
 }
 
-void Digit_5x7::show_v() {
+void Digit5x7::showv() {
 
 }
 
-void Digit_5x7::show_V() {
+void Digit5x7::showV() {
 
 }
 
-void Digit_5x7::show_w() {
+void Digit5x7::showw() {
 
 }
 
-void Digit_5x7::show_W() {
+void Digit5x7::showW() {
 
 }
 
-void Digit_5x7::show_x() {
+void Digit5x7::showx() {
 
 }
 
-void Digit_5x7::show_X() {
+void Digit5x7::showX() {
 
 }
 
-void Digit_5x7::show_y() {
+void Digit5x7::showy() {
 
 }
 
-void Digit_5x7::show_Y() {
+void Digit5x7::showY() {
 
 }
 
-void Digit_5x7::show_z() {
+void Digit5x7::showz() {
 
 }
 
-void Digit_5x7::show_Z() {
+void Digit5x7::showZ() {
 
 }
 
-void Digit_5x7::show_0() {
+void Digit5x7::show0() {
 
 }
 
-void Digit_5x7::show_1() {
+void Digit5x7::show1() {
 
 }
 
-void Digit_5x7::show_2() {
+void Digit5x7::show2() {
 
 }
 
-void Digit_5x7::show_3() {
+void Digit5x7::show3() {
 
 }
 
-void Digit_5x7::show_4() {
+void Digit5x7::show4() {
 
 }
 
-void Digit_5x7::show_5() {
+void Digit5x7::show5() {
 
 }
 
-void Digit_5x7::show_6() {
+void Digit5x7::show6() {
 
 }
 
-void Digit_5x7::show_7() {
+void Digit5x7::show7() {
 
 }
 
-void Digit_5x7::show_8() {
+void Digit5x7::show8() {
 
 }
 
-void Digit_5x7::show_9() {
+void Digit5x7::show9() {
 
 }
 
-void Digit_5x7::show_QM() {
+void Digit5x7::showQM() {
 
 }
 
-void Digit_5x7::show_FS() {
+void Digit5x7::showFS() {
 
 }
 
-void Digit_5x7::show_Comma() {
+void Digit5x7::showComma() {
 
 }
 
-void Digit_5x7::show_EM() {
+void Digit5x7::showEM() {
 
 }
 
-void Digit_5x7::show_DP() {
+void Digit5x7::showDP() {
 
 }
 
-void Digit_5x7::show_SemCol() {
+void Digit5x7::showSemCol() {
 
 }
 
-void Digit_5x7::show_Error() {
+void Digit5x7::showError() {
 
 }

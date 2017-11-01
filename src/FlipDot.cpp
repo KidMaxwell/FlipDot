@@ -51,7 +51,7 @@ void FlipDot::consoleMenu() {
 			screen_p->showScreen_Display();
 		} else if (input == "5") {
 			TextEditor *textEditor = new TextEditor(screen_p);
-			textEditor->userInput();
+			textEditor->userInputBig();
 		} else if (input == "1?") {
 			cout << endl << "Auswahl einzelner Dots möglich." << endl;
 		} else if (input == "2?") {
