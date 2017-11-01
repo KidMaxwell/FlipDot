@@ -21,13 +21,9 @@
 #define CLK_P 2
 #define SER_P 3
 #define S_ENABLE_P 4
-#define R_IN 5
-#define L_IN 6
-#define T_IN 7
-#define B_IN 8
-
-// Pin-Belegung Snake
-#define T_RIGHT 5
-#define T_LEFT 6
+#define B_RIGHT 5
+#define B_LEFT 6
+#define B_UP 7
+#define B_DOWN 8
 
 #endif /* HAL_HARDWAREDEFINES_H_ */
