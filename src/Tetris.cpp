@@ -34,7 +34,6 @@ void Tetris::runTetris() {
 	do {
 		// zufälliges Erzeugen neuer Elemente
 		TetrisElement newElement = *(elements_Array[rand_min_max(0, 4)]);
-//		TetrisElement newElement = *(elements_Array[rand_dist(rand_gen)]);
 		newElement.rotate(rand_min_max(0, 3));
 		screen_p->updateScreen_Segment(newElement);
 		newElement_p = &newElement;
