@@ -79,6 +79,7 @@ private:
 	void show7();
 	void show8();
 	void show9();
+	void showDoubleDots();
 	void showQM();
 	void showFS();
 	void showComma();
