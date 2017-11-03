@@ -54,17 +54,20 @@ void DigitalWatch::runClock() {
 		int min2 = (time_local->tm_min) % 10;
 		// Änderung des Displays nur bei Änderung der Zeit
 		if (min2_prev != min2) {
-			// Darstellen der Ziffern
-			// TODO Testen, ob der Stream auch im vornherein beladen werden kann und dann nacheinander ausgegeben werden kann
-			ostringstream Str;
-			Str << hour1;
-			seg_hour1->choseDigit(Str.str());
-			Str << hour2;
-			seg_hour2->choseDigit(Str.str());
-			Str << min1;
-			seg_min1->choseDigit(Str.str());
-			Str << min2;
-			seg_min2->choseDigit(Str.str());
+			// Darstellen der Ziffern + Konvertierung int -> String
+			ostringstream digit_str;
+			digit_str << hour1;
+			seg_hour1->choseDigit(digit_str.str());
+			digit_str.str("");
+			digit_str << hour2;
+			seg_hour2->choseDigit(digit_str.str());
+			digit_str.str("");
+			digit_str << min1;
+			seg_min1->choseDigit(digit_str.str());
+			digit_str.str("");
+			digit_str << min2;
+			seg_min2->choseDigit(digit_str.str());
+			digit_str.str("");
 			// Anzeigen auf Screen
 			screen_p->updateScreen_Segment(*seg_hour1);
 			screen_p->updateScreen_Segment(*seg_hour2);
