@@ -28,17 +28,6 @@ void TextEditor::userInput() {
 	}
 }
 
-void TextEditor::userInputBig() {
-	while (1) {
-		screen->updateScreen_All(false);
-		cout << endl << "Text eintippen!" << endl;
-		string in;
-		getline(cin, in);
-		if (!stringInputBig(in)) {
-			cout << "Text zu lang, bitte kuerzer (max. 14)" << endl;
-		}
-	}
-}
 
 bool TextEditor::stringInput(string print) {
 	int length = print.length();
@@ -56,18 +45,3 @@ bool TextEditor::stringInput(string print) {
 	}
 }
 
-bool TextEditor::stringInputBig(string print) {
-	int length = print.length();
-	if (length < 15) {
-		for (int i = 0; i < length; i++) {
-			Digit5x7* digit = new Digit5x7((i * 6) % 28, ((i /5) * 8));
-			digit->chooseDigit(print.substr(i, 1));
-			screen->updateScreen_Segment(*digit);
-		}
-		screen->showScreen_Display();
-		screen->showScreen_Console();
-		return true;
-	} else {
-		return false;
-	}
-}
