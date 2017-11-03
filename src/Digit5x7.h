@@ -87,6 +87,7 @@ private:
 	void showDP();
 	void showSemCol();
 	void showError();
+	void showPi();
 };
 
 #endif /* DIGIT5X7_H_ */

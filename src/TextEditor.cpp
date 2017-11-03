@@ -33,7 +33,7 @@ bool TextEditor::stringInput(string print) {
 	int length = print.length();
 	if (length < 15) {
 		for (int i = 0; i < length; i++) {
-			Digit3x5* digit = new Digit3x5((i * 4) % 28, ((i / 7) * 6));
+			Digit5x7* digit = new Digit5x7((i * 4) % 28, ((i / 7) * 6));
 			digit->chooseDigit(print.substr(i, 1));
 			screen->updateScreen_Segment(*digit);
 		}

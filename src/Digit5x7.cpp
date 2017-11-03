@@ -273,25 +273,30 @@ void Digit5x7::chooseDigit(string digit) {
 		showDP();
 	} else if (digit == ";") {
 		showSemCol();
-	} else {
+	}
+	else if (digit == "/") {
+		showPi();
+	}
+	else {
 		showError();
 	}
 
 }
 
 void Digit5x7::showa() {
-	change(3, 0, true);
-	change(4, 0, true);
-	change(5, 0, true);
 	change(2, 1, true);
-	change(6, 1, true);
 	change(2, 2, true);
-	change(6, 2, true);
 	change(2, 3, true);
-	change(5, 3, true);
 	change(3, 4, true);
+	change(4, 1, true);
+	change(4, 2, true);
+	change(4, 3, true);
 	change(4, 4, true);
+	change(5, 0, true);
 	change(5, 4, true);
+	change(6, 1, true);
+	change(6, 2, true);
+	change(6, 3, true);
 	change(6, 4, true);
 }
 
@@ -320,9 +325,9 @@ void Digit5x7::showb() {
 	change(6, 2, true);
 	change(2, 3, true);
 	change(6, 3, true);
-	change(3, 5, true);
-	change(4, 5, true);
-	change(5, 5, true);
+	change(3, 4, true);
+	change(4, 4, true);
+	change(5, 4, true);
 
 }
 
@@ -348,13 +353,11 @@ void Digit5x7::showc() {
 	change(2, 2, true);
 	change(2, 3, true);
 	change(3, 0, true);
-	change(3, 4, true);
 	change(4, 0, true);
 	change(5, 0, true);
 	change(6, 1, true);
 	change(6, 2, true);
 	change(6, 3, true);
-	change(6, 4, true);
 }
 
 void Digit5x7::showC() {
@@ -547,12 +550,11 @@ void Digit5x7::showJ() {
 
 void Digit5x7::showk() {
 	changeColumn(0, true);
-	change(2, 4, true);
-	change(3, 3, true);
-	change(4, 2, true);
+	change(2, 3, true);
+	change(3, 2, true);
 	change(4, 1, true);
-	change(5, 3, true);
-	change(6, 4, true);
+	change(5, 2, true);
+	change(6, 3, true);
 }
 
 void Digit5x7::showK() {
@@ -756,7 +758,7 @@ void Digit5x7::shows() {
 	change(2, 1, true);
 	change(2, 2, true);
 	change(2, 3, true);
-	change(2, 3, true);
+	change(2, 4, true);
 	change(3, 0, true);
 	change(4, 1, true);
 	change(4, 2, true);
@@ -1191,5 +1193,17 @@ void Digit5x7::showError() {
 	change(5, 3, true);
 	change(6, 0, true);
 	change(6, 2, true);
+	change(6, 4, true);
+}
+
+void Digit5x7::showPi() {
+	changeRow(2 , true);
+	change(3, 1, true);
+	change(3, 3, true);
+	change(4, 1, true);
+	change(4, 3, true);
+	change(5, 1, true);
+	change(5, 3, true);
+	change(6, 1, true);
 	change(6, 4, true);
 }
