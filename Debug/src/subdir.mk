@@ -9,6 +9,7 @@ CPP_SRCS += \
 ../src/Digit5x7.cpp \
 ../src/DigitalWatch.cpp \
 ../src/Dot.cpp \
+../src/FileReader.cpp \
 ../src/FlipDot.cpp \
 ../src/HAL_Addr.cpp \
 ../src/HAL_Button.cpp \
@@ -24,6 +25,7 @@ OBJS += \
 ./src/Digit5x7.o \
 ./src/DigitalWatch.o \
 ./src/Dot.o \
+./src/FileReader.o \
 ./src/FlipDot.o \
 ./src/HAL_Addr.o \
 ./src/HAL_Button.o \
@@ -39,6 +41,7 @@ CPP_DEPS += \
 ./src/Digit5x7.d \
 ./src/DigitalWatch.d \
 ./src/Dot.d \
+./src/FileReader.d \
 ./src/FlipDot.d \
 ./src/HAL_Addr.d \
 ./src/HAL_Button.d \

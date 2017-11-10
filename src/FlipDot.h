@@ -13,6 +13,7 @@
 #include "DigitalWatch.h"
 #include "SnakeSingle2.h"
 #include "TextEditor.h"
+#include "FileReader.h"
 #include "Screen.h"
 #include "HAL_HardwareDefines.h"
 
