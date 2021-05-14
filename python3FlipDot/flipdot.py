@@ -47,8 +47,9 @@ class FlipDot:
                 self.segmentFlip(15,4)
                 self.import5x7(self.currentTime[4])
                 self.segmentFlip(21,4)
+                self.displayFlip(self.Display)
                 self.printDisplay()
-                time.sleep(5)
+                time.sleep(30)
         except KeyboardInterrupt:
             pass
         
@@ -68,7 +69,7 @@ class FlipDot:
     def displayFlip(self, Display):
         for c in range(self.COLUMNS):
             for r in range(self.ROWS):
-                if self.Display[c][r].state!=Display[c][r].state:
+                #if self.Display[c][r].state!=Display[c][r].state:
                     self.Display[c][r].setState(Display[c][r].state)
         
         
